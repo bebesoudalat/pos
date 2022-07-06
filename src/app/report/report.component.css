@@ -1,0 +1,64 @@
+input,select{
+    border-radius:50px ;
+    height: 35px;
+    outline: none;
+}
+table{
+    width: 100%;
+    box-shadow: none;
+}
+th{
+    font-weight: bold;
+}
+.search{
+    width: 270px;
+    border: 1px solid #898989;
+    height: 33px;
+    outline: none;
+}
+.search::placeholder{
+    text-indent: 40px;
+}
+img{
+    width: 18px;
+    height: 18px;
+    margin-left: 12px;
+    margin-top: 7px;
+    position: absolute;
+}
+.form-icon{
+    width: 40px;
+    height: 40px;
+    margin-left: -15px;
+    margin-top: -10px;
+    position: absolute;
+}
+.cart-icon{
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    margin-left: -10px;
+    margin-top: -5px;
+}
+.card{
+    border-radius: 10px;
+}
+.delete-icon{
+    width: 20px;
+    height: 20px;
+}
+.btn{
+    border-radius: 50px;
+    width: 80px;
+}
+.print{
+    width: 120px;
+    border: 1px solid #89ABDE;
+}
+mat-icon{
+    color: #89ABDE;
+}
+.icon{
+    width: 25px;
+    height: 25px;
+}

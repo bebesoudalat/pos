@@ -1,0 +1,22 @@
+.container1{
+    background-color: white;
+    width: 100%;
+}
+.title{
+    height: auto;
+    margin: 10px 50px;
+}
+
+img{
+    width: 35px;
+    height: 35px;
+    margin: 0px 8px;
+}
+.h4{
+    margin: 2px 20px;
+}
+table {
+    width: 90%;
+    margin-left: 50px;
+    box-shadow: none;
+  }

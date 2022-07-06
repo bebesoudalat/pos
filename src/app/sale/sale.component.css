@@ -1,0 +1,147 @@
+.container1{
+    background-color: white;
+    width: 100%;
+
+}
+.title{
+    height: auto;
+    margin: 10px 50px;
+}
+.circle{
+    width: 50px;
+    height: 50px;
+    background-color: #89ABDE;
+    border-radius: 50px;
+}
+img{
+    width: 35px;
+    height: 35px;
+    margin: 8px 8px;
+}
+.h4{
+    margin: 2px 20px;
+}
+.search-section{
+    width: 100px;
+}
+input{
+    border-radius: 50px;
+    width: 500px;
+    height: 30px;
+    border: 1px solid #89ABDE;
+    
+}
+input:focus{
+    outline: none;
+}
+.indent{
+    text-indent: 30px ;
+}
+
+
+input::placeholder{
+    padding-left: 35px;
+}
+.mat-icon{
+color: #89ABDE ;
+position: absolute;
+margin-left: 10px;
+}
+.card1{
+    background-color: white;
+    border-radius: 10px;
+    height: 100px;
+    margin:0 50px;
+    
+}
+.data-sale{
+    margin-top: 10px;
+}
+.show-product{
+    width: 90%;
+
+}
+.sec1{
+    background-color: #89ABDE;
+}
+.fill{
+        height: 100%;
+        min-height: 100%;
+        min-width: 100%;
+        width: 100%;
+}
+.choose-product{
+    width: 580px;
+    height: 100px;
+    border-radius: 5px;
+    background-color: #f7f7f7;
+    margin-left: 10px;
+}
+.img2{
+    width: 80px;
+    height: 80px;
+    border-radius: 5px;
+    
+    border: none;
+}
+.container2{
+    height: 450px;
+}
+.card{
+    background-color: white;
+    border-radius: 10px;
+    
+    
+}
+.search{
+    padding-top:5px;
+    font-size: 20px;
+}
+table{
+    width: 100%;
+    box-shadow: none;
+    
+}
+td{
+    padding: 5px;
+}
+.btn_sale{
+    background-color: #89ABDE;
+    border-radius: 50px;
+    color: white;
+    border: none;
+    height: 35px;
+}
+.img2{
+    width: 100px;
+    height: 100px;
+    margin: 0px 8px;
+    padding: 10px;
+}
+.btn-add,.btn-minimize,.btn-clear{
+   background-color: none;
+    border: none;
+}
+.btn-add{
+    margin-left: -10px;
+}
+.btn-clear{
+    position: absolute;
+    margin-top: -25px;
+    margin-left: -40px;
+}
+.btn-minimize{
+    margin-left: -22px;
+}
+::-webkit-scrollbar{
+    width: 10px;
+}
+
+::-webkit-scrollbar-track{
+    background-color: white;
+}
+
+::-webkit-scrollbar-thumb{
+    background-color: lightgray;
+    border-radius: 100vw;
+}

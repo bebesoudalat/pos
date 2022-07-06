@@ -1,0 +1,43 @@
+<div fxLayout="row wrap" fxLayoutAlign="center center">
+  <div class="menuDiv" fxFlex="80%" fxflex.sm="100%" fxflex.xs="100%">
+    <div fxFlexLayout="center center">
+      <h1 fxFlexLayout="center center">Taengthong's Clothing</h1>
+    </div>
+    <div fxFlex></div>
+    <div fxShow fxHide.xs>
+      <button class="btn btn-light">ເຂົ້າສູ່ລະບົບ</button>
+    </div>
+    <div fxShow fxHide.xs><button class="btn btn-dark">ລົງທະບຽນ</button></div>
+
+    <div fxHide fxShow.xs>
+      <button mat-button [matMenuTriggerFor]="menu">
+        <mat-icon>people</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>ເຂົ້າສູ່ລະບົບ</button>
+        <button mat-menu-item>ລົງທະບຽນ</button>
+      </mat-menu>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="container">
+    <div fxLayout="row wrap" fxLayoutAlign="center">
+      <div class="menuDiv2" fxFlex fxflex.sm="100%" fxflex.xs="100%">
+        <div fxLayoutAlign="start">
+          <ul fxLayout="row">
+            <li><a routerLink="homepage">ໜ້າຫຼັກ</a></li>
+            <li><a routerLink="allproduct">ສິນຄ້າ</a></li>
+            <li><a href="contact.asp">ກ່ຽວກັບພວກເຮົາ</a></li>
+            <li><a href="about.asp">ຕິດຕໍ່</a></li>
+          </ul>
+        </div>
+        <div fxFlex></div>
+        <div>
+          <mat-icon>add_shopping_cart</mat-icon>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false">
+    <mat-toolbar>ລາຍການ</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item [routerLink]="['home']"><mat-icon matListIcon>home</mat-icon> ໜ້າຫຼັກ</a>
+      <a mat-list-item [routerLink]="['sale']"><mat-icon matListIcon>add_circle_outline</mat-icon>ຂາຍສິນຄ້າ</a>
+      <a mat-list-item [routerLink]="['manage-data']"><mat-icon matListIcon> border_all</mat-icon>ຈັດການຂໍ້ມູນ</a>
+      <a mat-list-item [routerLink]="['order']"><mat-icon matListIcon>add_shopping_cart</mat-icon> ຈັດຊື້ສິນຄ້າ</a>
+      <a mat-list-item [routerLink]="['import']"><mat-icon matListIcon>save_alt</mat-icon>ນຳສິນຄ້າເຂົ້າ</a>
+      <!-- <a mat-list-item [routerLink]="['product']"><mat-icon matListIcon> store_mall_directory</mat-icon>ຜູ້ສະໜອງ</a> -->
+      <a mat-list-item [routerLink]="['report']"><mat-icon matListIcon> insert_chart_outlined</mat-icon>ລາຍງານ</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <!-- <mat-toolbar color="inherit" style="height: 45px">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>Taengthong's clothing</span>
+    </mat-toolbar> -->
+    <!-- Add Content Here -->
+    <ng-content></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>

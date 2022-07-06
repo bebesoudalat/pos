@@ -1,0 +1,197 @@
+<div class="container-fluid">
+    <div class="h3 mt-5 text-center">ລົງທະບຽນ</div>
+   <div class="container">
+    <div class="d-flex justify-content-center">
+        <!-- <form class="mt-3">
+            <div class="row mt-3">
+                <div class="col">
+                    <label> ຊື່ </label>
+                    <input  type="text" class="input form-control mt-2" placeholder="ຊື່">
+                </div>
+                <div class="col">
+                    <label> ນາມສະກຸນ </label>
+                    <input type="text" class="input form-control mt-2" placeholder="ນາມສະກຸນ">
+                </div>
+            </div>
+            
+            <div class="row mt-3">
+                <div class="col">
+                    <label> ເພດ </label>
+                    <div class="row">
+                        <div class="col-1">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                  ຍິງ
+                                </label>
+                              </div>
+                        </div>
+                        <div class="col-1">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                  ຊາຍ
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <label> ວັນເດືອນປີເກີດ </label>
+                            <input class="date" type="date" class="form-control mt-2">
+                        </div>
+                        <div class="col-6">
+                            <label> ທີ່ຢູ່ </label>
+                            <input type="text" class="input form-control mt-2" placeholder="ທີ່ຢູ່">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-3">
+                <div class="col">
+                    <label> ເບີໂທ </label>
+                    <input type="text" class="input form-control mt-2" placeholder="ເບີໂທ">
+                </div>
+                <div class="col">
+                    <label> ເລກບັດປະຈຳຕົວ </label>
+                    <input type="text" class="input form-control mt-2" placeholder="ເລກບັດປະຈຳຕົວ">
+                </div>
+            </div>
+
+            <div class="row mt-3">
+                <div class="col">
+                    <label> ຊື່ຜູ້ໃຊ້ </label>
+                    <input type="text" class="input form-control mt-2" placeholder="ຊື່ຜູ້ໃຊ້">
+                </div>
+                <div class="col">
+                    <label>ລະຫັດຜ່ານ</label>
+                    <input type="password" class="input form-control mt-2" placeholder="ລະຫັດຜ່ານ">
+                </div>
+            </div>
+            
+            <button type="submit" class="col-12 btn btn-primary mt-4">Submit</button>
+          </form> -->
+    
+          <!-- <form class="example-form">
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Company (disabled)</mat-label>
+              <input matInput disabled value="Google">
+            </mat-form-field>
+          
+            <table class="example-full-width" cellspacing="0"><tr>
+              <td><mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>First name</mat-label>
+                <input matInput>
+              </mat-form-field></td>
+              <td><mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Long Last Name That Will Be Truncated</mat-label>
+                <input matInput>
+              </mat-form-field></td>
+            </tr></table>
+          
+            <p>
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Address</mat-label>
+                <textarea matInput placeholder="Ex. 100 Main St">1600 Amphitheatre Pkwy</textarea>
+              </mat-form-field>
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Address 2</mat-label>
+                <textarea matInput></textarea>
+              </mat-form-field>
+            </p>
+          
+            <table class="example-full-width" cellspacing="0"><tr>
+              <td><mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>City</mat-label>
+                <input matInput placeholder="Ex. San Francisco">
+              </mat-form-field></td>
+              <td><mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>State</mat-label>
+                <input matInput placeholder="Ex. California">
+              </mat-form-field></td>
+              <td><mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Postal Code</mat-label>
+                <input matInput #postalCode maxlength="5" placeholder="Ex. 94105" value="94043">
+                <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
+              </mat-form-field></td>
+            </tr></table>
+          </form> -->
+          
+
+          <form action="" [formGroup]="registerForm" (ngSubmit)="register_employee()">
+            <div class="row mt-3">
+              <div class="col">
+                <label> ຊື່ </label>
+                <input  type="text" class="input form-control mt-2" placeholder="ຊື່" formControlName="emName">
+                </div>
+                <div class="col">
+                    <label> ນາມສະກຸນ</label>
+                    <input type="text" class="input form-control mt-2" placeholder="ນາມສະກຸນ" formControlName="surname">
+                </div>
+            </div>
+          
+            <div class="row mt-3">
+              <div class="col">
+                  <label> ເພດ </label>
+                  <div class="row">
+                      <div class="col-1 pt-4">
+                          <div class="form-check">
+                              <input class="form-check-input" type="radio" name="gender" id="f" value="ຍິງ" formControlName="gender">
+                              <label class="form-check-label" for="f">
+                                ຍິງ
+                              </label>
+                            </div>
+                      </div>
+                      <div class="col-1 pt-4">
+                          <div class="form-check">
+                              <input class="form-check-input" type="radio" name="gender" id="m" value="ຊາຍ
+                              " formControlName="gender">
+                              <label class="form-check-label" for="m">
+                                ຊາຍ
+                              </label>
+                          </div>
+                      </div>
+                      <div class="col-4">
+                          <label> ວັນເດືອນປີເກີດ </label>
+                          <input class="date" type="date" class="form-control mt-2" formControlName="date_of_birth">
+                      </div>
+                      <div class="col-6">
+                          <label> ທີ່ຢູ່ </label>
+                          <input type="text" class="input form-control mt-2" placeholder="ທີ່ຢູ່" formControlName="address">
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+          <div class="row mt-3">
+            <div class="col">
+                <label> ເບີໂທ </label>
+                <input type="text" class="input form-control mt-2" placeholder="ເບີໂທ" formControlName="tel">
+            </div>
+            <div class="col">
+                <label> ເລກບັດປະຈຳຕົວ </label>
+                <input type="text" class="input form-control mt-2" placeholder="ເລກບັດປະຈຳຕົວ" formControlName="ID_card">
+            </div>
+        </div>
+
+        <div class="row mt-3">
+          <div class="col">
+              <label> ຊື່ຜູ້ໃຊ້ </label>
+              <input type="text" class="input form-control mt-2" placeholder="ຊື່ຜູ້ໃຊ້" formControlName="user">
+          </div>
+          <div class="col">
+              <label>ລະຫັດຜ່ານ</label>
+              <input type="password" class="input form-control mt-2" placeholder="ລະຫັດຜ່ານ" formControlName="password">
+          </div>
+      </div>
+
+            <div class="row mt-3">
+                <div class="col">
+                    <button class="btn">ລົງທະບຽນ</button>
+                </div>
+            </div>
+        </form>
+    
+        </div>
+   </div>
+</div>
+

@@ -1,1 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons"); 
+@font-face {
+    font-family:Noto sans lao; 
+    src: url(https://fonts.google.com/noto/specimen/Noto+Sans+Lao?fbclid=IwAR3DS8oUMlU_YPtX7Hj0uBtzA42FbBu3qEfJ1A87U3O3EjltrwyZFiNEU9A);
+}
+*{
+    font-family: Noto sans lao;
+    font-size: 14px;
+}
+
+html, body { height: 100%; }
+body { margin: 0; }

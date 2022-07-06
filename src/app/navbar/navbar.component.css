@@ -1,0 +1,36 @@
+.menuDiv{
+    background-color: white;
+    height: 80px;
+    color: #404040;
+    padding-top: 25px;
+}
+
+.menuDiv2{
+    background-color: white;
+    height: 40px;
+    color: #404040;
+}
+
+ul{
+    list-style: none;
+    padding-top: 8px;
+    
+}
+ul li{
+    padding-left: 20px;
+    
+}
+ul li a{
+    text-decoration: none;
+    color: #404040;
+    font-size: 17px;
+ 
+}
+ul li a:hover{
+    color: darksalmon;
+}
+
+.btn{
+    border-radius: 50px;
+    padding: 3px 20px;
+}

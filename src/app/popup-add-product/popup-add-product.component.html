@@ -1,0 +1,129 @@
+<div class="container">
+  <div class="row">
+    <div class="col-11">
+        <mat-icon>add_circle_outline</mat-icon>
+        <div class="h5" style="position: absolute ; margin-left: 30px; margin-top: -27px;">ເພີ່ມສິນຄ້າໃໝ່</div>
+    </div>
+
+    <div class="col-1">
+        <button class="btn_close" (click)="onClose()" type="button"><mat-icon>cancel</mat-icon></button>
+    </div>
+</div>
+  <hr>
+  <form [formGroup]="productForm" (ngSubmit)="addProduct()">
+  
+      <div class="row mt-3">
+        <div class="col-3">
+          <label for=""  class="mt-2">ຊື່ສິນຄ້າ</label>
+        </div>
+        <div class="col-9">
+          <input class="add-product-input form-control" formControlName="productName" type="text" placeholder="ຊື່ສິນຄ້າ">
+         
+        </div>
+      </div>
+  
+      <div class="row mt-3">
+        <div class="col-3 mt-2 text-start">
+          <label for=""  class="mt-2">ປະເພດສິນຄ້າ</label>
+        </div>
+        <div class="col-9">
+          <select [ngClass]="{'is-invalid': submitted && p['cateID'].invalid && p['cateID'].touched}"  name="" id="" class="add-product-input form-control form-select" formControlName="cateID">
+            <option disable selected hidden value="">ເລືອກປະເພດສິນຄ້າ</option>
+            <option *ngFor="let item of data" value="{{ item.cateID }}">{{ item.cateName }}</option>
+            
+          </select>
+          
+        </div>
+      </div>
+  
+      <div class="row mt-3">
+        <div class="col-3 mt-2 text-start">
+          <label for=""  class="mt-2">ຫົວໜ່ວຍ</label>
+        </div>
+        <div class="col-9">
+          <select [ngClass]="{'is-invalid': submitted && p['unitID'].invalid && p['unitID'].touched}" name="" id=""  class="add-product-input form-control form-select" formControlName="unitID">
+            <option disable selected hidden value="">ເລືອກຫົວໜ່ວຍ</option>
+            <option *ngFor="let item of data3" value="{{ item.unitID }}">{{ item.unitName }}</option>
+          </select>
+         
+        </div>
+      </div>
+  
+      <div class="row mt-3">
+        <div class="col-3 mt-2 text-start">
+          <label for=""  class="mt-2">ຜູ້ສະໜອງ</label>
+        </div>
+        <div class="col-9">
+          <select [ngClass]="{'is-invalid': submitted && p['supID'].invalid && p['supID'].touched}" name="" id=""  class="add-product-input form-control form-select" formControlName="supID">
+            <option disable selected hidden value="">ເລືອກຜູ້ສະໜອງ</option>
+            <option *ngFor="let item of data4" value="{{ item.supID }}">{{ item.supName }}</option>
+          </select>
+         
+        </div>
+      </div>
+  
+      <div class="row mt-3">
+        <div class="col-3 mt-2">
+          <label for=""  class="mt-2">ຈຳນວນ</label>
+        </div>
+        <div class="col-9">
+          <input  class="add-product-input form-control" formControlName="Qty" type="text" placeholder="ຈຳນວນ">
+          
+        </div>
+      </div>
+  
+      <div class="row mt-3">
+        <div class="col-3 mt-2">
+          <label for=""  class="mt-2">ລາຄາຊື້</label>
+        </div>
+        <div class="col-9">
+          <input  class="add-product-input form-control" formControlName="buy_price" type="text" placeholder="ລາຄາຊື້">
+          
+        </div>
+      </div>
+  
+      <div class="row mt-3">
+        <div class="col-3 mt-2">
+          <label for="" class="mt-2">ຮູບພາບ</label>
+        </div>
+        <div class="col-9">
+          <div class="file-input">
+            <input  type="file" class="form-control" formControlName="image" (change)="onFIleSelect($event, 'image')"placeholder="ຮູບພາບ">
+            <span class='button'>Choose</span>
+            <span class='label' data-js ><label>No file selected</label></span>
+            
+            
+          </div>
+          <img *ngIf="img" id="img-edit" src="{{prev_image}}" alt="">
+        </div>
+      </div>
+      
+      <div class="row mt-3">
+        <div class="col-3 mt-2">
+          <label for="" class="mt-2">ລາຄາຂາຍ</label>
+        </div>
+        <div class="col-9">
+          <input  class="add-product-input form-control" formControlName="sell_price" type="text" placeholder="ລາຄາຂາຍ">
+          
+        </div>
+      </div>
+  
+     
+  
+     
+      <div class="row mt-3">
+        <div class="col-3">
+    
+        </div>
+        
+          <div class="col">
+            <button class="btn">ບັນທຶກ</button>
+          </div>
+    
+          <div class="col">
+            <button class="btn_clear">ລ້າງຂໍ້ມູນ</button>
+          </div>
+          </div>
+        </form>
+  
+</div>

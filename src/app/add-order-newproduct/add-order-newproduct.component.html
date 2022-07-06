@@ -1,0 +1,47 @@
+<div class="container">
+    <div class="row">
+        <div class="col-11">
+            <mat-icon>add_circle_outline</mat-icon>
+            <div class="h5" style="position: absolute ; margin-left: 30px; margin-top: -27px;">ເພີ່ມສິນຄ້າໃໝ່</div>
+        </div>
+
+        <div class="col-1">
+            <button (click)="onClose()" class="btn_close" type="button"><mat-icon>cancel</mat-icon></button>
+        </div>
+    </div>
+    <hr class="mb-2">
+
+    <form action="">
+        <div class="row mt-3">
+            <div class="col">
+                <label class="text-start"> ຜູ້ສະໜອງ </label>
+                <select name="" id="" class=" form-control form-select mt-2" >
+                    <option disable selected hidden value="">ເລືອກຜູ້ສະໜອງ</option>
+                    <option>say something</option>
+                    
+                  </select>
+            </div>
+            <div class="col">
+                <label> ລະຫັດສິນຄ້າ </label>
+                <input type="text" class="input form-control mt-2" placeholder="ລະຫັດສິນຄ້າ">
+            </div>
+        </div>
+      
+        <div class="row mt-3">
+            <div class="col">
+                <label class="text-start"> ຊື່ສິນຄ້າ</label>
+                <input  type="text" class="input form-control mt-2" placeholder="ຊື່ສິນຄ້າ">
+            </div>
+            <div class="col">
+                <label> ຈຳນວນ </label>
+                <input type="text" class="input form-control mt-2" placeholder="ຈຳນວນ">
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col">
+                <button class="btn">ເພີ່ມລາຍການ</button>
+            </div>
+        </div>
+    </form>
+
+</div>

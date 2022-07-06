@@ -1,0 +1,12 @@
+mat-icon{
+    color: #89ABDE;
+}
+.btn{
+    border-radius: 50px;
+    background-color: #89ABDE;
+    color: white;
+}
+table{
+    width: 97%;
+    box-shadow: none;
+}

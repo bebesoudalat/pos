@@ -1,0 +1,23 @@
+.container{
+    width: 600px;
+}
+input,select{
+    border-radius: 50px;
+    outline: none;
+}
+.btn{
+    width: 580px;
+    height: 30px;
+    background-color: #89ABDE;
+    border: none;
+    border-radius: 50px;
+    outline: none;
+    color: white;
+}
+mat-icon{
+    color: #89ABDE;
+}
+.btn_close{
+    background-color: white;
+    border: none;
+}

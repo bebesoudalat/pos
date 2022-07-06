@@ -1,0 +1,33 @@
+input,select{
+    border-radius: 50px;
+    outline: none;
+}
+.h3{
+    color: #89aede;
+}
+.container{
+    justify-content: center;
+    margin-top: 10%;
+    background-color: white;
+    border: 1px solid #89aede;
+    border-radius: 10px;
+    width: 500px;
+
+}
+input:focus{
+    outline: none;
+}
+.btn{
+    background-color: #89aede;
+    outline: none;
+    border-radius: 50px;
+    height: 35px;
+    color: white;
+}
+a{
+    text-decoration: none;
+    color: #2b2b2b;
+}
+.register{
+    color: #89aede;
+}

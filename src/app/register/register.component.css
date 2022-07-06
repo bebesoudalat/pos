@@ -1,0 +1,71 @@
+.container{
+    width: 700px;
+    height: auto;
+    border-radius: 10px;
+    padding-bottom: 30px;
+
+}
+.container-fluid{
+    margin-top: 10%;
+}
+
+select,.date{
+    text-indent: 10px;
+}
+::placeholder{
+    text-indent: 5px;
+}
+button{
+    
+    background-color: #89ABDE;
+    color: white;
+    border: none;
+}
+.h3{
+    color: #89ABDE;
+}
+.form-group{
+    position: relative;
+}
+.icon{
+    position: absolute;
+    color: #89ABDE;
+    margin-left:18px;
+    margin-top: 10px;
+}
+.icon-icon{
+    font-size: 20px;
+}
+
+
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+  
+  td {
+    padding-right: 8px;
+  }
+
+
+input,select{
+    border-radius: 50px;
+    outline: none;
+}
+.btn{
+    width: 580px;
+    height: 35px;
+    background-color: #89ABDE;
+    border: none;
+    border-radius: 50px;
+    outline: none;
+    color: white;
+}
+mat-icon{
+    color: #89ABDE;
+}

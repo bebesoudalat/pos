@@ -1,0 +1,46 @@
+<div class="container1">
+    <div fxFlex="row">
+        <div class="title" fxflex="70%" fxFlex.gt-sm="100%" >
+            <div fxLayout="column" fxFlex="0 0 47%" fxFlex.lg="100%">
+                <div fxLayoutAlign="start center">
+                  <div class="circle">
+                    <img src="../../assets/img/category (1).png" alt="" />
+                  </div>
+                  <div>
+                      <div class="h4">ຈັດການຂໍ້ມູນປະເພດ</div>
+                  </div>
+                 
+                </div>
+              </div>
+        </div>
+    </div>  
+</div>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+  
+    <!-- Position Column -->
+    <ng-container matColumnDef="cateID">
+      <th mat-header-cell *matHeaderCellDef> ລຳດັບ </th>
+      <td mat-cell *matCellDef="let element"> {{element.cateID}} </td>
+    </ng-container>
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="cateName">
+      <th mat-header-cell *matHeaderCellDef> ຊື່ປະເພດ </th>
+      <td mat-cell *matCellDef="let element"> {{element.cateName}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef> ຈັດການ </th>
+        <td mat-cell *matCellDef="let element">   </td>
+      </ng-container>
+  
+    <!-- Weight Column -->
+    
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  

@@ -1,0 +1,94 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col-11">
+      <mat-icon>mode_edit</mat-icon>
+        <div class="h5" style="position: absolute ; margin-left: 30px; margin-top: -27px;">ແກ້ໄຂຜູ້ສະໜອງ</div>
+    </div>
+  
+    <div class="col-1">
+        <button class="btn_close" (click)="onClose()" type="button"><mat-icon>cancel</mat-icon></button>
+    </div>
+  </div>
+  <hr>
+<form action="" [formGroup]="supplierForm" (ngSubmit)="btn_editSup()" novalidate >
+    
+    <div class="row mt-3">
+        <div class="col-3">
+          <label for=""  class="mt-2">ຊື່ຜູ້ສະໜອງ</label>
+        </div>
+        <div class="col-9">
+          <input class="add-product-input form-control" formControlName="supName" type="text" placeholder="ຊື່ຜູ້ສະໜອງ">
+         
+        </div>
+      </div>
+
+    <div class="row mt-3">
+      <div class="col-3 mt-2">
+        <label for=""  class="mt-2">ແຂວງ</label>
+      </div>
+      <div class="col-9">
+        <select [ngClass]="{'is-invalid': submitted && s['id_province'].invalid && s['id_province'].touched}" name="" id="" class="add-product-input form-select" formControlName="id_province" (change)="onSelectprovince($event)">
+          <option disable selected hidden value="">ເລືອກແຂວງ</option>
+          <option *ngFor="let item of provinceList" value="{{ item.id_province }}">{{ item.name_lao }}</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-3 mt-2">
+        <label for="" class="mt-2">ເມືອງ</label>
+      </div>
+      <div class="col-9">
+        <select class="form-select" [ngClass]="{ 'is-invalid':  s['id_district'].invalid && s['id_district'].touched }"  formControlName="id_district"  (change)="onSelectdistrict($event)">
+          <option disable selected hidden value="">ເລືອກເມືອງ</option>
+          <option *ngFor="let item of district_data" value="{{ item.id_district }}">{{ item.name_lao }}</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-3 mt-2">
+        <label for="" class="mt-2">ບ້ານ</label>
+      </div>
+      <div class="col-9">
+        <select class="form-select" id="user_village" [ngClass]="{ 'is-invalid':  s['id_village'].invalid && s['id_village'].touched }" formControlName="id_village" >
+        <option disable selected hidden value="">ເລືອກບ້ານ</option>
+        <option *ngFor="let item of village_data" value="{{ item.id_village }}">{{ item.name_lao }}</option>
+
+</select>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-3 mt-2">
+        <label for="" class="mt-2">ເບີໂທ</label>
+      </div>
+      <div class="col-9">
+        <input class="add-product-input form-control" type="text" placeholder="ເບີໂທ" formControlName="tel">
+      </div>
+    </div>
+
+    
+
+   
+    <div class="row mt-3">
+      <div class="col-3">
+  
+      </div>
+      
+        <div class="col">
+          <button class="btn">ແກ້ໄຂ</button>
+        </div>
+  
+        <div class="col">
+          <button class="btn_clear">ລ້າງຂໍ້ມູນ</button>
+        </div>
+        </div>
+    
+      
+      
+    
+  </form>
+</div>
+
