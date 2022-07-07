@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
       console.log(res)
       if (res.status == 1) {
         localStorage.setItem("user",JSON.stringify(res.data))
-        this.router.navigate(['home'])
+        this.router.navigate(['home2'])
         console.log(localStorage)
       } else {
         localStorage.clear()

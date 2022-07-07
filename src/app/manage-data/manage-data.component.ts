@@ -181,7 +181,15 @@ openDialog(){
   const dialogConfig = new MatDialogConfig;
   dialogConfig.disableClose = true;
   dialogConfig.autoFocus= true;
-  this.dialogRef.open(PopupAddProductComponent, dialogConfig);
+  let dialog = this.dialogRef.open(PopupAddProductComponent, dialogConfig);
+
+  dialog.afterClosed().subscribe(res=>{
+    this.service.product().subscribe(res=>{
+      this.data2=res.data
+      // console.log(this.data2)
+      this.dataSource2 = new MatTableDataSource(this.data2);
+    })
+  })
 }
 
 edit_product_dialog(data:any){

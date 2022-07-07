@@ -47,10 +47,7 @@ export class SaleComponent implements OnInit {
       // console.log(this.data)
       this.dataSource1 = new MatTableDataSource(this.data);
     })
-    let array = [1,2,3,4,5,6,7,8,9,10];
-    for (let b = 1; b < array.length; b++) {
-    console.log(array[b]);
-}
+   
   }
 
   search_Product(searchProduct:any){
@@ -66,11 +63,11 @@ export class SaleComponent implements OnInit {
 
   
 
-  confirm_sale_dialog(){
+  confirm_sale_dialog(data:any){
   const dialogConfig = new MatDialogConfig;
   dialogConfig.disableClose = true;
   dialogConfig.autoFocus= true;
-    this.dialogRef.open(ConfirmSalePopupComponent, dialogConfig);
+    this.dialogRef.open(ConfirmSalePopupComponent,{data});
   }
 
   addToCart(data:any){

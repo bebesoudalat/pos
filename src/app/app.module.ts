@@ -11,9 +11,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
-import { HomeComponent } from './home/home.component';
-import { SaleComponent } from './sale/sale.component';
-import { ProductComponent } from './product/product.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -52,67 +49,22 @@ import { ImportComponent } from './import/import.component';
 import { OrderDetailComponent } from './order-detail/order-detail.component';
 import { ReportComponent } from './report/report.component';
 import { ImportDetailComponent } from './import-detail/import-detail.component';
+import { ContentComponent } from './content/content/content.component';
+import { ContentModule } from './content/content/content.module';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    RootNavComponent,
-    HomeComponent,
-    SaleComponent,
-    ProductComponent,
-    HomepageComponent,
-    NavbarComponent,
-    FooterComponent,
-    AllProductComponent,
-    CategoryComponent,
-    UnitComponent,
-    SupplierComponent,
-    ManageDataComponent,
-    PopupEditProductComponent,
-    PopupAddProductComponent,
-    PopupAddCategoryComponent,
-    PopupEditCategoryComponent,
-    PopupAddUnitComponent,
-    PopupEditUnitComponent,
-    PopupAddSupplierComponent,
-    PopupEditSupplierComponent,
-    LoginComponent,
-    RegisterComponent,
-    OrderComponent,
-    ConfirmSalePopupComponent,
-    AddOrderNewproductComponent,
-    OutOfStockComponent,
-    ImportComponent,
-    OrderDetailComponent,
-    ReportComponent,
-    ImportDetailComponent
+    
     
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    LayoutModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatSidenavModule,
-    MatIconModule,
-    MatListModule,
-    MatCardModule,
-    MatGridListModule,
-    FlexLayoutModule,
-    MatMenuModule,
-    MatTableModule,
-    MatButtonToggleModule,
-    MatTabsModule,
-    MatPaginatorModule,
-    HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MatDialogModule,
-    MatFormFieldModule
+    ContentModule
   ],
   providers: [],
   bootstrap: [AppComponent]

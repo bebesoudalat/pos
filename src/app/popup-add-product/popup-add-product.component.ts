@@ -58,6 +58,16 @@ export class PopupAddProductComponent implements OnInit {
       // console.log(this.data4)
       this.dataSource4 = new MatTableDataSource(this.data4);
     })
+    this.productForm = this.formBuilder.group({
+      'productName': ['', [Validators.required]],
+      'cateID': ['', [Validators.required]],
+      'unitID': ['', [Validators.required]],
+      'supID': ['1', [Validators.required]],
+      'Qty': ['', [Validators.required]],
+      'buy_price': ['', [Validators.required]],
+      'sell_price': ['', [Validators.required]],
+      'image': ['', [Validators.required]]
+  })
   }
 
   get p(){
