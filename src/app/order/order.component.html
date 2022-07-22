@@ -4,11 +4,19 @@
   <div class="container mt-3">
     <mat-tab-group dynamicHeight mat-align-tabs="center">
       <mat-tab label="ຈັດຊື້ສິນຄ້າ">
-        <div class="card pb-4 mt-4">
+        <div class="col text-end mt-3">
+          <button class="btn_addProduct ms-2" (click)="openDialog()" type="button">
+            ລາຍການທີ່ໄດ້ຈັດຊື້ແລ້ວ
+          </button>
+          <button class="btn_addProduct" (click)="openDialog()" type="button">
+            ເພີ່ມສິນຄ້າໃໝ່
+          </button>
+        </div>
+
+        <!-- <div class="card pb-4 mt-4">
           <div class="row">
             <div class="col">
               <div class="text-start ms-2 ps-3 mt-3">
-                <img class="cart-icon" src="../../assets/img/add-cart.png" alt="">
                 <mat-icon> shopping_cart </mat-icon>
                 <div
                   style="
@@ -26,7 +34,7 @@
                   <div class="col">
                     <div class="row">
                       <div class="col-4" style="margin-left: 95px">
-                        <button class="btn_addProduct" (click)="add_newproduct()" type="button">
+                        <button class="btn_addProduct" (click)="openDialog()" type="button">
                           ເພີ່ມສິນຄ້າໃໝ່
                         </button>
                       </div>
@@ -50,11 +58,12 @@
               name=""
               id=""
               class="add-product-input form-control form-select mt-2"
-              formControlName="cateID" 
+              formControlName="supID" 
               [ngClass]="{'is-invalid': submitted && p['supID'].invalid && p['supID'].touched}"
             >
             <option disable selected hidden value="">ເລືອກຜູ້ສະໜອງ</option>
-            <option *ngFor="let item of data4" value="{{ item.supID }}">{{ item.supName }}</option>
+            <option *ngFor="let item of data4"  [ngValue]="item">{{ item.supName }}</option>
+           
             </select>
 
               </div>
@@ -64,109 +73,211 @@
                   type="text"
                   class="input form-control mt-2"
                   placeholder="ລະຫັດສິນຄ້າ"
+                  formControlName="productID"
                 />
               </div>
+            </div>
+
+            <div class="row">
               <div class="col">
                 <label> ຈຳນວນ </label>
                 <input
                   type="text"
                   class="input form-control mt-2"
                   placeholder="ຈຳນວນ"
+                  formControlName="buy_qty"
                 />
               </div>
+
             </div>
+
             <div class="row mt-3">
               <div class="col">
-                <button class="btn-add-item">ເພີ່ມລາຍການ</button>
+                <button type="button" (click)="addItem()" [disabled]="orderForm.invalid" class="btn-add-item">ເພີ່ມລາຍການ</button>
               </div>
             </div>
           </form>
-        </div>
+        </div> -->
 
-        <div class="text-start mt-3 mb-2 ms-2">
-          <img class="form-icon" src="../../assets/img/form.png" alt="">
+        <div class="text-start mt-2 mb-2 ms-2">
+          <!-- <img class="form-icon" src="../../assets/img/form.png" alt=""> -->
           <mat-icon>list</mat-icon>
           <div style="position: absolute; margin-left: 30px; margin-top: -27px">
-            ລາຍການທີ່ຈັດຊື້
+            ລາຍການສິນຄ້າທັງໝົດ
           </div>
         </div>
-        <div class="card">
-         <div  style="height: 190px; max-height: 190px;overflow-x: hidden;">
-          <table class="text-start ms-4 p-2">
-            <tr style="margin-top: 20px;">
-              <th style="width: 120px">ຜູ້ສະໜອງ</th>
-              <th style="width: 120px">ຊື່ສິນຄ້າ</th>
-              <th style="width: 100px">ຈຳນວນ</th>
-              <th style="width: 100px">ລົບ</th>
-            </tr>
+        <div class="row text-start ms-2 ">
+          
+            <button (click)="onSelectcategory(1)" class="btn_addProduct ">ເສື້ອແຂນສັ້ນ</button>
+         
+            <button (click)="onSelectcategory(2)" class="btn_addProduct ms-2">ເສື້ອແຂນຍາວ</button>
+          
+         
+            <button (click)="onSelect(3)" class="btn_addProduct ms-2">ສິນຄ້າທີ່ໃກ້ໝົດ</button>
+            <div class="col text-end">
+              <img src="../../assets/img/search-interface-symbol.png" alt="" class="pic">
+              <input class="search" type="text" placeholder="ຄົ້ນຫາ">
+            </div>
+        </div>
 
-            <tr>
-              <td>bebe</td>
-              <td>mickey mouse</td>
-              <td>5 ຜືນ</td>
-              <td><mat-icon>delete</mat-icon></td>
-            </tr>
-  
-          </table>
-         </div>
+        
+        <!-- <div class="card">
+         <div  style="height: 190px; max-height: 190px;overflow-x: hidden;"> -->
+
+          <!-- <table>
+            <thead>
+              <tr>
+                <th>ຜູ້ສະໜອງ</th>
+                <th>ຊື່ສິນຄ້າ</th>
+                <th>ຈຳນວນ</th>
+                <th>ລົບ</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of listData">
+                <td> {{item.supName}} </td>
+                <td> {{item.productName}} </td>
+                <td> {{item.buy_qty}} </td>
+                <td> <button class="btn btn-dark">ລົບ</button> </td>
+              </tr>
+            </tbody>
+          </table> -->
+          
+          <!-- <div class="col">
+            <table mat-table [dataSource]="dataOrderlist" class="mat-elevation-z8 table-supplier">
+
+            <ng-container matColumnDef="supName">
+            <th mat-header-cell *matHeaderCellDef style="width: 5px; text-align: center;" > ຜູ້ສະໜອງ </th>
+            <td mat-cell *matCellDef="let element" class="text-center" > {{element.supName}} </td>
+            </ng-container>
+
+
+            <ng-container matColumnDef="productName" >
+            <th mat-header-cell *matHeaderCellDef style="width: 100px ; text-align: center;" > ຊື່ສິນຄ້າ </th>
+            <td mat-cell *matCellDef="let element" class="text-center" > {{element.productName}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="buy_qty" >
+            <th mat-header-cell *matHeaderCellDef style="width: 200px ; text-align: center;" > ຈຳນວນ </th>
+            <td mat-cell *matCellDef="let element" class="text-center" > {{element.buy_qty}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="price" >
+              <th mat-header-cell *matHeaderCellDef style="width: 200px ; text-align: center;" > ລາຄາ </th>
+              <td mat-cell *matCellDef="let element" class="text-center" > {{element.price}} </td>
+              </ng-container>
+
+            <ng-container matColumnDef="action">
+              <th mat-header-cell *matHeaderCellDef style="width: 150px ; text-align: center;"> ຈັດການ </th>
+              <td mat-cell *matCellDef="let element" class="text-center" > <button class="btn-delete"><mat-icon>delete</mat-icon></button>   </td>
+            </ng-container>
+
+
+            <tr mat-header-row *matHeaderRowDef="displayOrderList"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayOrderList;"></tr>
+
+            </table>
+
+
+            </div> -->
+          
+         <!-- </div>
           <hr class="mt-2">
           <div class="row">
             <div class="col-9"></div>
             <div class="col-3 text-end ps-4 pe-5 p-0">
-              <button class="btn_save ms-4 mb-3">ບັນທຶກ</button>
+              <button type="button" (click)="addOrder()"class="btn_save ms-4 mb-3">ບັນທຶກ</button>
             </div>
           </div>
 
-          <!-- <div class="col mt-4">
-<table mat-table class="mat-elevation-z8">
-
-<ng-container matColumnDef="proID">
-  <th mat-header-cell *matHeaderCellDef style="width: 5px; text-align: center;" > ລຳດັບ </th>
-  <td mat-cell *matCellDef="let element" class="text-center" >  </td>
-</ng-container>
+          
+        </div> -->
 
 
-<ng-container matColumnDef="image" >
-  <th mat-header-cell *matHeaderCellDef style="width: 100px ; text-align: center;" > ຮູບພາບ </th>
-  <td mat-cell *matCellDef="let element" class="text-center" > </td>
-</ng-container>
+        <div class="col mt-4">
+          <table mat-table [dataSource]="dataOutOfStock" class="mat-elevation-z8">
+   
+            <ng-container matColumnDef="proID">
+              <th mat-header-cell *matHeaderCellDef style="width: 5px; text-align: center;" > ລຳດັບ </th>
+              <td mat-cell *matCellDef="let element" class="text-center" > {{element.productID}} </td>
+            </ng-container>
+          
+           
+            <ng-container matColumnDef="image" >
+              <th mat-header-cell *matHeaderCellDef style="width: 100px ; text-align: center;" > ຮູບພາບ </th>
+              <td mat-cell *matCellDef="let element" class="text-center" > <img src="{{element.image}}" alt=""> </td>
+            </ng-container>
 
-<ng-container matColumnDef="proName" >
-  <th mat-header-cell *matHeaderCellDef style="width: 200px ; text-align: center;" > ຊື່ສິນຄ້າ </th>
-  <td mat-cell *matCellDef="let element" class="text-center" > </td>
-</ng-container>
+            <ng-container matColumnDef="proName" >
+              <th mat-header-cell *matHeaderCellDef style="width: 200px ; text-align: center;" > ຊື່ສິນຄ້າ </th>
+              <td mat-cell *matCellDef="let element" class="text-center" > {{element.productName}} </td>
+            </ng-container>
 
-<ng-container matColumnDef="qty" >
-  <th mat-header-cell *matHeaderCellDef style="width: 20px ; text-align: center;" > ຈຳນວນ </th>
-  <td mat-cell *matCellDef="let element" class="text-center" > </td>
-</ng-container>
+            <ng-container matColumnDef="qty" >
+              <th mat-header-cell *matHeaderCellDef style="width: 20px ; text-align: center;" > ຈຳນວນໃນສະຕັອກ </th>
+              <td mat-cell *matCellDef="let element" class="text-center" > {{element.Qty}}  </td>
+            </ng-container>
 
-<ng-container matColumnDef="sell_price" >
-  <th mat-header-cell *matHeaderCellDef style="width: 120px ; text-align: center;" > ລາຄາຂາຍ </th>
-  <td mat-cell *matCellDef="let element" class="text-center" > </td>
-</ng-container>
+            <ng-container matColumnDef="buy_price" >
+              <th mat-header-cell *matHeaderCellDef style="width: 120px ; text-align: center;" > ລາຄາຊື້ </th>
+              <td mat-cell *matCellDef="let element" class="text-center" >{{element.buy_price}} ກີບ </td>
+            </ng-container>
 
-<ng-container matColumnDef="buy_price" >
-  <th mat-header-cell *matHeaderCellDef style="width: 120px ; text-align: center;" > ລາຄາຊື້ </th>
-  <td mat-cell *matCellDef="let element" class="text-center" > </td>
-</ng-container>
-
-
-
-  <ng-container matColumnDef="action">
-    <th mat-header-cell *matHeaderCellDef style="width: 150px ; text-align: center;"> ຈັດການ </th>
-    <td mat-cell *matCellDef="let element" class="text-center" > <button type="button" class="btn-delete"s><mat-icon>create</mat-icon></button> <button class="btn-delete"><mat-icon>delete</mat-icon></button>   </td>
-  </ng-container>
-
-  
-<tr mat-header-row *matHeaderRowDef=""></tr>
-<tr mat-row *matRowDef="let row; columns:"></tr>
-
-</table>
+            <ng-container matColumnDef="buy_qty" >
+              <th mat-header-cell *matHeaderCellDef style="width: 120px ; text-align: center;" > ຈຳນວນທີ່ຕ້ອງການສັ່ງ</th>
+              <td mat-cell *matCellDef="let element" class="text-center" > <input class="buy_qty" type="text" id="{{element.productID}}" [value]="1" > </td>
+            </ng-container>
 
 
-</div> -->
+              <ng-container matColumnDef="action">
+                <th mat-header-cell *matHeaderCellDef style="width: 150px ; text-align: center;"> ຈັດການ </th>
+                <td mat-cell *matCellDef="let element" class="text-center" > <button class="addItem" (click)="addItem2(element)">ເພີ່ມເຂົ້າ</button></td>
+              </ng-container>
+ 
+            <tr mat-header-row *matHeaderRowDef="displayProduct"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayProduct;"></tr>
+            
+          </table>
         </div>
+
+     <!-- <form action="" [formGroup]="orderForm">
+      <table class="mt-3">
+        <thead>
+          <tr>
+            <th>ລະຫັດສິນຄ້າ</th>
+            <th>ຮູບພາບ</th>
+            <th>ຊື່ສິນຄ້າ</th>
+            <th>ຈຳນວນໃນສະຕັອກ</th>
+            <th>ລາຄາຊື້</th>
+            <th>ຈຳນວນທີ່ຕ້ອງການສັ່ງ</th>
+            <th>ຈັດການ</th>
+          </tr>
+        </thead>
+        <tbody class="text-center">
+          <tr *ngFor="let item of data5;let i = index;">
+            <td> {{item.productID}} </td>
+            <td> <img src="{{item.image}}" alt="">  </td>
+            <td> {{item.productName}}/td>
+            <td> {{item.Qty}} </td>
+           
+            <td> {{item.buy_price}} </td>
+             <td > 
+              <div> 
+                <div class="d-flex flex-row justify-content-center">
+                  <button class="btn-add" (click)="increase(i,item)"><mat-icon>add_circle_outline</mat-icon></button>
+                  <div class="h5 mt-1 ps-3 pe-3">{{item.buy_qty}}</div>
+               
+                  <button class="btn-minimize" (click)="decrease(i)"><mat-icon>remove_circle_outline</mat-icon></button>
+                </div>
+              </div>
+          </td>
+            <td> <button (click)="addItem2(item)" class="btn btn-dark">ຈັດຊື້</button> </td>
+          </tr>
+        </tbody>
+      </table>
+     </form> -->
+
+
       </mat-tab>
 
       <mat-tab label="ລາຍການທີ່ຈັດຊື້">
@@ -184,14 +295,12 @@
           </div>
 
           <div class="col-sm-4 mt-3 text-end">
-            <!-- <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg> -->
-            <mat-icon>search</mat-icon>
-            <img src="../../assets/img/search-interface-symbol.png" alt="">
+            <img src="../../assets/img/search-interface-symbol.png" alt="" class="pic">
             <input class="search" type="text" placeholder="ຄົ້ນຫາ">
           </div>
         </div>
 
-        <div class="col mt-4">
+        <!-- <div class="col mt-4">
           <table mat-table [dataSource]="dataSource2" class="mat-elevation-z8">
             <ng-container matColumnDef="proID">
               <th
@@ -199,7 +308,7 @@
                 *matHeaderCellDef
                 style="width: 5px; text-align: center"
               >
-                ລຳດັບ
+                ລະຫັດການຈັດຊື້
               </th>
               <td mat-cell *matCellDef="let element" class="text-center">
                 {{ element.productID }}
@@ -212,7 +321,7 @@
                 *matHeaderCellDef
                 style="width: 100px; text-align: center"
               >
-                ຮູບພາບ
+              ຜູ້ສະໜອງ
               </th>
               <td mat-cell *matCellDef="let element" class="text-center">
                 <img src="{{ element.image }}" alt="" />
@@ -225,7 +334,7 @@
                 *matHeaderCellDef
                 style="width: 200px; text-align: center"
               >
-                ຊື່ສິນຄ້າ
+                ວັນທີ
               </th>
               <td mat-cell *matCellDef="let element" class="text-center">
                 {{ element.productName }}
@@ -261,7 +370,40 @@
             <tr mat-header-row *matHeaderRowDef="displayOrder"></tr>
             <tr mat-row *matRowDef="let row; columns: displayOrder"></tr>
           </table>
-        </div>
+        </div> -->
+      
+        
+          <table class="mt-3">
+            <thead>
+              <tr>
+                <th>ຜູ້ສະໜອງ</th>
+                <th>ຊື່ສິນຄ້າ</th>
+                <th>ຈຳນວນ</th>
+                <th>ລາຄາຊື້</th>
+                <th>ລົບ</th>
+              </tr>
+            </thead>
+            <tbody class="text-center"  style="height: 375px ; max-height: 375px; overflow-x: hidden;">
+              <tr *ngFor="let item of listData;let i = index;">
+                <td> {{item.supName}} </td>
+                <td> {{item.productName}} </td>
+                <td > 
+                  <div> 
+                    <div class="d-flex flex-row justify-content-center">
+                      <button class="btn-add" (click)="increase(i,item)"><mat-icon>add_circle_outline</mat-icon></button>
+                      <div class="h5 mt-1 ps-3 pe-3">{{item.buy_qty}}</div>
+                      <button class="btn-minimize" (click)="decrease(i)"><mat-icon>remove_circle_outline</mat-icon></button>
+                    </div>
+                  </div>
+              </td>
+                <td> {{item.buy_price}} </td>
+                <td> <button (click)="deleteItem(i)" class="btn btn-dark">ລົບ</button> </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <button class="btn_save mt-3" (click)="addOrder()">ບັນທຶກ</button>
+       
       </mat-tab>
     </mat-tab-group>
   </div>

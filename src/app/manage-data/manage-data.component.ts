@@ -24,6 +24,7 @@ import { ConfirmSalePopupComponent } from '../confirm-sale-popup/confirm-sale-po
   styleUrls: ['./manage-data.component.css']
 })
 export class ManageDataComponent implements OnInit {
+  @ViewChild(MatPaginator,{static:true}) paginator!:MatPaginator
   displayedColumns: string[] = ['cateID', 'cateName','action'];
   displayProduct: string[] = ['proID','image', 'proName', 'qty', 'sell_price', 'buy_price', 'action'];
   displayUnit: string[] = ['unitID', 'unitName','action'];
@@ -96,6 +97,7 @@ export class ManageDataComponent implements OnInit {
       this.data2=res.data
       // console.log(this.data2)
       this.dataSource2 = new MatTableDataSource(this.data2);
+      this.dataSource2.paginator=this.paginator
     })
     this.service.unit().subscribe(res=>{
       this.data3=res.data
@@ -374,8 +376,8 @@ delCategory(id:any){
     //imageUrl:'assets/assets/images/newlogobig.jpeg',
 
     showCancelButton: true,
-    confirmButtonColor: '#3085d6',
-    cancelButtonColor: '#d33',
+    confirmButtonColor: '#89ADEB',
+    cancelButtonColor: '#d3d3d3',
     confirmButtonText: 'ຕົກລົງ'
 
   }).then((result) => {
@@ -406,8 +408,7 @@ del_product(id:any){
     showCancelButton: true,
     confirmButtonColor: '#3085d6',
     cancelButtonColor: '#d33',
-    confirmButtonText: 'ຕົກລົງ',
-    cancelButtonText:'ຍົກເລີກ'
+    confirmButtonText: 'ຕົກລົງ'
 
   }).then((result) => {
     if (result.isConfirmed) {

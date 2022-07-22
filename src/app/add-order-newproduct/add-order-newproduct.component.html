@@ -11,30 +11,29 @@
     </div>
     <hr class="mb-2">
 
-    <form action="">
+    <form action="" [formGroup]="newProductForm">
         <div class="row mt-3">
             <div class="col">
                 <label class="text-start"> ຜູ້ສະໜອງ </label>
-                <select name="" id="" class=" form-control form-select mt-2" >
+                <select [ngClass]="{'is-invalid': submitted && p['supID'].invalid && p['supID'].touched}" name="" id=""  class="add-product-input form-control form-select" formControlName="supID">
                     <option disable selected hidden value="">ເລືອກຜູ້ສະໜອງ</option>
-                    <option>say something</option>
-                    
+                    <option *ngFor="let item of data4" value="{{ item.supID }}">{{ item.supName }}</option>
                   </select>
             </div>
             <div class="col">
                 <label> ລະຫັດສິນຄ້າ </label>
-                <input type="text" class="input form-control mt-2" placeholder="ລະຫັດສິນຄ້າ">
+                <input type="text" class="input form-control mt-2" placeholder="ລະຫັດສິນຄ້າ" formControlName="productID">
             </div>
         </div>
       
         <div class="row mt-3">
             <div class="col">
                 <label class="text-start"> ຊື່ສິນຄ້າ</label>
-                <input  type="text" class="input form-control mt-2" placeholder="ຊື່ສິນຄ້າ">
+                <input  type="text" class="input form-control mt-2" placeholder="ຊື່ສິນຄ້າ" formControlName="productName">
             </div>
             <div class="col">
                 <label> ຈຳນວນ </label>
-                <input type="text" class="input form-control mt-2" placeholder="ຈຳນວນ">
+                <input type="text" class="input form-control mt-2" placeholder="ຈຳນວນ" formControlName="buy_qty">
             </div>
         </div>
         <div class="row mt-3">

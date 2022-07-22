@@ -10,7 +10,7 @@
     </div>
   </div>
   <hr>
-<form [formGroup]="productForm" (ngSubmit)="btn_editProduct()">
+<form [formGroup]="productForm" >
 
     <div class="row mt-3">
       <div class="col-3">
@@ -117,7 +117,7 @@
       </div>
       
         <div class="col">
-          <button class="btn">ແກ້ໄຂ</button>
+          <button mat-button [mat-dialog-close]="data2" (click)="btn_editProduct()" type="button" class="btn">ແກ້ໄຂ</button>
         </div>
   
         <div class="col">

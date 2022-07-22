@@ -10,7 +10,7 @@
     </div>
   </div>
   <hr>
-<form [formGroup]="unitForm" (ngSubmit)="btn_editUnit()" novalidate >
+<form [formGroup]="unitForm" >
 
     <div class="row mt-3">
         <div class="col-3">
@@ -28,7 +28,7 @@
         </div>
         
           <div class="col">
-            <button class="btn">ແກ້ໄຂ</button>
+            <button mat-button [mat-dialog-close]="data3" (click)="btn_editUnit()"  type="button" class="btn">ແກ້ໄຂ</button>
           </div>
     
           <div class="col">

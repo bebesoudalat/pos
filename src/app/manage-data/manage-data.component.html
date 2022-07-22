@@ -181,10 +181,13 @@
                             <tr mat-row *matRowDef="let row; columns: displayProduct;"></tr>
                             
                           </table>
-                          
-                       
-                        </div>
+                        </div>   
                       </div>
+                      <mat-paginator [length]="data2.length"
+                        [pageSize]="5"
+                        showFirstLastButtons
+                        aria-label="Select page of periodic elements">
+                      </mat-paginator>
                   </div>
                 
                 </mat-tab>

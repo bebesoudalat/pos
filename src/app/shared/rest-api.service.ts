@@ -70,24 +70,66 @@ export class RestAPIService {
   }
 
   delunit(unitID:any){
-    return this.http.delete(this.url+'/unit_delete/'+unitID)
+    return this.http.delete<any>(this.url+'/unit_delete/'+unitID)
   }
   deleteProduct(productID:any){
-    return this.http.delete(this.url+'/delete_product/'+productID)
+    return this.http.delete<any>(this.url+'/delete_product/'+productID)
   }
   delSupplier(supID:any){
-    return this.http.delete(this.url+'/delete_supplier/'+supID)
+    return this.http.delete<any>(this.url+'/delete_supplier/'+supID)
   }
 
   search_Product(keyword:any){
     return this.http.get<any>(this.url+'/product_search?keyword='+keyword)
   }
   
-  sale(data:any){
-    return this.http.post<any>(this.url+'/sale_and_saleDetail',data)
+  sale(data:any,emID:any,total_price:any){
+    let hell={'data':data,'emID':emID,'total_price':total_price}
+    return this.http.post<any>(this.url+'/sale_and_saleDetail',hell)
   }
   login(data:any){
     return this.http.post<any>(this.url+'/login',data)
+  }
+
+  addItem_orderList(data:any){
+    return this.http.post<any>(this.url+'/orderlist',data)
+  }
+
+  showOrderList(){
+    return this.http.get<any>(this.url+'/showOrderList')
+  }
+
+  addOrder(data:any){
+    return this.http.post<any>(this.url+'/order',data)
+  }
+
+  showSaleData(){
+    return this.http.get<any>(this.url+'/showSale')
+  }
+
+  OutOfStock(){
+    return this.http.get<any>(this.url+'/showOutOfStock')
+  }
+  
+  showProductName(id:any){
+    return this.http.get<any>(this.url+'/showProductName?id='+id)
+  }
+
+  showorder(){
+    return this.http.get<any>(this.url+'/showOrder')
+  }
+
+  showOrderdetail(orderID:any){
+    return this.http.get<any>(this.url+'/showOrderDetail?orderID='+orderID)
+  }
+
+  import(data:any,emID:any){
+    let sendData={'data':data,'emID':emID}
+    return this.http.post<any>(this.url+'/importProduct',sendData)
+  }
+
+  showsaledetail(saleID:any){
+    return this.http.get<any>(this.url+'/showSaleDetail?saleID='+saleID)
   }
 
   

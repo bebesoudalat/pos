@@ -35,7 +35,7 @@ input:focus{
     outline: none;
 }
 .indent{
-    text-indent: 30px ;
+    text-indent: 0px ;
 }
 
 
@@ -119,20 +119,20 @@ td{
     padding: 10px;
 }
 .btn-add,.btn-minimize,.btn-clear{
-   background-color: none;
+   background-color: white;
     border: none;
 }
-.btn-add{
+/* .btn-add{
     margin-left: -10px;
-}
+} */
 .btn-clear{
     position: absolute;
     margin-top: -25px;
     margin-left: -40px;
 }
-.btn-minimize{
+/* .btn-minimize{
     margin-left: -22px;
-}
+} */
 ::-webkit-scrollbar{
     width: 10px;
 }

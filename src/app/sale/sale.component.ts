@@ -5,6 +5,8 @@ import Swal from 'sweetalert2';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Subject, switchMap } from 'rxjs';
 import { ConfirmSalePopupComponent } from '../confirm-sale-popup/confirm-sale-popup.component';
+import { Router } from '@angular/router';
+import { NgxPrintModule } from 'ngx-print';
 
 @Component({
   selector: 'app-sale',
@@ -29,7 +31,7 @@ export class SaleComponent implements OnInit {
 
   onSearchProduct = new Subject<any>();
 
-  constructor(private service:RestAPIService, public dialogRef : MatDialog) {
+  constructor(private service:RestAPIService, public dialogRef : MatDialog , private router : Router) {
     this.onSearchProduct.pipe(switchMap((searchProduct)=>
     this.service.search_Product(searchProduct))).subscribe((value)=> 
     console.log('test',value));
@@ -63,33 +65,49 @@ export class SaleComponent implements OnInit {
 
   
 
-  confirm_sale_dialog(data:any){
+  confirm_sale_dialog(){
   const dialogConfig = new MatDialogConfig;
   dialogConfig.disableClose = true;
   dialogConfig.autoFocus= true;
-    this.dialogRef.open(ConfirmSalePopupComponent,{data});
+  let dialog = this.dialogRef.open(ConfirmSalePopupComponent, 
+     { data:this.cartItem});
+    // console.log(this.cartItem)
+  dialog.afterClosed().subscribe(res=>{
+    this.cartItem=[]
+    this.service.product().subscribe(res=>{
+      this.data2=res.data;
+      console.log(this.data2)
+      this.dataSource2 = new MatTableDataSource(this.data2);
+
+    })
+  })
   }
+  
 
   addToCart(data:any){
     let productExists = false
-     
-    for (let i in this.cartItem) {
-          if (this.cartItem[i].productID === data.productID) {
-            this.cartItem[i].Qty++
-            productExists = true
-            break;
-          }
+     if (data.Qty==0) {
+      alert('can not buy')
+     }else{
+      for (let i in this.cartItem) {
+        if (this.cartItem[i].productID === data.productID) {
+          this.cartItem[i].Qty++
+          productExists = true
+          break;
         }
-    if(!productExists){
-      this.cartItem.push({
-                productID:data.productID,
-                productName:data.productName,
-                Qty:1,
-                orQty:data.Qty,
-                sell_price:data.sell_price
-              })
-    }
-    this.calTotal(this.cartItem)
+      }
+  if(!productExists){
+    this.cartItem.push({
+              productID:data.productID,
+              productName:data.productName,
+              Qty:1,
+              orQty:data.Qty,
+              sell_price:data.sell_price
+            })
+  }
+  this.calTotal(this.cartItem)
+     }
+
 // console.log(this.cartItem)
 }
 cal(sellprice:any,qty:any){
@@ -153,6 +171,8 @@ calTotal(data:any){
   return this.TotalPrice
 }
 
+
+
 onSelectcategory(category:any){
   let data = this.data2.filter((res: { cateID: any; })=>{
     return res.cateID.toString().match(category.toString())
@@ -160,10 +180,20 @@ onSelectcategory(category:any){
   this.dataSource2 = new MatTableDataSource(data);
 }
 
-addSale(){
-  this.service.sale(this.cartItem).subscribe(res=>{
-    console.log(this.cartItem)
-  })
+showOutOfStock(Qty:any){
+  let OutOfStock = Qty
+  switch (Qty) {
+    case 0:
+      OutOfStock = 'ສິນຄ້າໝົດ';
+      
+      break;
+  
+    default:
+      break;
+  }
+  return OutOfStock;
 }
+
+
 
 }

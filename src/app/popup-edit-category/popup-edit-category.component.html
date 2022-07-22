@@ -10,7 +10,7 @@
     </div>
   </div>
   <hr>
-  <form action=""[formGroup]="categoryForm" (ngSubmit)="btn_editCategory()">
+  <form action=""[formGroup]="categoryForm" >
   
       <div class="row mt-3">
           <div class="col-3">
@@ -28,7 +28,7 @@
           </div>
           
             <div class="col">
-              <button class="btn">ແກ້ໄຂ</button>
+              <button mat-button [mat-dialog-close]="data" (click)="btn_editCategory()" type="button" class="btn">ແກ້ໄຂ</button>
             </div>
       
             <div class="col">

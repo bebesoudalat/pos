@@ -14,14 +14,14 @@
     <p>ລາຍການສິນຄ້າ</p>
 
     <div class="product-list">
-        <div class="row">
+        <div class="row" *ngFor="let item of receive">
             <div class="col-9">
-                <p>productName</p>
-                <p>price x qty</p>
+                <p>{{item.productName}}</p>
+                <p>{{item.sell_price}} x {{item.Qty}} </p>
             </div>
     
             <div class="col-3">
-                <p class="ms-4 ps-2">120.000 ກີບ</p>
+                <p class="ms-4 ps-2">{{cal(item.sell_price,item.Qty)}} ກີບ</p>
             </div>
         </div>
     </div>
@@ -33,7 +33,7 @@
             ລາຄາລວມທັງໝົດ
         </div>
         <div class="col-3">
-            <p class="h6 mt-1 ms-4 ps-2">300.000 ກີບ</p>
+            <div class="h6 mt-1 ms-4 ps-2"> {{calTotal(this.receive)}} ກີບ </div>
         </div>
     </div>
 
@@ -42,16 +42,16 @@
             ຈຳນວນເງິນທີ່ຮັບມາ
         </div>
         <div class="col-9">
-            <input type="text">
+            <input type="number"  (change)="input($event)" >
         </div>
     </div>
 
     <div class="row mt-2">
         <div class="col-3 mt-1">
-            ເງຶນທອນ
+            ເງິນທອນ
         </div>
         <div class="col-9">
-            <input type="text">
+            {{this.money}} ກີບ
         </div>
     </div>
 
@@ -60,7 +60,17 @@
            
         </div>
         <div class="col-9">
-            <button class="btn" type="button">ບັນທຶກການຂາຍ</button>
+            <button mat-button [mat-dialog-close]="data.animal" printSectionId="print" ngxPrint  (click)="addSale()" class="btn" type="button">ບັນທຶກການຂາຍ</button>
+        </div>
+        <div id="print">
+            <div class="row">
+                <div class="col">
+                    logo
+                </div>
+                <div class="col">
+                    
+                </div>
+            </div>
         </div>
     </div>
 </div>

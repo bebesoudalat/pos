@@ -10,3 +10,7 @@ table{
     width: 97%;
     box-shadow: none;
 }
+.btn-delete{
+    background-color: white;
+    border: none;
+}

@@ -3,7 +3,7 @@
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [opened]="(isHandset$ | async) === false">
-    <mat-toolbar>ລາຍການ</mat-toolbar>
+    <mat-toolbar> <img src="../../assets/img/add-cart.png" alt="" style="width: 50px ; height: 50px;"> </mat-toolbar>
     <mat-nav-list>
       <a mat-list-item [routerLink]="['home']"><mat-icon matListIcon>home</mat-icon> ໜ້າຫຼັກ</a>
       <a mat-list-item [routerLink]="['sale']"><mat-icon matListIcon>add_circle_outline</mat-icon>ຂາຍສິນຄ້າ</a>
@@ -15,7 +15,27 @@
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <!-- <mat-toolbar color="inherit" style="height: 45px">
+    <mat-toolbar color="inherit" style="height: 45px;">
+      <!-- <div class="row" style="border: 1px solid red ;">
+        
+      </div> -->
+      <div class="col">
+        <!-- <span>Taengthong's clothing</span> -->
+      </div>
+    <div class="col text-end">
+      <div>
+        <div *ngIf="this.user_info"> 
+          <div class="row me-3">
+            <div class="col">
+              <img src="../../assets/img/user (2).png" alt="">
+            </div>
+            <div class="col-1">
+              <div class="h4 mt-2">{{ this.user_info[0].emName }}</div>
+            </div> 
+          </div> 
+          </div>
+      </div>
+    </div>
       <button
         type="button"
         aria-label="Toggle sidenav"
@@ -24,8 +44,8 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>Taengthong's clothing</span>
-    </mat-toolbar> -->
+      
+    </mat-toolbar>
     <!-- Add Content Here -->
     <ng-content></ng-content>
   </mat-sidenav-content>

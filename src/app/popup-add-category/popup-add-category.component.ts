@@ -26,23 +26,42 @@ export class PopupAddCategoryComponent implements OnInit {
     })
   }
 
-  addCategory(){
-    Swal.fire({
-      title: 'ຂໍ້ຄວາມ',
-      text: 'ເພີ່ມປະເພດສິນຄ້າສຳເລັດ',
-      imageWidth: 50,
-      imageHeight: 50,
+  // addCategory(){
+  //   Swal.fire({
+  //     title: 'ຂໍ້ຄວາມ',
+  //     text: 'ເພີ່ມປະເພດສິນຄ້າສຳເລັດ',
+  //     imageWidth: 50,
+  //     imageHeight: 50,
   
-      imageUrl:'src/assets/img/check-mark.png',
+  //     imageUrl:'src/assets/img/check-mark.png',
       
   
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      confirmButtonText: 'ຕົກລົງ'
+  //     showCancelButton: true,
+  //     confirmButtonColor: '#3085d6',
+  //     confirmButtonText: 'ຕົກລົງ'
   
-    }).then((result) => {
-      if (result.isConfirmed) {
+  //   }).then((result) => {
+  //     if (result.isConfirmed) {
 
+  //       this.service.addcategory(this.categoryForm.value).subscribe(res=>{
+  //         console.log(res)
+  //         this.service.category().subscribe(res=>{
+  //           this.data=res.data 
+  //           console.log(this.data)
+  //           this.dataSource1 = new MatTableDataSource(this.data);
+
+  //           this.categoryForm = this.formBuilder.group({
+  //             'cateID' : ['',[Validators.required]],
+  //             'cateName': ['', [Validators.required]]
+  //           })
+            
+  //         })
+  //       })
+  //     }
+  //   })  
+  //     }
+
+      addCategory(){
         this.service.addcategory(this.categoryForm.value).subscribe(res=>{
           console.log(res)
           this.service.category().subscribe(res=>{
@@ -50,17 +69,9 @@ export class PopupAddCategoryComponent implements OnInit {
             console.log(this.data)
             this.dataSource1 = new MatTableDataSource(this.data);
 
-            this.categoryForm = this.formBuilder.group({
-              'cateID' : ['',[Validators.required]],
-              'cateName': ['', [Validators.required]]
-            })
-            
-          })
-        })
-      }
-    })  
-      }
-
+      })
+    })
+  }
       onClose(){
         this.dialogRef.close();
       }

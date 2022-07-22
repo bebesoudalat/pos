@@ -53,7 +53,10 @@ import { RegisterComponent } from 'src/app/register/register.component';
 import { SupplierComponent } from 'src/app/supplier/supplier.component';
 import { UnitComponent } from 'src/app/unit/unit.component';
 import { ContentComponent } from './content.component';
+import { NgxPrintModule } from 'ngx-print';
+import { SaleDetailComponent } from 'src/app/sale-detail/sale-detail.component';
 
+import { OrderlistComponent } from 'src/app/orderlist/orderlist.component';
 @NgModule({
   declarations: [
     RootNavComponent,
@@ -86,7 +89,9 @@ import { ContentComponent } from './content.component';
     OrderDetailComponent,
     ReportComponent,
     ImportDetailComponent,
-    ContentComponent
+    SaleDetailComponent,
+    ContentComponent,
+    OrderlistComponent
 
   ],
   imports: [
@@ -112,7 +117,9 @@ import { ContentComponent } from './content.component';
     FormsModule,
     ReactiveFormsModule,
     MatDialogModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    NgxPrintModule
+    
   ]
 })
 export class ContentModule { }

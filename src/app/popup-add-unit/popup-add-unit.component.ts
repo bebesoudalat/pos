@@ -27,42 +27,53 @@ export class PopupAddUnitComponent implements OnInit {
     })
   }
 
-  addUnit(){
+  // addUnit(){
     
 
-    Swal.fire({
-      title: 'ຂໍ້ຄວາມ',
-      text: 'ເພີ່ມປະເພດສິນຄ້າສຳເລັດ',
-      imageWidth: 50,
-      imageHeight: 50,
+  //   Swal.fire({
+  //     title: 'ຂໍ້ຄວາມ',
+  //     text: 'ເພີ່ມປະເພດສິນຄ້າສຳເລັດ',
+  //     imageWidth: 50,
+  //     imageHeight: 50,
   
-      imageUrl:'src/assets/img/check-mark.png',
+  //     imageUrl:'src/assets/img/check-mark.png',
       
   
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      confirmButtonText: 'ຕົກລົງ'
+  //     showCancelButton: true,
+  //     confirmButtonColor: '#3085d6',
+  //     confirmButtonText: 'ຕົກລົງ'
   
-    }).then((result) => {
-      if (result.isConfirmed) {
+  //   }).then((result) => {
+  //     if (result.isConfirmed) {
 
-        this.service.addunit(this.unitForm.value).subscribe(res=>{
-          console.log(res)
-          this.service.unit().subscribe(res=>{
-            this.data3=res.data
-            console.log(this.data3)
-            this.dataSource3 = new MatTableDataSource(this.data3);
+  //       this.service.addunit(this.unitForm.value).subscribe(res=>{
+  //         console.log(res)
+  //         this.service.unit().subscribe(res=>{
+  //           this.data3=res.data
+  //           console.log(this.data3)
+  //           this.dataSource3 = new MatTableDataSource(this.data3);
         
 
-            this.unitForm = this.formBuilder.group({
-              'unitID' : ['',[Validators.required]],
-              'unitName': ['', [Validators.required]]
-            })
+  //           this.unitForm = this.formBuilder.group({
+  //             'unitID' : ['',[Validators.required]],
+  //             'unitName': ['', [Validators.required]]
+  //           })
             
-          })
+  //         })
+  //       })
+  //     }
+  //   })  
+  //   }
+
+    addUnit(){
+      this.service.addunit(this.unitForm.value).subscribe(res=>{
+        console.log(res)
+        this.service.unit().subscribe(res=>{
+          this.data3=res.data
+          console.log(this.data3)
+          this.dataSource3 = new MatTableDataSource(this.data3);
         })
-      }
-    })  
+      })
     }
 
     onClose(){

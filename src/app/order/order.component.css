@@ -2,10 +2,18 @@
 .btn_addProduct,a{
     width: 130px;
     height: 32px;
-    background-color: white;
+    background-color:rgb(249, 249, 249);
     border: 1px solid #89ABDE;
     border-radius: 50px;
     color: #89ABDE;
+}
+.addItem{
+    width: 130px;
+    height: 32px;
+    background-color: #89ABDE;
+    border: none;
+    border-radius: 50px;
+    color: white;
 }
 input,select{
     border-radius:50px ;
@@ -30,7 +38,7 @@ mat-tab-group{
     overflow: hidden!important;
 }
 mat-icon{
-    color: white;
+    color: #89ABDE;
 }
 table{
     width: 100%;
@@ -45,7 +53,7 @@ table{
 .search::placeholder{
     text-indent: 40px;
 }
-img{
+.pic{
     width: 16px;
     height: 16px;
     margin-left: 15px;
@@ -69,9 +77,12 @@ img{
 .card{
     border-radius: 10px;
 }
-.delete-icon{
+.btn-delete{
     width: 20px;
     height: 20px;
+    background-color: white;
+    border: none;
+    color: #89ABDE;
 }
 .btn_save{
     width: 130px;
@@ -80,4 +91,51 @@ img{
     border-radius: 50px;
     background-color: #89ABDE;
     color: white;
+}
+
+table {
+    width: 100%;
+    /* margin-left: 50px; */
+    box-shadow: 2px 2px 2px 2px rgb(209, 209, 209);
+}
+input{
+    text-indent: 38px;
+}
+
+img{
+    width: 80px;
+    height: 80px;
+    margin: 0px 8px;
+    border-radius: 5px;
+}
+
+.btn-add,.btn-minimize{
+    background-color: white;
+    border: none;
+}
+
+.buy_qty{
+    width: 100px;
+    height: 30px;
+    border: 1px solid gray;
+    border-radius: 3px;
+}
+.btn_save{
+    width: 100px;
+    height: 35px;
+    background-color: #89ABDE;
+    border: none;
+    border-radius: 50px;
+}
+::-webkit-scrollbar{
+    width: 10px;
+}
+
+::-webkit-scrollbar-track{
+    background-color: white;
+}
+
+::-webkit-scrollbar-thumb{
+    background-color: lightgray;
+    border-radius: 100vw;
 }
