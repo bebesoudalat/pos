@@ -30,8 +30,6 @@ export class ImportDetailComponent implements OnInit {
       this.dataSource1 = new MatTableDataSource(this.data2);
     })
 
-
-    
   }
 
   importDetail(){
@@ -40,5 +38,8 @@ export class ImportDetailComponent implements OnInit {
       console.log(res)
     })
   }
+
+  
+
 
 }

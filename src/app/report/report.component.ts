@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { RestAPIService } from '../shared/rest-api.service';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
+import { Router } from '@angular/router';
 // import { Workbook } from 'exceljs';
 // import * as Excel from "exceljs";
 // import * as Excel from 'exceljs/dist/exceljs.min.js'
@@ -16,11 +18,24 @@ import * as fs from 'file-saver';
 export class ReportComponent implements OnInit {
   displayProduct: string[] = ['proID','image', 'proName', 'qty', 'sell_price', 'buy_price'];
   displayOrder: string[] = ['proID','image', 'proName', 'qty', 'action'];
+  displayedSale: string[] = ['date', 'emName', 'total_price', 'action'];
+  displayedOrder: string[] = ['orderID','supName', 'proName', 'action'];
+  displayedImport: string[] = ['importID','orderID','supName','emName','date','total_price','action'];
+  
 
   dataSource2:any;
   data2:any;
 
-  constructor(private service: RestAPIService) { }
+  dataSource3:any;
+  data3:any;
+
+  dataSource4:any;
+  data4:any;
+
+  dataSource5:any;
+  data5:any;
+
+  constructor(private service: RestAPIService, private router : Router) { }
 
   ngOnInit(): void {
     this.service.product().subscribe(res=>{
@@ -28,7 +43,36 @@ export class ReportComponent implements OnInit {
       // console.log(this.data2)
       this.dataSource2 = new MatTableDataSource(this.data2);
     })
+
+    this.service.showSaleData().subscribe(res=>{
+      this.data3=res.data 
+      // console.log(this.data)
+      this.dataSource3 = new MatTableDataSource(this.data3);
+    })
+
+    this.service.showorder().subscribe(res=>{
+      this.data4=res.data
+      console.log(this.data4)
+      this.dataSource4 = new MatTableDataSource(this.data4);
+    })
+
+    this.service.showimport().subscribe(res =>{
+      this.data5 = res.data;
+      console.log(this.data5)
+      this.dataSource5 = new MatTableDataSource(this.data5);
+    })
   }
+
+  show_saleDetail(saleID:any){
+    this.router.navigate(['sale-detail',saleID])
+  }
+
+  showDetail(orderID:any){
+    this.router.navigate(['order-detail',orderID])
+    console.log(orderID)
+  }
+
+
 //   exportExcel() {
 
 //     let workbook = new Excel.Workbook();

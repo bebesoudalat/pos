@@ -51,20 +51,19 @@ import { ReportComponent } from './report/report.component';
 import { ImportDetailComponent } from './import-detail/import-detail.component';
 import { ContentComponent } from './content/content/content.component';
 import { ContentModule } from './content/content/content.module';
+import { SaleDetailComponent } from './sale-detail/sale-detail.component';
 
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    
-    
+    AppComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    ContentModule
+    ContentModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

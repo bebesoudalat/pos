@@ -132,6 +132,10 @@ export class RestAPIService {
     return this.http.get<any>(this.url+'/showSaleDetail?saleID='+saleID)
   }
 
+  showimport(){
+    return this.http.get<any>(this.url+'/showImport')
+  }
+
   
 
   //CRUD unit

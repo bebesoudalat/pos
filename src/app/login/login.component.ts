@@ -15,6 +15,9 @@ export class LoginComponent implements OnInit {
   constructor(private service : RestAPIService, public formBuilder : FormBuilder, private router : Router) { }
 
   ngOnInit(): void {
+    if(JSON.parse(localStorage.getItem("user") || "[]").status==1) {
+      this.router.navigate([''])
+    }
     this.loginForm = this.formBuilder.group({
       'user' : ['',[Validators.required]],
       'password': ['', [Validators.required]]
@@ -26,7 +29,7 @@ export class LoginComponent implements OnInit {
       console.log(res)
       if (res.status == 1) {
         localStorage.setItem("user",JSON.stringify(res.data))
-        this.router.navigate(['home2'])
+        this.router.navigate([''])
         console.log(localStorage)
       } else {
         localStorage.clear()

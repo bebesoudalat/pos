@@ -16,12 +16,13 @@ import { ProductComponent } from './product/product.component';
 import { RegisterComponent } from './register/register.component';
 import { ReportComponent } from './report/report.component';
 import { RootNavComponent } from './root-nav/root-nav.component';
+import { SaleDetailComponent } from './sale-detail/sale-detail.component';
 import { SaleComponent } from './sale/sale.component';
 import { UnitComponent } from './unit/unit.component';
 
 
-const routes: Routes = [
-  { path:'',
+const routes: Routes = [{ 
+  path:'',
     component: ContentComponent,
   children:[  {
     path:'home',
@@ -64,7 +65,7 @@ const routes: Routes = [
     component: OutOfStockComponent
   },
   {
-    path:'order-detail',
+    path:'order-detail/:orderID',
     component: OrderDetailComponent
   },
   {
@@ -76,9 +77,14 @@ const routes: Routes = [
     component: ReportComponent
   },
   {
-    path:'import-detail',
+    path:'import-detail/:orderID',
     component:ImportDetailComponent
-  },]
+  },
+  {
+    path:'sale-detail/:saleID',
+    component:SaleDetailComponent
+  }
+]
   },
   {
     path:'login',
@@ -89,8 +95,7 @@ const routes: Routes = [
 {
   path:'register',
   component: RegisterComponent
-}
-,
+},
 
 
 ];
