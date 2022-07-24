@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { RestAPIService } from '../shared/rest-api.service';
 import { MatTableDataSource } from '@angular/material/table';
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-import-detail',
@@ -33,10 +34,43 @@ export class ImportDetailComponent implements OnInit {
   }
 
   importDetail(){
-    let emID=JSON.parse(localStorage.getItem("user") || "[]")[0].emID
-    this.service.import(this.orderDetail,emID).subscribe(res => {
+    
+    if (this.orderDetail[0].status = 1) {
+      Swal.fire({
+        icon: 'success',
+      text: 'ທ່ານໄດ້ນຳສິນຄ້າເຂົ້າສຳເລັດ',
+      })
+      let emID=JSON.parse(localStorage.getItem("user") || "[]").data[0].emName
+      this.service.import(this.orderDetail,emID).subscribe(res => {
       console.log(res)
+      this.orderDetail[0].status = 1
     })
+    } else {
+      Swal.fire({
+        icon: 'error',
+        text: 'ເກີດມີຂໍ້ຜິດພາດ',
+        })
+    }
+  }
+
+
+
+  status(stt:any){
+    let status = stt
+  switch (stt) {
+    case 0:
+      status = 'ຍັງບໍ່ໄດ້ນຳເຂົ້າ';
+      
+      break;
+      case 1:
+      status = 'ນຳສິນຄ້າເຂົ້າແລ້ວ';
+      
+      break;
+  
+    default:
+      break;
+  }
+  return status;
   }
 
   

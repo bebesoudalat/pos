@@ -5,7 +5,7 @@
       [opened]="(isHandset$ | async) === false">
     <mat-toolbar> <img src="../../assets/img/add-cart.png" alt="" style="width: 50px ; height: 50px;"> </mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item [routerLink]="['home']"><mat-icon matListIcon>home</mat-icon> ໜ້າຫຼັກ</a>
+      <a mat-list-item [routerLink]="['']"><mat-icon matListIcon>home</mat-icon> ໜ້າຫຼັກ</a>
       <a mat-list-item [routerLink]="['sale']"><mat-icon matListIcon>add_circle_outline</mat-icon>ຂາຍສິນຄ້າ</a>
       <a mat-list-item [routerLink]="['manage-data']"><mat-icon matListIcon> border_all</mat-icon>ຈັດການຂໍ້ມູນ</a>
       <a mat-list-item [routerLink]="['order']"><mat-icon matListIcon>add_shopping_cart</mat-icon> ຈັດຊື້ສິນຄ້າ</a>
@@ -30,7 +30,7 @@
               <img src="../../assets/img/user (2).png" alt="">
             </div>
             <div class="col-1">
-              <div class="h4 mt-2">{{ this.user_info[0].emName }}</div>
+              <div class="h4 mt-2">{{ this.user_info.data[0].emName }}</div>
             </div> 
           </div> 
           </div>

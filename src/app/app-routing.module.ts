@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AllProductComponent } from './all-product/all-product.component';
+import { AuthGuard } from './auth/auth.guard';
 import { CategoryComponent } from './category/category.component';
 import { ContentComponent } from './content/content/content.component';
 import { HomeComponent } from './home/home.component';
@@ -23,9 +24,10 @@ import { UnitComponent } from './unit/unit.component';
 
 const routes: Routes = [{ 
   path:'',
+    canActivate:[AuthGuard],
     component: ContentComponent,
   children:[  {
-    path:'home',
+    path:'',
     component:HomeComponent
   },
   {

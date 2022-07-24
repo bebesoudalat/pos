@@ -1,29 +1,32 @@
 <div class="container mt-3">
    
     <div class="row mt-5 ms-5">
-        <mat-icon matListIcon>save_alt</mat-icon>
-        <div class="h5" style="position: absolute ; margin-left: 30px; margin-top: 5px;">ນຳສິນຄ້າເຂົ້າ</div>
-
+        <mat-icon matListIcon style="position: absolute ;">save_alt</mat-icon>
+        <!-- <div class="h5" style="position: absolute ; margin-left: 30px; margin-top: 5px;">ນຳສິນຄ້າເຂົ້າ</div> -->
+        
+        <div class="col">
+          <div class="h5 ms-5 mt-1" >ນຳສິນຄ້າເຂົ້າ</div>
+        </div>
         <div class="row mt-4">
             <div class="col ms-4 ps-4">
                 <p>ລະຫັດການສັ່ງຊື້ <span class="ps-3"> {{orderDetail[0].orderID}} </span></p>
                 <p>ຜູ້ສະໜອງ <span class="ps-3"> {{orderDetail[0].supName}} </span></p>
             </div>
     
-            <div class="col text-end me-5">
+            <div class="col text-end ">
                 <p>ວັນທີ <span class="ps-3"> {{orderDetail[0].buy_date | date:'dd/MM/yyyy'}}</span></p>
-                <p>ສະຖານະ <span class="ps-3">confirm</span></p>
+                <p>ສະຖານະ <span class="ps-3">{{status(orderDetail[0].status)}}</span></p>
             </div>
 
 
             <div class="row">
-                <div class="col text-end me-3">
-                    <button type="button" (click)="importDetail()" class="btn">ສິນຄ້າຄົບຖ້ວນ</button>
+                <div class="col text-end ">
+                    <button type="button" (click)="importDetail()" *ngIf="orderDetail[0].status == 0" class="btn">ສິນຄ້າຄົບຖ້ວນ</button>
                 </div>
             </div>
         </div>
 
-        <div class="col mt-4 me-3">
+        <div class="col mt-4">
             <table mat-table [dataSource]="dataSource1" class="mat-elevation-z8">
      
               <ng-container matColumnDef="proID">
@@ -45,7 +48,7 @@
 
               <ng-container matColumnDef="buy_price">
                 <th mat-header-cell *matHeaderCellDef style="width: 150px ; text-align: center;"> ລາຄາ </th>
-                <td mat-cell *matCellDef="let element" class="text-center" > {{element.price}} </td>
+                <td mat-cell *matCellDef="let element" class="text-center" > {{element.price | number}} ກີບ </td>
               </ng-container>
 
 

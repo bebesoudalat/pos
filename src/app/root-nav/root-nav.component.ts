@@ -29,6 +29,6 @@ export class RootNavComponent {
       this.employeeName = res.data
       console.log(res)
     })
-     console.log(this.user_info[0].emName)
+     console.log(this.user_info.data[0].emName)
   }
 }

@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
     this.service.login(this.loginForm.value).subscribe(res=>{
       console.log(res)
       if (res.status == 1) {
-        localStorage.setItem("user",JSON.stringify(res.data))
+        localStorage.setItem("user",JSON.stringify(res))
         this.router.navigate([''])
         console.log(localStorage)
       } else {
