@@ -11,6 +11,8 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   loginForm :any = FormGroup;
+  user= JSON.parse(localStorage.getItem("user") || "[]").status
+  user_info=JSON.parse(localStorage.getItem("user") || "[]")
 
   constructor(private service : RestAPIService, public formBuilder : FormBuilder, private router : Router) { }
 
@@ -35,5 +37,11 @@ export class LoginComponent implements OnInit {
         localStorage.clear()
       }
     })
+  }
+
+  logout(){
+    localStorage.clear()
+    this.user_info=null
+    this.user=null
   }
 }

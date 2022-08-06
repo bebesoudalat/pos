@@ -1,0 +1,129 @@
+<div class="container">
+    <div class="row">
+      <div class="col-11">
+          <mat-icon>add_circle_outline</mat-icon>
+          <div class="h5" style="position: absolute ; margin-left: 30px; margin-top: -27px;">ເພີ່ມພະນັກງານ</div>
+      </div>
+  
+      <div class="col-1">
+          <button class="btn_close" (click)="onClose()" type="button"><mat-icon>cancel</mat-icon></button>
+      </div>
+  </div>
+    <hr>
+    <form [formGroup]="employeeForm">
+    
+        <div class="row mt-3">
+          <div class="col-3">
+            <label for=""  class="mt-2">ຊື່ພະນັກງານ</label>
+          </div>
+          <div class="col-9">
+            <input class="add-product-input form-control" formControlName="emName" type="text" placeholder="ຊື່ພະນັກງານ">
+           
+          </div>
+        </div>
+
+        <div class="row mt-3">
+            <div class="col-3">
+              <label for=""  class="mt-2">ນາມສະກຸນ</label>
+            </div>
+            <div class="col-9">
+              <input class="add-product-input form-control" formControlName="surname" type="text" placeholder="ນາມສະກຸນ">
+             
+            </div>
+          </div>
+
+          <div class="row mt-3">
+            <div class="col">
+                <label> ເພດ </label>
+                <div class="row ms-5 ps-5" style="padding-left: 20px ;">
+                    <div class="col-1 pt-4">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="gender" id="f" value="ຍິງ" formControlName="gender">
+                            <label class="form-check-label" for="f">
+                              ຍິງ
+                            </label>
+                          </div>
+                    </div>
+                    <div class="col-1 pt-4 ms-3">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="gender" id="m" value="ຊາຍ
+                            " formControlName="gender">
+                            <label class="form-check-label" for="m">
+                              ຊາຍ
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-8 ms-2">
+                        <label class="ms-5"> ວັນເດືອນປີເກີດ </label>
+                        <input class="date" type="date" class="form-control mt-2 ms-5" formControlName="date_of_birth">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-3">
+            <div class="col-3">
+              <label for=""  class="mt-2">ທີ່ຢູ່</label>
+            </div>
+            <div class="col-9">
+              <input class="add-product-input form-control" formControlName="address" type="text" placeholder="ທີ່ຢູ່">
+             
+            </div>
+          </div>
+    
+          <div class="row mt-3">
+            <div class="col-3">
+              <label for=""  class="mt-2">ເບີໂທ</label>
+            </div>
+            <div class="col-9">
+              <input class="add-product-input form-control" formControlName="tel" type="text" placeholder="ເບີໂທ">
+             
+            </div>
+          </div>
+    
+          <div class="row mt-3">
+            <div class="col-3">
+              <label for=""  class="mt-2">ເລກບັດປະຈຳຕົວ</label>
+            </div>
+            <div class="col-9">
+              <input class="add-product-input form-control" formControlName="ID_card" type="text" placeholder="ເລກບັດປະຈຳຕົວ">
+             
+            </div>
+          </div>
+    
+          <div class="row mt-3">
+            <div class="col-3">
+              <label for=""  class="mt-2">ຊື່ຜູ້ໃຊ້</label>
+            </div>
+            <div class="col-9">
+              <input class="add-product-input form-control" formControlName="user" type="text" placeholder="ຊື່ຜູ້ໃຊ້">
+             
+            </div>
+          </div>
+
+          <div class="row mt-3">
+            <div class="col-3">
+              <label for=""  class="mt-2">ລະຫັດຜ່ານ</label>
+            </div>
+            <div class="col-9">
+              <input class="add-product-input form-control" formControlName="password" type="password" placeholder="ລະຫັດຜ່ານ">
+             
+            </div>
+          </div>
+    
+        <div class="row mt-3">
+          <div class="col-3">
+      
+          </div>
+          
+            <div class="col">
+              <button  mat-button [mat-dialog-close]="data2" type="button"  (click)="addEmployee()" class="btn">ບັນທຶກ</button>
+            </div>
+      
+            <div class="col">
+              <button class="btn_clear">ລ້າງຂໍ້ມູນ</button>
+            </div>
+            </div>
+          </form>
+    
+  </div>

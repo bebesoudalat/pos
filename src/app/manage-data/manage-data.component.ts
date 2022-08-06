@@ -14,6 +14,7 @@ import { PopupAddSupplierComponent } from '../popup-add-supplier/popup-add-suppl
 import { PopupEditSupplierComponent } from '../popup-edit-supplier/popup-edit-supplier.component';
 import { MatPaginator } from '@angular/material/paginator';
 import { ConfirmSalePopupComponent } from '../confirm-sale-popup/confirm-sale-popup.component';
+import { PopupAddEmployeeComponent } from '../popup-add-employee/popup-add-employee.component';
 
 
 
@@ -29,7 +30,7 @@ export class ManageDataComponent implements OnInit {
   displayProduct: string[] = ['proID','image', 'proName', 'qty', 'sell_price', 'buy_price', 'action'];
   displayUnit: string[] = ['unitID', 'unitName','action'];
   displaySupplier: string[] = ['supID','supName','village','district','province','tel','action'];
-  displayEmployee:string[] = ['emID','emName','surname','date_of_birth','gender','tel','ID_card','action']
+  displayEmployee:string[] = ['emID','emName','surname','tel','action']
 
   dataProduct: any;
 
@@ -95,7 +96,7 @@ export class ManageDataComponent implements OnInit {
     })
     this.service.product().subscribe(res=>{
       this.data2=res.data
-      // console.log(this.data2)
+      console.log(this.data2)
       this.dataSource2 = new MatTableDataSource(this.data2);
       this.dataSource2.paginator=this.paginator
     })
@@ -118,7 +119,7 @@ export class ManageDataComponent implements OnInit {
       'cateID': ['', [Validators.required]],
       'unitID': ['', [Validators.required]],
       'supID': ['1', [Validators.required]],
-      'Qty': ['', [Validators.required]],
+      'qty': ['', [Validators.required]],
       'buy_price': ['', [Validators.required]],
       'sell_price': ['', [Validators.required]],
       'image': ['', [Validators.required]]
@@ -302,6 +303,21 @@ addSupplier_dialog(){
   })
 }
 
+addEmployee_dialog(){
+  const dialogConfig = new MatDialogConfig;
+  dialogConfig.disableClose = true;
+  dialogConfig.autoFocus= true;
+  let dialog = this.dialogRef.open(PopupAddEmployeeComponent, dialogConfig);
+
+  dialog.afterClosed().subscribe(res=>{
+    this.service.showEmployee().subscribe(res=>{
+      this.data5=res.data
+      // console.log(this.data4)
+      this.dataSource5 = new MatTableDataSource(this.data5);
+    })
+  })
+}
+
 editSupplier_dialog(data:any){
   let dialog = this.dialogRef.open(PopupEditSupplierComponent,{data})
   this.supplierForm = this.formBuilder.group({
@@ -389,6 +405,35 @@ delCategory(id:any){
           this.data=res.data 
           console.log(this.data)
           this.dataSource1 = new MatTableDataSource(this.data);
+          
+        })
+      })
+    }
+  })
+}
+delEmployee(id:any){
+  Swal.fire({
+    title: 'ກະລຸນາຢືນຢັນ',
+    text: 'ທ່ານຕ້ອງການລຶບແທ້ ຫຼື ບໍ່ ?',
+    imageWidth: 150,
+    imageHeight: 150,
+
+    //imageUrl:'assets/assets/images/newlogobig.jpeg',
+
+    showCancelButton: true,
+    confirmButtonColor: '#89ADEB',
+    cancelButtonColor: '#d3d3d3',
+    confirmButtonText: 'ຕົກລົງ'
+
+  }).then((result) => {
+    if (result.isConfirmed) {
+      console.log(id)
+      this.service.delemployee(id).subscribe(res=>{
+        console.log(res)
+        this.service.showEmployee().subscribe(res=>{
+          this.data5=res.data 
+          console.log(this.data5)
+          this.dataSource5 = new MatTableDataSource(this.data5);
           
         })
       })

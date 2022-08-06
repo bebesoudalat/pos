@@ -2,3 +2,20 @@ table{
     width: 100%;
     box-shadow: none;
 }
+th{
+    background-color: #d6e4f9;
+    color: #7096cf ;
+    font-size: 15px;
+}
+td{
+    font-size: 15px;
+}
+.th_1{
+    border-top-left-radius: 15px ;
+}
+.th_2{
+    border-top-right-radius: 15px ;
+}
+.button{
+    
+}

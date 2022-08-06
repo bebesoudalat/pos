@@ -30,3 +30,31 @@ input{
     border: none;
     color: #89ABDE;
 }
+.logo{
+    text-align: center;
+    font-size: 30px;
+}
+.info{
+   text-align: center;
+   margin-top: 10px;
+}
+.list{
+    margin-top: 20px;
+}
+
+table{
+    margin-top: 20px;
+}
+.list-product{
+    text-align: center;
+}
+.totalprice{
+    text-align: end;
+    margin-left: 120px;
+}
+.footer{
+    position: fixed;
+    bottom: 0;
+    text-align: center;
+    
+}

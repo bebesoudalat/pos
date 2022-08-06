@@ -41,7 +41,7 @@ export class PopupEditProductComponent implements OnInit {
       'cateID': [this.data_sent.cateID, [Validators.required]],
       'unitID': [this.data_sent.unitID, [Validators.required]],
       'supID':[this.data_sent.supID,[Validators.required]],
-      'Qty': [this.data_sent.Qty, [Validators.required]],
+      'qty': [this.data_sent.qty, [Validators.required]],
       'buy_price': [this.data_sent.buy_price, [Validators.required]],
       'sell_price': [this.data_sent.sell_price, [Validators.required]],
       'image': ['']

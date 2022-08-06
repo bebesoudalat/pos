@@ -11,46 +11,51 @@ import Swal from "sweetalert2";
 })
 export class ImportDetailComponent implements OnInit {
   displayProduct: string[] = ['proID','image', 'proName', 'qty', 'sell_price', 'buy_price'];
-  displayOrder: string[] = ['proID','image', 'proName', 'buy_price', 'action'];
+  displayOrder: string[] = ['proID','image', 'proName','import_qty', 'buy_price'];
 
   dataSource2:any;
   data2:any;
 
-  orderDetail:any;
+  // orderDetail:any;
   order:any
 
   dataSource1:any
+
+  dataAll:any
 
   constructor(private service: RestAPIService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.service.showOrderdetail(this.activatedRoute.snapshot.params['orderID']).subscribe(res=>{
-      console.log(res.data)
-      this.orderDetail = res.data
+      this.dataAll=res.data
+      let index = res.data.length-1
+      for (let i = 0; i <= index; i++) {
+        this.dataAll[i].import_qty=res.data[i].buy_qty
+      }
+      console.log(this.dataAll)
       this.data2 = res.data
       this.dataSource1 = new MatTableDataSource(this.data2);
     })
-
   }
 
   importDetail(){
     
-    if (this.orderDetail[0].status = 1) {
-      Swal.fire({
-        icon: 'success',
-      text: 'ທ່ານໄດ້ນຳສິນຄ້າເຂົ້າສຳເລັດ',
-      })
-      let emID=JSON.parse(localStorage.getItem("user") || "[]").data[0].emName
-      this.service.import(this.orderDetail,emID).subscribe(res => {
-      console.log(res)
-      this.orderDetail[0].status = 1
+    // if (this.dataAll[0].status = 1) {
+    //   Swal.fire({
+    //     icon: 'success',
+    //   text: 'ທ່ານໄດ້ນຳສິນຄ້າເຂົ້າສຳເລັດ',
+    //   })
+      let emID=JSON.parse(localStorage.getItem("user") || "[]").data[0].emID
+      this.service.import(this.dataAll,emID).subscribe(res => {
+      console.log(this.dataAll)
     })
-    } else {
-      Swal.fire({
-        icon: 'error',
-        text: 'ເກີດມີຂໍ້ຜິດພາດ',
-        })
-    }
+    this.dataAll[0].status = 1
+    // } else {
+    //   Swal.fire({
+    //     icon: 'error',
+    //     text: 'ເກີດມີຂໍ້ຜິດພາດ',
+    //     })
+    // }
   }
 
 
@@ -75,5 +80,13 @@ export class ImportDetailComponent implements OnInit {
 
   
 
+  setValue(event:any,element:any,index:any){
+    //  console.log(element)
 
+    // console.log(this.dataAll)
+    
+    // console.log(event.target.value,element,index)
+    this.dataAll[index].import_qty= parseInt(event.target.value)
+    console.log(this.dataAll)
+  }
 }

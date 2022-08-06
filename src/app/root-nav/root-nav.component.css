@@ -1,3 +1,6 @@
+*{
+  box-sizing: border-box;
+}
 .sidenav-container {
   height: 100%;
 }
@@ -24,6 +27,12 @@ span{
   font-size: 25px;
   padding-left: 28px;
 }
+.icon{
+  color: #7096cf;
+  float: right;
+  margin-top: 7px;
+  margin-right: 5px;
+}
 mat-icon{
   color: #89ABDE;
   padding:0 15px;
@@ -33,9 +42,104 @@ height: 100px;
 }
 mat-sidenav{
   width: 65px;
+  /* background-color: #89ABDE; */
 }
+
 img{
   width: 25px;
   height: 25px;
 }
+.dropdown-menu{
+  left: 450px;
+}
+.dropdown{
+  width: 150px;
+  color: #7096cf;
+  background-color: #d6e4f9;
+  border-radius: 50px ;
+
+}
+.item,.item1{
+  width: 150px;
+  color: #89ABDE;
+
+}
+.item1{
+  border-bottom: 1px solid #7096cf ;
+}
+.acc-icon{
+  position: absolute;
+  top: 11px;
+  z-index: 10;
+  color: #7096cf;
+}
+
+/* .nav{
+  background-color: #89ABDE;
+  width: 400px;
+  line-height: 40px;
+  padding: 8px 25px;
+  border-radius: 5px;
+}
+
+
+.nav label{
+  color: white;
+  font-size: 14px;
+  display: block;
+  cursor:pointer;
+}
+.button .icon{
+  float: right;
+  line-height: 50px;
+}
+
+.nav ul{
+  position: absolute;
+  background-color: white;
+  list-style: none;
+  top: 80px;
+  right: 23px;
+  width: 400px;
+  border: 1px solid red;
+  border-radius: 5px; 
+  display: none;
+  z-index: 10;
+}
+
+[id^=btn]:checked + ul{
+  display: block;
+}
+
+.nav li{
+  line-height: 40px;
+  padding: 8px 20px;
+  cursor: pointer;
+  border-bottom: 1px solid gray;
+
+}
+
+.nav ul li a{
+color: #89ABDE;
+text-decoration: none;
+display: block;
+}
+
+.nav ul li a:hover{
+  color: gray;
+  }
+
+.nav .menu{
+  position: absolute;
+  content: '';
+  height: 20px;
+  width: 20;
+  background-color: white;
+  right: 30px;
+  transform: rotate(45deg);
+  z-index: 10px;
+}
+input{
+  display: none;
+} */
 

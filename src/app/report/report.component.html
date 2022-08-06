@@ -16,78 +16,74 @@
               </div>
             </div>
   
-            <div class="col-sm-4 mt-3 text-end">
-              <!-- <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg> -->
-              <img src="../../assets/img/search-interface-symbol.png" alt="">
-              <input class="search" type="text" placeholder="ຄົ້ນຫາ">
+            <div class="row mt-3">
+              <div class="col-sm-4 text-end">
+                <!-- <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg> -->
+                <input class="date" type="date" class="form-control ms-4" formControlName="date_of_birth">
+              </div>
+
+              <div class="col text-end">
+                <div style="position: relative;">
+                  <mat-icon style="position: absolute; margin-left: 15px; margin-top: 5px;">print</mat-icon>
+                  <button type="button ms-2" ngxPrint printSectionId="print" [useExistingCss]="true" class="print btn btn-outline-secondary ps-5">ພິມໃບບິນ</button>
+                  <button type="button" (click)="exportExcel()" class="print btn btn-outline-secondary">Excel</button>
             </div>
-          </div>
+        </div>
+            </div>
+            </div>
 
           <div class="row mt-3">
-              <div class="col-sm-6 text-start ms-4 ps-3">
+              <!-- <div class="col-sm-6 text-start ms-4 ps-3">
                   <button class="btn btn-outline-secondary">Today</button>
                   <button class="ms-2 btn btn-outline-secondary">Weekly</button>
                   <button class="ms-2 btn btn-outline-secondary">Monthly</button>
-              </div>
-              <div class="col text-end">
-                  <div style="position: relative;">
-                      <mat-icon style="position: absolute; margin-left: 15px; margin-top: 5px;">print</mat-icon>
-                  <button  class="print btn btn-outline-secondary ps-5">ພິມໃບບິນ</button>
-              </div>
-          </div>
+              </div> -->
+              
           </div>
   
           <div class="col mt-4">
-              <table mat-table [dataSource]="dataSource2" class="mat-elevation-z8">
-       
-                <ng-container matColumnDef="proID">
-                  <th mat-header-cell *matHeaderCellDef style="width: 5px; text-align: center;" > ລຳດັບ </th>
-                  <td mat-cell *matCellDef="let element" class="text-center" > {{element.productID}} </td>
-                </ng-container>
-              
-               
-                <ng-container matColumnDef="image" >
-                  <th mat-header-cell *matHeaderCellDef style="width: 100px ; text-align: center;" > ຮູບພາບ </th>
-                  <td mat-cell *matCellDef="let element" class="text-center" > <img src="{{element.image}}" alt=""> </td>
-                </ng-container>
+            <table mat-table [dataSource]="dataSource_productReport" class="mat-elevation-z8">
+     
+              <ng-container matColumnDef="proID">
+                <th class="th_1" mat-header-cell *matHeaderCellDef style="width: 5px; text-align: center;" > ລຳດັບ </th>
+                <td mat-cell *matCellDef="let element" class="text-center" > {{element.productID}} </td>
+              </ng-container>
 
-                <ng-container matColumnDef="proName" >
-                  <th mat-header-cell *matHeaderCellDef style="width: 200px ; text-align: center;" > ຊື່ສິນຄ້າ </th>
-                  <td mat-cell *matCellDef="let element" class="text-center" > {{element.productName}} </td>
-                </ng-container>
+              <ng-container matColumnDef="proName" >
+                <th mat-header-cell *matHeaderCellDef style="width: 200px ; text-align: center;" > ຊື່ສິນຄ້າ </th>
+                <td mat-cell *matCellDef="let element" class="text-center" > {{element.productName}} </td>
+              </ng-container>
 
-                <ng-container matColumnDef="qty" >
-                  <th mat-header-cell *matHeaderCellDef style="width: 20px ; text-align: center;" > ຈຳນວນ </th>
-                  <td mat-cell *matCellDef="let element" class="text-center" > {{element.Qty}}  </td>
-                </ng-container>
+              <ng-container matColumnDef="cateName" >
+                <th mat-header-cell *matHeaderCellDef style="width: 200px ; text-align: center;" > ປະເພດສິນຄ້າ </th>
+                <td mat-cell *matCellDef="let element" class="text-center" > {{element.cateName}} </td>
+              </ng-container>
 
-                <ng-container matColumnDef="sell_price" >
-                  <th mat-header-cell *matHeaderCellDef style="width: 120px ; text-align: center;" > ລາຄາຂາຍ </th>
-                  <td mat-cell *matCellDef="let element" class="text-center" > {{element.sell_price}} ກີບ </td>
-                </ng-container>
+              <ng-container matColumnDef="unitName" >
+                <th mat-header-cell *matHeaderCellDef style="width: 200px ; text-align: center;" > ຫົວໜ່ວຍ </th>
+                <td mat-cell *matCellDef="let element" class="text-center" > {{element.unitName}} </td>
+              </ng-container>
 
-                <ng-container matColumnDef="buy_price" >
-                  <th mat-header-cell *matHeaderCellDef style="width: 120px ; text-align: center;" > ລາຄາຊື້ </th>
-                  <td mat-cell *matCellDef="let element" class="text-center" > {{element.buy_price}} ກີບ </td>
-                </ng-container>
+              <ng-container matColumnDef="qty" >
+                <th mat-header-cell *matHeaderCellDef style="width: 20px ; text-align: center;" > ຈຳນວນ </th>
+                <td mat-cell *matCellDef="let element" class="text-center" > {{element.Qty}}  </td>
+              </ng-container>
+
+              <ng-container matColumnDef="sell_price" >
+                <th mat-header-cell *matHeaderCellDef style="width: 120px ; text-align: center;" > ລາຄາຂາຍ </th>
+                <td mat-cell *matCellDef="let element" class="text-center" > {{element.sell_price | number}} ກີບ </td>
+              </ng-container>
+
+              <ng-container matColumnDef="buy_price" >
+                <th class="th_2" mat-header-cell *matHeaderCellDef style="width: 120px ; text-align: center;" > ລາຄາຊື້ </th>
+                <td mat-cell *matCellDef="let element" class="text-center" > {{element.buy_price | number}} ກີບ </td>
+              </ng-container>
+          
             
-                <!-- <ng-container matColumnDef="action">
-                    <th mat-header-cell *matHeaderCellDef style="width: 150px ; text-align: center;"> ຈັດການ </th>
-                    <td mat-cell *matCellDef="let element" class="text-center" > <button class="btn-delete" (click)="editProduct(element)"><mat-icon>create</mat-icon></button> <button class="btn-delete"><mat-icon>delete</mat-icon></button>   </td>
-                  </ng-container> -->
-
-                  <!-- <ng-container matColumnDef="action">
-                    <th mat-header-cell *matHeaderCellDef style="width: 150px ; text-align: center;"> ຈັດການ </th>
-                    <td mat-cell *matCellDef="let element" class="text-center" > <button type="button" class="btn-delete"><mat-icon>create</mat-icon></button> <button class="btn-delete"><mat-icon>delete</mat-icon></button>   </td>
-                  </ng-container> -->
+              <tr mat-header-row *matHeaderRowDef="displayProduct_report"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayProduct_report;"></tr>
               
-              
-                
-              
-                <tr mat-header-row *matHeaderRowDef="displayProduct"></tr>
-                <tr mat-row *matRowDef="let row; columns: displayProduct;"></tr>
-                
-              </table>
+            </table>
               
            
             </div>
@@ -107,61 +103,59 @@
               </div>
             </div>
   
-            <div class="col-sm-4 mt-3 text-end">
-              <!-- <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg> -->
-              <img src="../../assets/img/search-interface-symbol.png" alt="">
-              <input class="search" type="text" placeholder="ຄົ້ນຫາ">
+            <div class="row mt-3">
+              <div class="col-sm-4 text-end">
+                <!-- <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg> -->
+                <input class="date" type="date" class="form-control ms-4" formControlName="date_of_birth">
+              </div>
+
+              <div class="col text-end">
+                <div style="position: relative;">
+                  <mat-icon style="position: absolute; margin-left: 15px; margin-top: 5px;">print</mat-icon>
+                  <button type="button ms-2" ngxPrint printSectionId="print-sale" [useExistingCss]="true" class="print btn btn-outline-secondary ps-5">ພິມໃບບິນ</button>
+                  <button type="button" (click)="exportSale()" class="print btn btn-outline-secondary">Excel</button>
+            </div>
+        </div>
             </div>
           </div>
 
-          <div class="row mt-3">
-              <div class="col-sm-6 text-start ms-4 ps-3">
-                  <button class="btn btn-outline-secondary">Today</button>
-                  <button class="ms-2 btn btn-outline-secondary">Weekly</button>
-                  <button class="ms-2 btn btn-outline-secondary">Monthly</button>
-              </div>
-              <div class="col text-end">
-                  <div style="position: relative;">
-                      <mat-icon style="position: absolute; margin-left: 15px; margin-top: 5px;">print</mat-icon>
-                  <button  class="print btn btn-outline-secondary ps-5">ພິມໃບບິນ</button>
-              </div>
-          </div>
-          </div>
   
-          <div class="col mt-4">
-            <mat-table [dataSource]="dataSource3" class="mat-elevation-z8">
-              <!-- Position Column -->
-              <ng-container matColumnDef="date">
-                <mat-header-cell *matHeaderCellDef> ວັນທີ </mat-header-cell>
-                <mat-cell *matCellDef="let element"> {{element.payDate | date:'dd/MM/yyyy'}} </mat-cell>
-              </ng-container>
-            
-              <!-- Name Column -->
-              <ng-container matColumnDef="emName">
-                <mat-header-cell *matHeaderCellDef> ພະນັກງານ </mat-header-cell>
-                <mat-cell *matCellDef="let element"> {{element.emName}} </mat-cell>
-              </ng-container>
-            
-              <!-- Weight Column -->
-              <ng-container matColumnDef="total_price">
-                <mat-header-cell *matHeaderCellDef> ລາຄາລວມທັງໝົດ </mat-header-cell>
-                <mat-cell *matCellDef="let element"> {{element.total_price}} </mat-cell>
-              </ng-container>
-            
-              <!-- Symbol Column -->
-              <ng-container matColumnDef="action">
-                <mat-header-cell *matHeaderCellDef> ລາຍລະອຽດ </mat-header-cell>
-                <mat-cell *matCellDef="let element"><button class="btn" (click)="show_saleDetail(element.saleID)">ລາຍລະອຽດ</button></mat-cell>
-              </ng-container>
-            
-              <mat-header-row *matHeaderRowDef="displayedSale"></mat-header-row>
-              <mat-row *matRowDef="let row; columns: displayedSale;"></mat-row>
-          
-          
-            </mat-table>
+
+            <div class="col mt-4">
+              <table mat-table [dataSource]="dataSale_report" class="mat-elevation-z8">
+   
+                <ng-container matColumnDef="emID">
+                  <th class="th_1" mat-header-cell *matHeaderCellDef style="width: 5px; text-align: center;" > ຊື່ພະນັກງານ </th>
+                  <td mat-cell *matCellDef="let element" class="text-center" > {{element.emName}} </td>
+                </ng-container>
               
-           
-            </div>
+               
+                <ng-container matColumnDef="productID" >
+                  <th mat-header-cell *matHeaderCellDef style="width: 100px ; text-align: center;" > ຊື່ສິນຄ້າ </th>
+                  <td mat-cell *matCellDef="let element" class="text-center" > {{element.productName}} </td>
+                </ng-container>
+    
+                <ng-container matColumnDef="sale_qty" >
+                  <th mat-header-cell *matHeaderCellDef style="width: 200px ; text-align: center;" > ຈຳນວນ </th>
+                  <td mat-cell *matCellDef="let element" class="text-center" > {{element.sale_qty}} </td>
+                </ng-container>
+    
+                
+    
+    
+                <ng-container matColumnDef="price">
+                  <th class="th_2" mat-header-cell *matHeaderCellDef style="width: 150px ; text-align: center;"> ລາຄາ </th>
+                  <td mat-cell *matCellDef="let element" class="text-center" > {{element.sell_price | number}} ກີບ </td>
+                </ng-container>
+              
+                <tr mat-header-row *matHeaderRowDef="displaySale_report"></tr>
+                <tr mat-row *matRowDef="let row; columns: displaySale_report;"></tr>
+                
+              </table>
+                
+             
+              </div>
+            
         </mat-tab>
 
         <mat-tab label="ລາຍງານການຈັດຊື້">
@@ -178,66 +172,59 @@
               </div>
             </div>
   
-            <div class="col-sm-4 mt-3 text-end">
-              <!-- <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg> -->
-              <img src="../../assets/img/search-interface-symbol.png" alt="">
-              <input class="search" type="text" placeholder="ຄົ້ນຫາ">
-            </div>
-          </div>
+            <div class="row mt-3">
+              <div class="col-sm-4 text-end">
+                <!-- <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg> -->
+                <input class="date" type="date" class="form-control ms-4" formControlName="date_of_birth">
+              </div>
 
-          <div class="row mt-3">
-              <div class="col-sm-6 text-start ms-4 ps-3">
-                  <button class="btn btn-outline-secondary">Today</button>
-                  <button class="ms-2 btn btn-outline-secondary">Weekly</button>
-                  <button class="ms-2 btn btn-outline-secondary">Monthly</button>
-              </div>
               <div class="col text-end">
-                  <div style="position: relative;">
-                      <mat-icon style="position: absolute; margin-left: 15px; margin-top: 5px;">print</mat-icon>
-                  <button  class="print btn btn-outline-secondary ps-5">ພິມໃບບິນ</button>
-              </div>
-          </div>
+                <div style="position: relative;">
+                  <mat-icon style="position: absolute; margin-left: 15px; margin-top: 5px;">print</mat-icon>
+                  <button type="button ms-2" ngxPrint printSectionId="print-order" [useExistingCss]="true"class="print btn btn-outline-secondary ps-5">ພິມໃບບິນ</button>
+                  <button type="button" (click)="exportExcel()" class="print btn btn-outline-secondary">Excel</button>
+            </div>
+        </div>
+            </div>
           </div>
   
           <div class="col mt-4">
-            <table mat-table [dataSource]="dataSource4" class="mat-elevation-z8">
- 
-              <ng-container matColumnDef="orderID">
-                <th mat-header-cell *matHeaderCellDef style="width: 5px; text-align: center;" > ລະຫັດການສັ່ງຊື້ </th>
-                <td mat-cell *matCellDef="let element" class="text-center" > {{element.orderID}} </td>
+            <table mat-table [dataSource]="dataOrder_report" class="mat-elevation-z8">
+   
+              <ng-container matColumnDef="proID">
+                <th class="th_1" mat-header-cell *matHeaderCellDef style="width: 5px; text-align: center;" > ລຳດັບ </th>
+                <td mat-cell *matCellDef="let element" class="text-center" > {{element.orderDetail_ID}} </td>
               </ng-container>
             
              
+              <ng-container matColumnDef="image" >
+                <th mat-header-cell *matHeaderCellDef style="width: 100px ; text-align: center;" > ຊື່ສິນຄ້າ </th>
+                <td mat-cell *matCellDef="let element" class="text-center" > {{element.productName}} </td>
+              </ng-container>
+
               <ng-container matColumnDef="supName" >
-                <th mat-header-cell *matHeaderCellDef style="width: 100px ; text-align: center;" > ຜູ້ສະໜອງ </th>
+                <th mat-header-cell *matHeaderCellDef style="width: 100px ; text-align: center;" > ຜູ້ສະໜອງ</th>
                 <td mat-cell *matCellDef="let element" class="text-center" > {{element.supName}} </td>
               </ng-container>
-    
+  
               <ng-container matColumnDef="proName" >
-                <th mat-header-cell *matHeaderCellDef style="width: 200px ; text-align: center;" > ວັນທີຈັດຊື້ </th>
-                <td mat-cell *matCellDef="let element" class="text-center" > {{element.buy_date  | date:'dd/MM/yyyy'}} </td>
+                <th mat-header-cell *matHeaderCellDef style="width: 200px ; text-align: center;" > ຈຳນວນ </th>
+                <td mat-cell *matCellDef="let element" class="text-center" > {{element.buy_qty}} </td>
               </ng-container>
-    
-    
-          
-              <!-- <ng-container matColumnDef="action">
-                  <th mat-header-cell *matHeaderCellDef style="width: 150px ; text-align: center;"> ຈັດການ </th>
-                  <td mat-cell *matCellDef="let element" class="text-center" > <button class="btn-delete" (click)="editProduct(element)"><mat-icon>create</mat-icon></button> <button class="btn-delete"><mat-icon>delete</mat-icon></button>   </td>
-                </ng-container> -->
-    
-                <ng-container matColumnDef="action">
-                  <th mat-header-cell *matHeaderCellDef style="width: 150px ; text-align: center;"> ຈັດການ </th>
-                  <td mat-cell *matCellDef="let element" class="text-center" > <button class="btn" (click)="showDetail(element.orderID)">ລາຍລະອຽດ</button></td>
-                </ng-container>
-            
+  
+  
+              <ng-container matColumnDef="buy_price">
+                <th class="th_2" mat-header-cell *matHeaderCellDef style="width: 150px ; text-align: center;"> ລາຄາຊື້ </th>
+                <td mat-cell *matCellDef="let element" class="text-center" > {{element.price | number}} ກີບ </td>
+              </ng-container>
+
             
               
             
-              <tr mat-header-row *matHeaderRowDef="displayedOrder"></tr>
-              <tr mat-row *matRowDef="let row; columns: displayedOrder;"></tr>
+              <tr mat-header-row *matHeaderRowDef="displayOrder_report"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayOrder_report;"></tr>
               
             </table>
-              
            
             </div>
         </mat-tab>
@@ -256,72 +243,57 @@
               </div>
             </div>
   
-            <div class="col-sm-4 mt-3 text-end">
-              <!-- <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg> -->
-              <img src="../../assets/img/search-interface-symbol.png" alt="">
-              <input class="search" type="text" placeholder="ຄົ້ນຫາ">
-            </div>
-          </div>
+            <div class="row mt-3">
+              <div class="col-sm-4 text-end">
+                <!-- <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg> -->
+                <input class="date" type="date" class="form-control ms-4" formControlName="date_of_birth">
+              </div>
 
-          <div class="row mt-3">
-              <div class="col-sm-6 text-start ms-4 ps-3">
-                  <button class="btn btn-outline-secondary">Today</button>
-                  <button class="ms-2 btn btn-outline-secondary">Weekly</button>
-                  <button class="ms-2 btn btn-outline-secondary">Monthly</button>
-              </div>
               <div class="col text-end">
-                  <div style="position: relative;">
-                      <mat-icon style="position: absolute; margin-left: 15px; margin-top: 5px;">print</mat-icon>
-                  <button  class="print btn btn-outline-secondary ps-5">ພິມໃບບິນ</button>
-              </div>
-          </div>
+                <div style="position: relative;">
+                  <mat-icon style="position: absolute; margin-left: 15px; margin-top: 5px;">print</mat-icon>
+                  <button type="button ms-2" ngxPrint printSectionId="print-import" [useExistingCss]="true" class="print btn btn-outline-secondary ps-5">ພິມໃບບິນ</button>
+                  <button type="button" (click)="exportExcel()" class="print btn btn-outline-secondary">Excel</button>
+            </div>
+        </div>
+            </div>
           </div>
   
           <div class="col mt-4">
-              <table mat-table [dataSource]="dataSource5" class="mat-elevation-z8">
-
-                <ng-container matColumnDef="importID">
-                  <th mat-header-cell *matHeaderCellDef style="width: 5px; text-align: center;" > ລະຫັດການນຳເຂົ້າ </th>
-                  <td mat-cell *matCellDef="let element" class="text-center" > {{element.importID }} </td>
-                </ng-container>
-       
-          
-                <ng-container matColumnDef="orderID" >
-                  <th mat-header-cell *matHeaderCellDef style="width: 100px ; text-align: center;" > ລະຫັດການສັ່ງຊື້ </th>
-                  <td mat-cell *matCellDef="let element" class="text-center" > {{element.orderID}} </td>
-                </ng-container>
-
-                <ng-container matColumnDef="supName" >
-                  <th mat-header-cell *matHeaderCellDef style="width: 200px ; text-align: center;" > ຜູ້ສະໜອງ</th>
-                  <td mat-cell *matCellDef="let element" class="text-center" > {{element.supName}} </td>
-                </ng-container>
-
-                <ng-container matColumnDef="emName" >
-                  <th mat-header-cell *matHeaderCellDef style="width: 20px ; text-align: center;" > ພະນັກງານ </th>
-                  <td mat-cell *matCellDef="let element" class="text-center" > {{element.emName}}  </td>
-                </ng-container>
-
-                <ng-container matColumnDef="date">
-                  <th mat-header-cell *matHeaderCellDef style="width: 5px; text-align: center;" > ວັນທີ </th>
-                  <td mat-cell *matCellDef="let element" class="text-center" > {{element.import_date | date:'dd/MM/yyyy' }} </td>
-                </ng-container>
-
-                <ng-container matColumnDef="total_price" >
-                  <th mat-header-cell *matHeaderCellDef style="width: 120px ; text-align: center;" > ລາຄາລວມ </th>
-                  <td mat-cell *matCellDef="let element" class="text-center" > {{element.total_price}} ກີບ </td>
-                </ng-container>
-
-                <ng-container matColumnDef="action" >
-                  <th mat-header-cell *matHeaderCellDef style="width: 120px ; text-align: center;" > ລາຍລະອຽດ </th>
-                  <td mat-cell *matCellDef="let element" class="text-center" > </td>
-                </ng-container>
+            <table mat-table [dataSource]="dataImport_report" class="mat-elevation-z8">
+     
+              <ng-container matColumnDef="proID">
+                <th class="th_1" mat-header-cell *matHeaderCellDef style="width: 5px; text-align: center;" > ພະນັກງານ </th>
+                <td mat-cell *matCellDef="let element" class="text-center" > {{element.emName}} </td>
+              </ng-container>
             
-            
+             
+              <ng-container matColumnDef="image" >
+                <th mat-header-cell *matHeaderCellDef style="width: 200px ; text-align: center;" > ຊື່ສິນຄ້າ </th>
+                <td mat-cell *matCellDef="let element" class="text-center" > {{element.productName}} </td>
+              </ng-container>
+  
+              <ng-container matColumnDef="proName" >
+                <th mat-header-cell *matHeaderCellDef style="width: 100px ; text-align: center;" > ຈຳນວນທີ່ຈັດຊື້ </th>
+                <td mat-cell *matCellDef="let element" class="text-center" > {{element.buy_qty}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="import_qty" >
+                <th mat-header-cell *matHeaderCellDef style="width: 100px ; text-align: center;" > ຈຳນວນທີ່ນຳເຂົ້າ </th>
+                <td mat-cell *matCellDef="let element" class="text-center" > {{element.import_qty}} </td>
+              </ng-container>
+  
+
+              <ng-container matColumnDef="buy_price">
+                <th class="th_2" mat-header-cell *matHeaderCellDef style="width: 150px ; text-align: center;"> ລາຄາ </th>
+                <td mat-cell *matCellDef="let element" class="text-center" > {{element.buy_price | number}} ກີບ </td>
+              </ng-container>
               
-                <tr mat-header-row *matHeaderRowDef="displayedImport"></tr>
-                <tr mat-row *matRowDef="let row; columns: displayedImport;"></tr>
-                
-              </table>
+            
+              <tr mat-header-row *matHeaderRowDef="displayImport_report"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayImport_report;"></tr>
+              
+            </table>
               
            
             </div>
@@ -329,4 +301,305 @@
 
   </mat-tab-group>
    </div>
+</div>
+
+<div id="print" hidden class="container mt-5">
+  <div class="title">
+    <div>ສາທາລະນະລັດ ປະຊາທິປະໄຕ ປະຊາຊົນລາວ</div>
+    <div>ສັນຕິພາບ ເອກະລາດ ປະຊາທິປະໄຕ ເອກະພາບ ວັດທະນາຖາວອນ</div>
+  </div>
+    <div class="row" >
+        <div class="info" >
+            <div class="h51">ຮ້ານຂາຍເສື້ອຜ້າ ນາງແຕງທອງ</div>
+            <div class="h51">ບ້ານ ແສນຊຸມ ເມືອງ ໂພນໂຮງ</div>
+            <div class="h51">ເບີໂທ 02022736892</div>
+        </div>
+    </div>
+
+    <div class="row" >
+      <div class="row">
+        <div class="col">
+          <div class="h3 mt-3 text-center">ລາຍງານສິນຄ້າ</div>
+        </div>
+
+        
+      </div>
+        <div class="col mt-3">
+            <table mat-table [dataSource]="dataSource_productReport" class="mat-elevation-z8">
+     
+              <ng-container matColumnDef="proID">
+                <th class="th_1" mat-header-cell *matHeaderCellDef style="width: 5px; text-align: center;" > ລຳດັບ </th>
+                <td mat-cell *matCellDef="let element" class="text-center" > {{element.productID}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="proName" >
+                <th mat-header-cell *matHeaderCellDef style="width: 200px ; text-align: center;" > ຊື່ສິນຄ້າ </th>
+                <td mat-cell *matCellDef="let element" class="text-center" > {{element.productName}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="cateName" >
+                <th mat-header-cell *matHeaderCellDef style="width: 200px ; text-align: center;" > ປະເພດສິນຄ້າ </th>
+                <td mat-cell *matCellDef="let element" class="text-center" > {{element.cateName}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="unitName" >
+                <th mat-header-cell *matHeaderCellDef style="width: 200px ; text-align: center;" > ຫົວໜ່ວຍ </th>
+                <td mat-cell *matCellDef="let element" class="text-center" > {{element.unitName}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="qty" >
+                <th mat-header-cell *matHeaderCellDef style="width: 20px ; text-align: center;" > ຈຳນວນ </th>
+                <td mat-cell *matCellDef="let element" class="text-center" > {{element.Qty}}  </td>
+              </ng-container>
+
+              <ng-container matColumnDef="sell_price" >
+                <th mat-header-cell *matHeaderCellDef style="width: 120px ; text-align: center;" > ລາຄາຂາຍ </th>
+                <td mat-cell *matCellDef="let element" class="text-center" > {{element.sell_price | number}} ກີບ </td>
+              </ng-container>
+
+              <ng-container matColumnDef="buy_price" >
+                <th class="th_2" mat-header-cell *matHeaderCellDef style="width: 120px ; text-align: center;" > ລາຄາຊື້ </th>
+                <td mat-cell *matCellDef="let element" class="text-center" > {{element.buy_price | number}} ກີບ </td>
+              </ng-container>
+          
+            
+              <tr mat-header-row *matHeaderRowDef="displayProduct_report"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayProduct_report;"></tr>
+              
+            </table>
+          
+          </div>
+    </div>
+   <div class="row text-end">
+    <div class="signature">ລາຍເຊັນເຈົ້າຂອງຮ້ານ</div>
+    <div class="date">{{date | date:'dd/MM/yyyy'}}</div>
+   </div>
+</div>
+
+<div id="print-sale" hidden class="container mt-5">
+  <div class="title">
+    <div>ສາທາລະນະລັດ ປະຊາທິປະໄຕ ປະຊາຊົນລາວ</div>
+    <div>ສັນຕິພາບ ເອກະລາດ ປະຊາທິປະໄຕ ເອກະພາບ ວັດທະນາຖາວອນ</div>
+  </div>
+    <div class="row" >
+        <div class="info" >
+            <div class="h51">ຮ້ານຂາຍເສື້ອຜ້າ ນາງແຕງທອງ</div>
+            <div class="h51">ບ້ານ ແສນຊຸມ ເມືອງ ໂພນໂຮງ</div>
+            <div class="h51">ເບີໂທ 02022736892</div>
+        </div>
+    </div>
+
+    <div class="row" >
+      <div class="row">
+        <div class="col">
+          <div class="h3 mt-3 text-center">ລາຍງານການຂາຍ</div>
+        </div>
+        
+      </div>
+        <div class="col mt-3">
+          
+             <table mat-table [dataSource]="dataSale_report" class="mat-elevation-z8">
+   
+              <ng-container matColumnDef="emID">
+                <th class="th_1" mat-header-cell *matHeaderCellDef style="width: 5px; text-align: center;" > ຊື່ພະນັກງານ </th>
+                <td mat-cell *matCellDef="let element" class="text-center" > {{element.emName}} </td>
+              </ng-container>
+            
+             
+              <ng-container matColumnDef="productID" >
+                <th mat-header-cell *matHeaderCellDef style="width: 100px ; text-align: center;" > ຊື່ສິນຄ້າ </th>
+                <td mat-cell *matCellDef="let element" class="text-center" > {{element.productName}} </td>
+              </ng-container>
+  
+              <ng-container matColumnDef="sale_qty" >
+                <th mat-header-cell *matHeaderCellDef style="width: 200px ; text-align: center;" > ຈຳນວນ </th>
+                <td mat-cell *matCellDef="let element" class="text-center" > {{element.sale_qty}} </td>
+              </ng-container>
+  
+              
+  
+  
+              <ng-container matColumnDef="price">
+                <th class="th_2" mat-header-cell *matHeaderCellDef style="width: 150px ; text-align: center;"> ລາຄາ </th>
+                <td mat-cell *matCellDef="let element" class="text-center" > {{element.sell_price | number}} ກີບ </td>
+              </ng-container>
+            
+              <tr mat-header-row *matHeaderRowDef="displaySale_report"></tr>
+              <tr mat-row *matRowDef="let row; columns: displaySale_report;"></tr>
+              
+            </table>
+
+          </div>
+    </div>
+    <div class="row text-end">
+      <div class="signature">ລາຍເຊັນເຈົ້າຂອງຮ້ານ</div>
+      <div class="date">{{date | date:'dd/MM/yyyy'}}</div>
+     </div>
+</div>
+
+<div id="print-order" hidden class="container mt-5">
+  <div class="title">
+    <div>ສາທາລະນະລັດ ປະຊາທິປະໄຕ ປະຊາຊົນລາວ</div>
+    <div>ສັນຕິພາບ ເອກະລາດ ປະຊາທິປະໄຕ ເອກະພາບ ວັດທະນາຖາວອນ</div>
+  </div>
+    <div class="row" >
+        <div class="info" >
+            <div class="h51">ຮ້ານຂາຍເສື້ອຜ້າ ນາງແຕງທອງ</div>
+            <div class="h51">ບ້ານ ແສນຊຸມ ເມືອງ ໂພນໂຮງ</div>
+            <div class="h51">ເບີໂທ 02022736892</div>
+        </div>
+    </div>
+
+    <div class="row" >
+      <div class="row">
+        <div class="col">
+          <div class="h3 mt-3 text-center">ລາຍງານການຈັດຊື້</div>
+        </div>
+        
+      </div>
+        <div class="col mt-3">
+            <table mat-table [dataSource]="dataOrder_report" class="mat-elevation-z8">
+   
+              <ng-container matColumnDef="proID">
+                <th class="th_1" mat-header-cell *matHeaderCellDef style="width: 5px; text-align: center;" > ລຳດັບ </th>
+                <td mat-cell *matCellDef="let element" class="text-center" > {{element.orderDetail_ID}} </td>
+              </ng-container>
+            
+             
+              <ng-container matColumnDef="image" >
+                <th mat-header-cell *matHeaderCellDef style="width: 100px ; text-align: center;" > ຊື່ສິນຄ້າ </th>
+                <td mat-cell *matCellDef="let element" class="text-center" > {{element.productName}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="supName" >
+                <th mat-header-cell *matHeaderCellDef style="width: 100px ; text-align: center;" > ຜູ້ສະໜອງ</th>
+                <td mat-cell *matCellDef="let element" class="text-center" > {{element.supName}} </td>
+              </ng-container>
+  
+              <ng-container matColumnDef="proName" >
+                <th mat-header-cell *matHeaderCellDef style="width: 200px ; text-align: center;" > ຈຳນວນ </th>
+                <td mat-cell *matCellDef="let element" class="text-center" > {{element.buy_qty}} </td>
+              </ng-container>
+  
+  
+              <ng-container matColumnDef="buy_price">
+                <th class="th_2" mat-header-cell *matHeaderCellDef style="width: 150px ; text-align: center;"> ລາຄາຊື້ </th>
+                <td mat-cell *matCellDef="let element" class="text-center" > {{element.price | number}} ກີບ </td>
+              </ng-container>
+
+            
+              
+            
+              <tr mat-header-row *matHeaderRowDef="displayOrder_report"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayOrder_report;"></tr>
+              
+            </table>
+          
+            <!-- <table mat-table [dataSource]="dataSource8" class="mat-elevation-z8">
+     
+              <ng-container matColumnDef="proID">
+                <th class="th_1" mat-header-cell *matHeaderCellDef style="width: 5px; text-align: center;" > ພະນັກງານ </th>
+                <td mat-cell *matCellDef="let element" class="text-center" > {{element.emName}} </td>
+              </ng-container>
+            
+             
+              <ng-container matColumnDef="image" >
+                <th mat-header-cell *matHeaderCellDef style="width: 200px ; text-align: center;" > ຊື່ສິນຄ້າ </th>
+                <td mat-cell *matCellDef="let element" class="text-center" > {{element.productName}} </td>
+              </ng-container>
+  
+              <ng-container matColumnDef="proName" >
+                <th mat-header-cell *matHeaderCellDef style="width: 100px ; text-align: center;" > ຈຳນວນທີ່ຈັດຊື້ </th>
+                <td mat-cell *matCellDef="let element" class="text-center" > {{element.buy_qty}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="import_qty" >
+                <th mat-header-cell *matHeaderCellDef style="width: 100px ; text-align: center;" > ຈຳນວນທີ່ນຳເຂົ້າ </th>
+                <td mat-cell *matCellDef="let element" class="text-center" > {{element.import_qty}} </td>
+              </ng-container>
+  
+
+              <ng-container matColumnDef="buy_price">
+                <th class="th_2" mat-header-cell *matHeaderCellDef style="width: 150px ; text-align: center;"> ລາຄາ </th>
+                <td mat-cell *matCellDef="let element" class="text-center" > {{element.buy_price | number}} ກີບ </td>
+              </ng-container>
+              
+            
+              <tr mat-header-row *matHeaderRowDef="displayImport"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayImport;"></tr>
+              
+            </table> -->
+          
+          
+          </div>
+    </div>
+    <div class="row text-end">
+      <div class="signature">ລາຍເຊັນເຈົ້າຂອງຮ້ານ</div>
+      <div class="date">{{date | date:'dd/MM/yyyy'}}</div>
+     </div>
+</div>
+
+<div id="print-import" hidden class="container mt-5">
+  <div class="title">
+    <div>ສາທາລະນະລັດ ປະຊາທິປະໄຕ ປະຊາຊົນລາວ</div>
+    <div>ສັນຕິພາບ ເອກະລາດ ປະຊາທິປະໄຕ ເອກະພາບ ວັດທະນາຖາວອນ</div>
+  </div>
+    <div class="row" >
+        <div class="info" >
+            <div class="h51">ຮ້ານຂາຍເສື້ອຜ້າ ນາງແຕງທອງ</div>
+            <div class="h51">ບ້ານ ແສນຊຸມ ເມືອງ ໂພນໂຮງ</div>
+            <div class="h51">ເບີໂທ 02022736892</div>
+        </div>
+    </div>
+
+    <div class="row" >
+      <div class="row">
+        <div class="col">
+          <div class="h3 mt-3 text-center">ລາຍງານການນຳເຂົ້າ</div>
+        </div>
+        
+      </div>
+        <div class="col mt-3">
+          
+            <table mat-table [dataSource]="dataImport_report" class="mat-elevation-z8">
+     
+              <ng-container matColumnDef="proID">
+                <th class="th_1" mat-header-cell *matHeaderCellDef style="width: 5px; text-align: center;" > ພະນັກງານ </th>
+                <td mat-cell *matCellDef="let element" class="text-center" > {{element.emName}} </td>
+              </ng-container>
+            
+             
+              <ng-container matColumnDef="image" >
+                <th mat-header-cell *matHeaderCellDef style="width: 200px ; text-align: center;" > ຊື່ສິນຄ້າ </th>
+                <td mat-cell *matCellDef="let element" class="text-center" > {{element.productName}} </td>
+              </ng-container>
+  
+              <ng-container matColumnDef="proName" >
+                <th mat-header-cell *matHeaderCellDef style="width: 100px ; text-align: center;" > ຈຳນວນທີ່ຈັດຊື້ </th>
+                <td mat-cell *matCellDef="let element" class="text-center" > {{element.buy_qty}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="import_qty" >
+                <th mat-header-cell *matHeaderCellDef style="width: 100px ; text-align: center;" > ຈຳນວນທີ່ນຳເຂົ້າ </th>
+                <td mat-cell *matCellDef="let element" class="text-center" > {{element.import_qty}} </td>
+              </ng-container>
+  
+
+              <ng-container matColumnDef="buy_price">
+                <th class="th_2" mat-header-cell *matHeaderCellDef style="width: 150px ; text-align: center;"> ລາຄາ </th>
+                <td mat-cell *matCellDef="let element" class="text-center" > {{element.buy_price | number}} ກີບ </td>
+              </ng-container>
+              
+            
+              <tr mat-header-row *matHeaderRowDef="displayImport_report"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayImport_report;"></tr>
+              
+            </table>
+
+          </div>
+    </div>
+    <div class="row text-end">
+      <div class="signature">ລາຍເຊັນເຈົ້າຂອງຮ້ານ</div>
+      <div class="date">{{date | date:'dd/MM/yyyy'}}</div>
+     </div>
 </div>

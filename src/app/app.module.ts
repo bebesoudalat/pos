@@ -55,9 +55,17 @@ import { SaleDetailComponent } from './sale-detail/sale-detail.component';
 
 
 
+
+
+
+
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+
+
+  
   ],
   imports: [
     BrowserModule,

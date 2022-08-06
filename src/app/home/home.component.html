@@ -35,7 +35,7 @@
 
 <div class="card2" fxLayout="row wrap">
     <mat-icon class="icon">update</mat-icon>
-     <p>ລາຍການຂາຍທັງໝົດ</p>
+     <p>ລາຍການຂາຍລ່າສຸດ</p>
   </div>
 
   <!-- ຕາຕະລາງລາຍການຂາຍລ່າສຸດ -->
@@ -43,7 +43,7 @@
   <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
     <!-- Position Column -->
     <ng-container matColumnDef="date">
-      <mat-header-cell *matHeaderCellDef> ວັນທີ </mat-header-cell>
+      <mat-header-cell class="th_1" *matHeaderCellDef> ວັນທີ </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.payDate | date:'dd/MM/yyyy'}} </mat-cell>
     </ng-container>
   
@@ -56,13 +56,13 @@
     <!-- Weight Column -->
     <ng-container matColumnDef="total_price">
       <mat-header-cell *matHeaderCellDef> ລາຄາລວມທັງໝົດ </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.total_price}} </mat-cell>
+      <mat-cell *matCellDef="let element"> {{element.total_price | number}} ກີບ </mat-cell>
     </ng-container>
   
     <!-- Symbol Column -->
     <ng-container matColumnDef="action">
-      <mat-header-cell *matHeaderCellDef> ລາຍລະອຽດ </mat-header-cell>
-      <mat-cell *matCellDef="let element"><button class="btn" (click)="show_saleDetail(element.saleID)">ລາຍລະອຽດ</button></mat-cell>
+      <mat-header-cell class="th_2 text-end" *matHeaderCellDef> ລາຍລະອຽດ </mat-header-cell>
+      <mat-cell *matCellDef="let element"><button class="btn-detail" (click)="show_saleDetail(element.saleID)">ລາຍລະອຽດ</button></mat-cell>
     </ng-container>
   
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

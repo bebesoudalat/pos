@@ -19,7 +19,7 @@ th{
 .search::placeholder{
     text-indent: 40px;
 }
-img{
+.pic{
     width: 18px;
     height: 18px;
     margin-left: 12px;
@@ -55,10 +55,62 @@ img{
     width: 120px;
     border: 1px solid #89ABDE;
 }
+.print:hover{
+    background-color: #d6e4f9;
+    color: #7096cf;
+}
 mat-icon{
     color: #89ABDE;
 }
 .icon{
     width: 25px;
     height: 25px;
+}
+
+
+img{
+    width: 80px;
+    height: 80px;
+    margin: 0px 8px;
+    border-radius: 5px;
+}
+.btn-detail{
+    width: 100px;
+    height: 35px;
+    background-color: white;
+    border: 1px solid #89ABDE;
+    color: #7096cf ;
+    border-radius: 50px;
+
+}
+th{
+    background-color: #d6e4f9;
+    color: #7096cf ;
+    font-size: 15px;
+}
+td{
+    font-size: 15px;
+}
+.th_1{
+    border-top-left-radius: 15px ;
+}
+.th_2{
+    border-top-right-radius: 15px ;
+}
+input{
+    width: 300px;
+}
+
+.info{
+    margin-top: 40px;
+}
+.title{
+    text-align: center;
+}
+.signature{
+    margin-top: 30px;
+    float: right;
+}
+.date{
+    float: right;
 }

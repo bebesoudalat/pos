@@ -16,6 +16,10 @@ export class ConfirmSalePopupComponent implements OnInit {
  price:any
  money:any = 0
  changed: any
+ date : Date = new Date();
+
+ employeeName:any
+ user_info=JSON.parse(localStorage.getItem("user") || "[]")
 
 
   constructor(public dialogRef: MatDialogRef<SaleComponent>, @Inject(MAT_DIALOG_DATA) public data:any, private service : RestAPIService) {
@@ -24,6 +28,12 @@ export class ConfirmSalePopupComponent implements OnInit {
 
   ngOnInit(): void {
   console.log(this.receive)
+
+  this.service.employee().subscribe(res=>{
+    this.employeeName = res.data
+    console.log(res)
+  })
+   console.log(this.user_info.data[0].emName)
 
   }
 
@@ -64,7 +74,7 @@ export class ConfirmSalePopupComponent implements OnInit {
     }
 
     addSale(){
-      let emID=JSON.parse(localStorage.getItem("user") || "[]")[0].emID
+      let emID=JSON.parse(localStorage.getItem("user") || "[]").data[0].emID
       let total_price = this.TotalPrice;
       this.service.sale(this.receive,emID,total_price).subscribe(res=>{
         console.log(this.receive)

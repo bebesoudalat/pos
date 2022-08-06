@@ -79,6 +79,17 @@ img{
     margin: 0px 8px;
     border-radius: 5px;
 }
+th{
+    background-color: #d6e4f9;
+    color: #7096cf ;
+    font-size: 15px;
+}
+.th_1{
+    border-top-left-radius: 15px ;
+}
+.th_2{
+    border-top-right-radius: 15px ;
+}
 .h4{
     margin: 2px 20px;
 }
@@ -145,10 +156,9 @@ table {
     background: #89ABDE;
     color: white;
   }
-  th{
+  /* th{
       border-bottom: 1px solid #89ABDE;
-      color: #000000;
-  }
+  } */
   td{
       padding: 10px 0;
   }

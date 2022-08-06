@@ -17,11 +17,11 @@
         <div class="row" *ngFor="let item of receive">
             <div class="col-9">
                 <p>{{item.productName}}</p>
-                <p>{{item.sell_price}} x {{item.Qty}} </p>
+                <p>{{item.sell_price | number}} x {{item.Qty}} </p>
             </div>
     
             <div class="col-3">
-                <p class="ms-4 ps-2">{{cal(item.sell_price,item.Qty)}} ກີບ</p>
+                <p class="ms-4 ps-2">{{cal(item.sell_price,item.Qty) | number}} ກີບ</p>
             </div>
         </div>
     </div>
@@ -33,7 +33,7 @@
             ລາຄາລວມທັງໝົດ
         </div>
         <div class="col-3">
-            <div class="h6 mt-1 ms-4 ps-2"> {{calTotal(this.receive)}} ກີບ </div>
+            <div class="h6 mt-1 ms-4 ps-2"> {{calTotal(this.receive) | number}} ກີບ </div>
         </div>
     </div>
 
@@ -51,7 +51,7 @@
             ເງິນທອນ
         </div>
         <div class="col-9">
-            {{this.money}} ກີບ
+            {{this.money | number}} ກີບ
         </div>
     </div>
 
@@ -60,17 +60,48 @@
            
         </div>
         <div class="col-9">
-            <button mat-button [mat-dialog-close]="data.animal" printSectionId="print" ngxPrint  (click)="addSale()" class="btn" type="button">ບັນທຶກການຂາຍ</button>
+            <button mat-button [mat-dialog-close]="data.animal" printSectionId="print" ngxPrint [useExistingCss]="true"  class="btn" type="button">ບັນທຶກການຂາຍ</button>
         </div>
-        <div id="print">
-            <div class="row">
-                <div class="col">
-                    logo
-                </div>
-                <div class="col">
-                    
-                </div>
+        <div id="print" hidden>
+            <div class="logo">
+                Taengthong Clothing
             </div>
+            <div class="info">
+                <div>ຮ້ານຂາຍເສື້ອຜ້ານາງແຕງທອງ - <span>02022298327</span></div>
+                <div>ຜູ້ຂາຍ : {{this.user_info.data[0].emName}}</div>
+                <div>ວັນທີ {{date | date:'dd/MM/yyy'}}</div>
+            </div>
+
+            <div>
+                <table class="list-product">
+                    <thead>
+                        <tr>
+                            <th style="width: 300px ;">ຊື່ສິນຄ້າ</th>
+                            <th style="width: 300px ;">ຈຳນວນ</th>
+                            <th style="width: 300px ;">ລາຄາ</th>
+                        </tr>
+                    </thead>
+                    <tbody  *ngFor="let item of receive">
+                        <tr>
+                            <td style="width: 300px ; text-align: left;">{{item.productName}}</td>
+                            <td style="width: 300px ;">{{item.Qty}}</td>
+                            <td style="width: 300px ;">{{item.sell_price | number}} ກີບ</td>
+                        </tr>
+                    </tbody>
+                    
+                </table>
+            </div>
+            <hr>
+           <table class="totalprice">
+            <tbody>
+                <tr>
+                    <td style="width: 150px ;">ລາຄາລວມ</td>
+                    <td style="width: 150px ;">{{calTotal(this.receive) | number}} ກີບ</td>
+                </tr>
+            </tbody>
+           </table>
+
+           <div class="footer">ຂອບໃຈລູກຄ້າທຸກຄົນທີ່ອຸດໜູນ</div>
         </div>
     </div>
 </div>

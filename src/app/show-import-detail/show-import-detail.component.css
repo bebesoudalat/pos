@@ -1,0 +1,26 @@
+mat-icon{
+    color: #89ABDE;
+}
+.btn{
+    border-radius: 50px;
+    background-color: #89ABDE;
+    color: white;
+}
+table{
+    width: 100%;
+    box-shadow: none;
+}
+.btn-delete{
+    background-color: white;
+    border: none;
+}
+th{
+    background-color: #d6e4f9;
+    color: #7096cf ;
+}
+.th_1{
+    border-top-left-radius: 15px ;
+}
+.th_2{
+    border-top-right-radius: 15px ;
+}

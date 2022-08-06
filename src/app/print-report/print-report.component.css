@@ -1,0 +1,131 @@
+.container{
+    width: 90%;
+}
+td{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+tbody tr{
+    margin-top: 40px;
+    padding: 20px;
+}
+td,th{
+    padding: 20px;
+}
+.th_1{
+    border-top-left-radius: 20px;    
+}
+input,select{
+    border-radius:50px ;
+    height: 35px;
+    outline: none;
+}
+table{
+    width: 100%;
+    box-shadow: none;
+}
+th{
+    font-weight: bold;
+}
+.search{
+    width: 270px;
+    border: 1px solid #898989;
+    height: 33px;
+    outline: none;
+}
+.search::placeholder{
+    text-indent: 40px;
+}
+.pic{
+    width: 18px;
+    height: 18px;
+    margin-left: 12px;
+    margin-top: 7px;
+    position: absolute;
+}
+.form-icon{
+    width: 40px;
+    height: 40px;
+    margin-left: -15px;
+    margin-top: -10px;
+    position: absolute;
+}
+.cart-icon{
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    margin-left: -10px;
+    margin-top: -5px;
+}
+.card{
+    border-radius: 10px;
+}
+.delete-icon{
+    width: 20px;
+    height: 20px;
+}
+.btn{
+    border-radius: 50px;
+    width: 80px;
+}
+.print{
+    width: 120px;
+    border: 1px solid #89ABDE;
+}
+.print:hover{
+    background-color: #d6e4f9;
+    color: #7096cf;
+}
+mat-icon{
+    color: #89ABDE;
+}
+.icon{
+    width: 25px;
+    height: 25px;
+}
+
+
+img{
+    width: 80px;
+    height: 80px;
+    margin: 0px 8px;
+    border-radius: 5px;
+}
+.btn-detail{
+    width: 100px;
+    height: 35px;
+    background-color: white;
+    color: #9f9f9f ;
+    border-radius: 50px;
+
+}
+th{
+    background-color: white;
+    font-size: 15px;
+
+}
+table{
+    border: 1px solid #4b4b4b;
+}
+td{
+    font-size: 15px;
+}
+.th_1{
+    border-top-left-radius: 15px ;
+}
+.th_2{
+    border-top-right-radius: 15px ;
+}
+input{
+    width: 300px;
+}
+.info{
+    margin-top: 40px;
+}
+.title{
+    text-align: center;
+}
+.signature{
+    margin-top: 30px;
+    float: right;
+}

@@ -3,8 +3,8 @@
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [opened]="(isHandset$ | async) === false">
-    <mat-toolbar> <img src="../../assets/img/add-cart.png" alt="" style="width: 50px ; height: 50px;"> </mat-toolbar>
-    <mat-nav-list>
+    <mat-toolbar><div class="h2 text-center mt-5" style="color: #89ABDE ;">Taengthong <br> <div class="h3">Clothing</div></div> </mat-toolbar>
+    <mat-nav-list class="mt-5">
       <a mat-list-item [routerLink]="['']"><mat-icon matListIcon>home</mat-icon> ໜ້າຫຼັກ</a>
       <a mat-list-item [routerLink]="['sale']"><mat-icon matListIcon>add_circle_outline</mat-icon>ຂາຍສິນຄ້າ</a>
       <a mat-list-item [routerLink]="['manage-data']"><mat-icon matListIcon> border_all</mat-icon>ຈັດການຂໍ້ມູນ</a>
@@ -20,19 +20,40 @@
         
       </div> -->
       <div class="col">
-        <!-- <span>Taengthong's clothing</span> -->
+        <!-- <span style="color:#89ABDE">Taengthong's clothing</span> -->
       </div>
     <div class="col text-end">
       <div>
         <div *ngIf="this.user_info"> 
-          <div class="row me-3">
+          <div class="row">
             <div class="col">
-              <img src="../../assets/img/user (2).png" alt="">
+              <!-- <img src="../../assets/img/user (2).png" alt=""> -->
             </div>
-            <div class="col-1">
-              <div class="h4 mt-2">{{ this.user_info.data[0].emName }}</div>
-            </div> 
+            <div class="col-5">
+              <mat-icon class="acc-icon ">account_circle</mat-icon>
+              <button class="dropdown ms-2 h4" mat-button [matMenuTriggerFor]="menu">{{ this.user_info.data[0].emName }}
+                <mat-icon class="icon">keyboard_arrow_down</mat-icon>
+              </button>
+             <mat-menu #menu="matMenu" style="margin-top: 40px;">
+               <button class="item1" mat-menu-item><mat-icon class="me-3 ps-0" style="color:#7096cf">account_circle</mat-icon>profile</button>
+               <button type="button" (click)="logout()" class="item" mat-menu-item><mat-icon class="me-3 ps-0" style="color:#7096cf">exit_to_app</mat-icon>logout</button>
+             </mat-menu>
+            </div>
+             <!-- <div class="nav">
+              <label for="btn" class="button">Drop down
+                <span ><mat-icon class="icon">keyboard_arrow_down</mat-icon></span>
+              </label>
+              <input type="checkbox" id="btn">
+              <ul class="menu">
+                <li><a href="">Profile</a></li>
+                <li><a href="">logout</a></li>
+              </ul>
+             </div> -->
+             
           </div> 
+          
+
+
           </div>
       </div>
     </div>

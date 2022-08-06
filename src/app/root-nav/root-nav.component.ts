@@ -3,6 +3,8 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { RestAPIService } from '../shared/rest-api.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-root-nav',
@@ -22,7 +24,7 @@ export class RootNavComponent {
       shareReplay()
     );
 
-  constructor(private breakpointObserver: BreakpointObserver, private service: RestAPIService) {}
+  constructor(private breakpointObserver: BreakpointObserver, private service: RestAPIService, private router : Router) {}
 
   ngOnInit(): void {
     this.service.employee().subscribe(res=>{
@@ -30,5 +32,12 @@ export class RootNavComponent {
       console.log(res)
     })
      console.log(this.user_info.data[0].emName)
+  }
+
+  logout(){
+    localStorage.clear()
+    this.user_info=null
+    this.user=null
+    this.router.navigate(['login'])
   }
 }

@@ -57,6 +57,14 @@ import { NgxPrintModule } from 'ngx-print';
 import { SaleDetailComponent } from 'src/app/sale-detail/sale-detail.component';
 
 import { OrderlistComponent } from 'src/app/orderlist/orderlist.component';
+import { ShowImportDetailComponent } from 'src/app/show-import-detail/show-import-detail.component';
+import { OrderListDetailComponent } from 'src/app/order-list-detail/order-list-detail.component';
+import { EditOrderComponent } from 'src/app/edit-order/edit-order.component';
+import { PopupAddEmployeeComponent } from 'src/app/popup-add-employee/popup-add-employee.component';
+import { PrintReportComponent } from 'src/app/print-report/print-report.component';
+
+
+
 @NgModule({
   declarations: [
     RootNavComponent,
@@ -91,7 +99,14 @@ import { OrderlistComponent } from 'src/app/orderlist/orderlist.component';
     ImportDetailComponent,
     SaleDetailComponent,
     ContentComponent,
-    OrderlistComponent
+    OrderlistComponent,
+    ShowImportDetailComponent,
+    OrderListDetailComponent,
+    EditOrderComponent,
+    PopupAddEmployeeComponent,
+    PrintReportComponent
+
+
 
   ],
   imports: [

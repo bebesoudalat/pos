@@ -10,7 +10,7 @@
 .circle{
     width: 50px;
     height: 50px;
-    background-color: #89ABDE;
+    background-color: #d6e4f9;
     border-radius: 50px;
 }
 img{
@@ -34,9 +34,7 @@ input{
 input:focus{
     outline: none;
 }
-.indent{
-    text-indent: 0px ;
-}
+
 
 
 input::placeholder{
@@ -54,9 +52,7 @@ margin-left: 10px;
     margin:0 50px;
     
 }
-.data-sale{
-    margin-top: 10px;
-}
+
 .show-product{
     width: 90%;
 
@@ -77,33 +73,46 @@ margin-left: 10px;
     background-color: #f7f7f7;
     margin-left: 10px;
 }
-.img2{
+.pic{
     width: 80px;
     height: 80px;
     border-radius: 5px;
-    
     border: none;
+    cursor: pointer;
 }
 .container2{
     height: 450px;
+
+    padding-left: 0;
+
 }
 .card{
-    background-color: white;
+    width: 440px;
     border-radius: 10px;
-    
-    
+    margin-top: -50px;
 }
-.search{
-    padding-top:5px;
-    font-size: 20px;
-}
+
 table{
     width: 100%;
-    box-shadow: none;
+    box-shadow: 3px 6px 2px 0px rgba(234, 234, 234, 0.75);
+    -webkit-box-shadow: 8px 10px 5px 0px rgba(234, 234, 234, 0.75);
+    -moz-box-shadow: 8px 10px 5px 0px rgba(234, 234, 234, 0.75);
     
+}
+.th_1{
+    border-top-left-radius: 15px;
+}
+.th_2{
+    border-top-right-radius: 15px;
+}
+th{
+    background-color: #d6e4f9;
+    color: #7096cf ;
+    font-size: 15px;
 }
 td{
     padding: 5px;
+    font-size: 15px;
 }
 .btn_sale{
     background-color: #89ABDE;
@@ -111,6 +120,7 @@ td{
     color: white;
     border: none;
     height: 35px;
+    width: 440px;
 }
 .img2{
     width: 100px;
@@ -122,6 +132,10 @@ td{
    background-color: white;
     border: none;
 }
+/* .btn-add{
+    margin-left: 100px;
+} */
+
 /* .btn-add{
     margin-left: -10px;
 } */
@@ -144,4 +158,32 @@ td{
 ::-webkit-scrollbar-thumb{
     background-color: lightgray;
     border-radius: 100vw;
+}
+
+.search{
+    width: 300px;
+    border: 1px solid #898989;
+    height: 33px;
+    outline: none;
+    text-indent: 30px;
+}
+.search::placeholder{
+    text-indent: 0;
+    font-size: 14px;
+}
+.img{
+    width: 18px;
+    height: 18px;
+    margin-left: 12px;
+    margin-top: 7px;
+    position: absolute;
+}
+.header{
+    background-color: #d6e4f9;
+
+}
+.pic-cart{
+    width: 60px;
+    height: 60px;
+    border-radius: 5px;
 }

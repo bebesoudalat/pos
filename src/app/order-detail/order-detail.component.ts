@@ -31,9 +31,26 @@ export class OrderDetailComponent implements OnInit {
       this.dataSource1 = new MatTableDataSource(this.data2);
     })
 
-
+    
     
   }
 
+  status(stt:any){
+    let status = stt
+  switch (stt) {
+    case 0:
+      status = 'ຍັງບໍ່ໄດ້ນຳເຂົ້າ';
+      
+      break;
+      case 1:
+      status = 'ນຳສິນຄ້າເຂົ້າແລ້ວ';
+      
+      break;
+  
+    default:
+      break;
+  }
+  return status;
+  }
 
 }

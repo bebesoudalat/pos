@@ -29,6 +29,8 @@ export class SaleComponent implements OnInit {
 
   categoryList:any = []
 
+  date : Date = new Date();
+
   onSearchProduct = new Subject<any>();
 
   constructor(private service:RestAPIService, public dialogRef : MatDialog , private router : Router) {
@@ -74,6 +76,7 @@ export class SaleComponent implements OnInit {
     // console.log(this.cartItem)
   dialog.afterClosed().subscribe(res=>{
     this.cartItem=[]
+    this.TotalPrice=''
     this.service.product().subscribe(res=>{
       this.data2=res.data;
       console.log(this.data2)
@@ -98,8 +101,10 @@ export class SaleComponent implements OnInit {
       }
   if(!productExists){
     this.cartItem.push({
+              tkID:data.tkID,
               productID:data.productID,
               productName:data.productName,
+              image:data.image,
               Qty:1,
               orQty:data.Qty,
               sell_price:data.sell_price
@@ -118,9 +123,7 @@ increase(i:any,item:any){
   
   if (this.cartItem[i].Qty>=item.orQty) {
     Swal.fire(
-      'The Internet?',
-      'That thing is still around?',
-      'question'
+      'ຈຳນວນສິນຄ້າໃນສະຕັອກບໍ່ພຽງພໍ',
     )
   } else {
     if (this.cartItem[i].Qty<1 ) {
@@ -141,11 +144,8 @@ increase(i:any,item:any){
 
 decrease(i:any){
   if (this.cartItem[i].Qty<=1) {
-    Swal.fire(
-      'The Internet?',
-      'That thing is still around?',
-      'question'
-    )
+    this.cartItem.splice([i],1)
+    this.calTotal(this.cartItem)
   }else{
     this.cartItem[i].Qty-- 
       this.calTotal(this.cartItem)

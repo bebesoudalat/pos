@@ -5,14 +5,19 @@
                 <div fxLayout="column" fxFlex="0 0 47%" fxFlex.lg="100%">
                     <div fxLayoutAlign="start center">
                       <div class="circle">
-                        <img src="../../assets/img/trade (1).png" alt="" />
+                        <img src="../../assets/img/cashier-machine.png" alt="" />
                       </div>
-                      <div>
-                          <div class="h4">ຂາຍສິນຄ້າ</div>
+                      <div class="row">
+                          <div class="col">
+                            <div class="h4">
+                              ຂາຍສິນຄ້າ
+                            </div>
+                           
+                          </div>                          
                       </div>
-                     
                     </div>
                   </div>
+                 
             </div>
         </div>
     </div>
@@ -25,60 +30,67 @@
         <div class="card1" fxflex="70%" fxFlex.gt-sm="100%" >
           <div fxLayout="row" fxLayoutAlign="space-between" >
             <!-- ລາຍການຂາຍທັງໝົດ -->
-            <div class="search-section" fxflex="70%" fxFlex.gt-sm="100%">
-                
-                    
-                    <div>
+            <div class="search-section" fxflex="70%" fxFlex.gt-sm="100%"> <div>
                         <!-- <mat-icon class="search">search</mat-icon> -->
-                        <input type="text" #input (input)="search_Product(input.value)" value=""  class="indent" placeholder="ຄົ້ນຫາ">
+                        <!-- <input type="text" #input (input)="search_Product(input.value)" value=""  class="indent" placeholder="ຄົ້ນຫາ"> -->
                         <div class="show-product bg-light mt-3" >
                             <div class="h6" fxFlex="100%">
                      
-                              <div >
-                              <button type="button" (click)="onSelectcategory(1)" class="btn btn-outline-secondary" style="border-radius: 50px ;">ເສື້ອແຂນສັ້ນ</button>
-                              <button type="button" (click)="onSelectcategory(2)" class="btn btn-outline-secondary" style="border-radius: 50px ; margin-left: 10px;">ເສື້ອແຂນຍາວ</button>
-                              <button type="button" (click)="onSelectcategory(3)" class="btn btn-outline-secondary" style="border-radius: 50px ; margin-left: 10px;">ກະໂປ່ງ</button>
+                              <div class="row">
+                                <div class="col">
+                                  <!-- <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg> -->
+                                  <img class="img" src="../../assets/img/search-interface-symbol.png" alt="">
+                                  <input class="search" type="text" #input (input)="search_Product(input.value)" value="" placeholder="ຄົ້ນຫາ">
+                                </div>
+                                <div class="col text-end">
+                                  <button type="button" (click)="onSelectcategory(1)" class="btn btn-outline-secondary" style="border-radius: 50px ;">ເສື້ອແຂນສັ້ນ</button>
+                                  <button type="button" (click)="onSelectcategory(2)" class="btn btn-outline-secondary" style="border-radius: 50px ; margin-left: 10px;">ເສື້ອແຂນຍາວ</button>
+                                  <!-- <button type="button" (click)="onSelectcategory(3)" class="btn btn-outline-secondary" style="border-radius: 50px ; margin-left: 10px;">ກະໂປ່ງ</button> -->
+                                </div>     
                               </div>
+                              
 
-                              <table mat-table [dataSource]="dataSource2" class="mat-elevation-z8">
+                           <div class="mt-3">
+                            <table mat-table [dataSource]="dataSource2" class="mat-elevation-z8">
             
                               
-                                <!-- Name Column -->
-                                <ng-container matColumnDef="image" >
-                                  <th mat-header-cell *matHeaderCellDef style="width: 100px ; text-align: center;" > ຮູບພາບ </th>
+                              <!-- Name Column -->
+                              <ng-container matColumnDef="image" >
+                                <th class="th_1" mat-header-cell *matHeaderCellDef style="width: 100px ; text-align: center;" > ຮູບພາບ </th>
+        
+                                <td mat-cell *matCellDef="let element" class="text-center" > <img class="pic"  (click)="addToCart(element)" src="{{element.image}}" alt=""> </td>
+                              </ng-container>
+                               
+                              
+                              <ng-container matColumnDef="proName" >
+                                <th mat-header-cell *matHeaderCellDef style="width: 100px ; text-align: center;" > ຊື່ສິນຄ້າ </th>
+                                <td mat-cell *matCellDef="let element" class="text-center" > {{element.productName}} </td>
+                              </ng-container>
           
-                                  <td mat-cell *matCellDef="let element" class="text-center" > <img class="img2"  (click)="addToCart(element)" src="{{element.image}}" alt=""> </td>
+                              <ng-container matColumnDef="qty" >
+                                <th mat-header-cell *matHeaderCellDef style="width: 50px ; text-align: center;" > ຈຳນວນ </th>
+                                <td mat-cell *matCellDef="let element" class="text-center" > {{showOutOfStock(element.Qty)}} </td>
+                              </ng-container>
+          
+                              <ng-container matColumnDef="sell_price" >
+                                <th class="th_2" mat-header-cell *matHeaderCellDef style="width: 120px ; text-align: center;" > ລາຄາຂາຍ </th>
+                                <td mat-cell *matCellDef="let element" class="text-center" > {{element.sell_price | number}} ກີບ </td>
+                              </ng-container>
+          
+
+                          
+                              <ng-container matColumnDef="action">
+                                  <th mat-header-cell *matHeaderCellDef style="width: 150px ; text-align: center;"> ຈັດການ </th>
+                                  <td mat-cell *matCellDef="let element" class="text-center" > <button class="btn-delete"><mat-icon>create</mat-icon></button> <button class="btn-delete"><mat-icon>delete</mat-icon></button>   </td>
                                 </ng-container>
-                                 
-                                
-                                <ng-container matColumnDef="proName" >
-                                  <th mat-header-cell *matHeaderCellDef style="width: 100px ; text-align: center;" > ຊື່ສິນຄ້າ </th>
-                                  <td mat-cell *matCellDef="let element" class="text-center" > {{element.productName}} </td>
-                                </ng-container>
-            
-                                <ng-container matColumnDef="qty" >
-                                  <th mat-header-cell *matHeaderCellDef style="width: 50px ; text-align: center;" > ຈຳນວນ </th>
-                                  <td mat-cell *matCellDef="let element" class="text-center" > {{showOutOfStock(element.Qty)}} </td>
-                                </ng-container>
-            
-                                <ng-container matColumnDef="sell_price" >
-                                  <th mat-header-cell *matHeaderCellDef style="width: 120px ; text-align: center;" > ລາຄາຂາຍ </th>
-                                  <td mat-cell *matCellDef="let element" class="text-center" > {{element.sell_price | number}} ກີບ </td>
-                                </ng-container>
-            
-  
                             
-                                <ng-container matColumnDef="action">
-                                    <th mat-header-cell *matHeaderCellDef style="width: 150px ; text-align: center;"> ຈັດການ </th>
-                                    <td mat-cell *matCellDef="let element" class="text-center" > <button class="btn-delete"><mat-icon>create</mat-icon></button> <button class="btn-delete"><mat-icon>delete</mat-icon></button>   </td>
-                                  </ng-container>
+                              <!-- Weight Column -->
                               
-                                <!-- Weight Column -->
-                                
-                              
-                                <tr mat-header-row *matHeaderRowDef="displayProduct"></tr>
-                                <tr mat-row *matRowDef="let row; columns: displayProduct;"></tr>
-                              </table>
+                            
+                              <tr mat-header-row *matHeaderRowDef="displayProduct"></tr>
+                              <tr mat-row *matRowDef="let row; columns: displayProduct;"></tr>
+                            </table>
+                           </div>
                            
                             </div>
                         </div>
@@ -90,32 +102,40 @@
             <div class="container2" fxLayout="column" fxFlex="0 0 38%" >
              
               <div class="card">
-                <div class="h6 mt-2 ms-3">ລາຍການຂາຍທີ່ເລືອກ</div>
+                <div class="row">
+                  <div class="h6 mt-3 ms-4">ລາຍການຂາຍທີ່ເລືອກ</div>
+                </div>
                 <hr>
-                <div class="text-start|center|end" style="height:400px; max-height:380px; overflow-x: hidden;">
+                <div class="text-start|center|end" style="height: 500px; max-height:400px; overflow-x: hidden;">
                   <div class="row" *ngFor=" let item of cartItem;let i = index;">
-                    <div class="col">
-                      <div class="card-body">
-                        <h4 class="card-title text-bold"> {{item.productName}}</h4>
-                        <div class="row">
-                          <div class="col">
-                            <p class="card-text text-bold"> {{item.sell_price}}  ກີບ </p>
-                          </div>
-                          <div class="col d-flex flex-row justify-content-center">
-                            <button class="btn-add" (click)="increase(i,item)"><mat-icon>add_circle_outline</mat-icon></button>
-                            <div class="h5">{{item.Qty}}</div>
-                            <button class="btn-minimize" (click)="decrease(i)"><mat-icon>remove_circle_outline</mat-icon></button>
-                          </div>
+                    <div class="col pe-0 ms-3">
+                      <img class="pic-cart" src="{{item.image}}" alt="">
+                    </div>
+                    <div class="col me-5 pe-5 ps-0 ms-0">
+
+                        <h4> {{item.productName}}</h4>
+                        <p class="card-text text-bold"> {{item.sell_price | number }}  ກີບ </p>
+                     
+                        <div class="col">
+                         
                         </div>
                         
                       </div>
-                    </div>
+                    
                     <div class="col">
                       <div class="card-body">
-                        <div class="row mt-4 ms-3">
+                        <div class="row mt-2 me-5">
                           
-                          <div class="col">
-                            <button class="btn-clear" (click)="deleteItem(i)"><mat-icon>delete</mat-icon></button>
+                          <div class="col text-end">
+                            <button class="btn-clear ms-2" (click)="deleteItem(i)"><mat-icon>delete</mat-icon></button>
+                            <div class="row">
+        
+                              <div class="col d-flex justify-content-center text-end pe-0 ps-1" >
+                                <button class="btn-add me-5 mb-2"   (click)="increase(i,item)"><mat-icon>add_circle_outline</mat-icon></button>
+                                <div class="h5 mt-4">{{item.Qty}}</div>
+                                <button class="btn-minimize mb-2" (click)="decrease(i)"><mat-icon>remove_circle_outline</mat-icon></button>
+                              </div>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -130,7 +150,7 @@
                   <div class="col-4 h6" style="margin-left: 1rem ;">
                     ລາຄາລວມທັງໝົດ
                   </div>
-                  <div class="col h5 text-end pe-5">{{TotalPrice}} ກີບ</div>
+                  <div class="col h5 text-end pe-5">{{this.TotalPrice | number}} ກີບ</div>
                 </div>
                 
 
@@ -158,6 +178,7 @@
               
               </div>
               <button (click)="confirm_sale_dialog()" class="btn_sale mt-1 pt-2 pb-3">ຂາຍສິນຄ້າ</button>
+              
                 
             </div>
           </div>

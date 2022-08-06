@@ -32,3 +32,13 @@ img{
 
     
 }
+th{
+    background-color: #d6e4f9;
+    color: #7096cf ;
+}
+.th_1{
+    border-top-left-radius: 15px ;
+}
+.th_2{
+    border-top-right-radius: 15px ;
+}

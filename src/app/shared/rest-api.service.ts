@@ -123,6 +123,18 @@ export class RestAPIService {
     return this.http.get<any>(this.url+'/showOrderDetail?orderID='+orderID)
   }
 
+  showOrderdetail2(){
+    return this.http.get<any>(this.url+'/showOrderDetail_report')
+  }
+
+  showimportdetail(importID:any){
+    return this.http.get<any>(this.url+'/showImportDetail?importID='+importID)
+  }
+
+  showimportdetail2(){
+    return this.http.get<any>(this.url+'/showImportDetail_report')
+  }
+
   import(data:any,emID:any){
     let sendData={'data':data,'emID':emID}
     return this.http.post<any>(this.url+'/importProduct',sendData)
@@ -132,8 +144,22 @@ export class RestAPIService {
     return this.http.get<any>(this.url+'/showSaleDetail?saleID='+saleID)
   }
 
+  showsaledetail2(){
+    return this.http.get<any>(this.url+'/showSaleDetail_report')
+  }
+
   showimport(){
     return this.http.get<any>(this.url+'/showImport')
+  }
+
+  showDate(){
+    return this.http.get<any>(this.url+'/showDate')
+  }
+  showEmployee(){
+    return this.http.get<any>(this.url+'/showEmployee')
+  }
+  delemployee(emID:any){
+    return this.http.delete<any>(this.url+'/employee_delete/'+emID)
   }
 
   

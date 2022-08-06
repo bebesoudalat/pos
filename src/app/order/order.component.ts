@@ -6,6 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PopupAddProductComponent } from '../popup-add-product/popup-add-product.component';
 import Swal from "sweetalert2";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-order',
@@ -13,7 +14,7 @@ import Swal from "sweetalert2";
   styleUrls: ['./order.component.css']
 })
 export class OrderComponent implements OnInit {
-  displayProduct: string[] = ['proID','image', 'proName', 'qty', 'buy_price','buy_qty', 'action'];
+  displayProduct: string[] = ['proID','image', 'proName', 'qty', 'buy_price','sell_price','buy_qty', 'action'];
   displayOrder: string[] = ['proID','image', 'proName', 'qty', 'action'];
   displayOrderList : string[]=['supName', 'productName', 'buy_qty','price', 'action'];
 
@@ -39,7 +40,7 @@ export class OrderComponent implements OnInit {
 
   numberww:any=0
 
-  constructor( private dialogRef: MatDialog, public service: RestAPIService, public formBuilder: FormBuilder) {
+  constructor( private dialogRef: MatDialog, public service: RestAPIService, public formBuilder: FormBuilder, private router : Router) {
     
   }
 
@@ -52,8 +53,13 @@ export class OrderComponent implements OnInit {
 
     this.service.product().subscribe(res=>{
       this.data2=res.data
-      // console.log(this.data2)
+
       this.dataSource2 = new MatTableDataSource(this.data2);
+      console.log(this.data2)
+      // this.data5=res.data
+      // console.log(this.data1)
+      // this.dataOutOfStock = new MatTableDataSource(this.data5);
+      // console.log(this.data5)
     })
 
     this.service.showOrderList().subscribe(res=>{
@@ -63,29 +69,31 @@ export class OrderComponent implements OnInit {
       console.log(this.data1)
     })
 
-    this.service.OutOfStock().subscribe(res=>{
-      this.data5=res.data
-      // console.log(this.data1)
-      this.dataOutOfStock = new MatTableDataSource(this.data5);
-      console.log(this.data5)
-    })
+    // this.service.OutOfStock().subscribe(res=>{
+    //   this.data5=res.data
+    //   // console.log(this.data1)
+    //   this.dataOutOfStock = new MatTableDataSource(this.data5);
+    //   console.log(this.data5)
+    // })
+
+   
 
     this.dataOrderlist = new MatTableDataSource(this.listData);
 
 
-    this.orderForm = this.formBuilder.group({
-      'buy_qty' : ['', [Validators.required]]
-    })
 
     
   }
+  showOrderlist(){
+    this.router.navigate(['orderlist'])
+  }
+
   add_newproduct(){
     const dialogConfig = new MatDialogConfig;
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus= true;
     let dialog = this.dialogRef.open(AddOrderNewproductComponent, dialogConfig)
-    
-  
+
 }
 
   addItem(){
@@ -102,7 +110,11 @@ export class OrderComponent implements OnInit {
 
   addItem2(data:any){
     let productExists = false
-    let qty_buy=(<HTMLInputElement>document.getElementById(data.productID)).value
+    let qty_buy=(<HTMLInputElement>document.getElementById('2'+data.productID)).value
+    let buy_price=(<HTMLInputElement>document.getElementById('1'+data.productID)).value
+    let sell_price =(<HTMLInputElement>document.getElementById('3'+data.productID)).value
+
+    console.log(qty_buy,buy_price)
     for (let i in this.listData) {
           if (this.listData[i].productID === data.productID) {
             this.listData[i].Qty++
@@ -118,13 +130,17 @@ export class OrderComponent implements OnInit {
                 supName:data.supName,
                 Qty:data.Qty,
                 buy_qty:qty_buy,
-                buy_price:data.buy_price
+                buy_price:buy_price,
+                sell_price:sell_price,
               })
     }
+    console.log(this.listData)
     Swal.fire({
       text: 'ທ່ານໄດ້ເພີ່ມລາຍການຈັດຊື້ສຳເລັດແລ້ວ',
       icon: 'success',
-      confirmButtonText: 'ຕົກລົງ',
+      confirmButtonColor: '#d6e4f9',
+      cancelButtonColor: '#d6e4f9',
+      confirmButtonText: 'ຕົກລົງ'
     })
 // console.log(this.listData)
 }
@@ -149,6 +165,41 @@ deleteItem(i:any){
     
     this.service.addOrder(this.listData).subscribe(res=>{
     //  console.log(this.listData)
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-secondary',
+        cancelButton: 'btn btn-success'
+      },
+      buttonsStyling: false
+    })
+    
+    swalWithBootstrapButtons.fire({
+      text: "ທ່ານໄດ້ເພີ່ມລາຍການຈັດຊື້ສຳເລັດ",
+      icon: 'success',
+      showCancelButton: true,
+      confirmButtonText: 'ເບິ່ງລາຍການທີ່ຈັດຊື້',
+      cancelButtonText: 'ຕົກລົງ',
+      reverseButtons: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // swalWithBootstrapButtons.fire(
+        //   'Deleted!',
+        //   'Your file has been deleted.',
+        //   'success'
+        // )
+        this.router.navigate(['editOrder'])
+        
+      } else if (
+        /* Read more about handling dismissals below */
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+        
+        this.listData=[]
+      }
+    })
+
+      this.listData=[]
+
     })
   }
 
@@ -168,17 +219,18 @@ deleteItem(i:any){
   }
 
   onSelectcategory(category:any){
-    let data = this.data5.filter((res: { cateID: any; })=>{
+    let data = this.data2.filter((res: { cateID: any; })=>{
       return res.cateID.toString().match(category.toString())
     })
-    this.dataOutOfStock = new MatTableDataSource(data);
+    this.dataSource2 = new MatTableDataSource(data);
   }
 
+
   onSelect(qty:any){
-    let data = this.data5.filter((res: { Qty: any;  })=>{
-      return res.Qty < 5
+    let data = this.data2.filter((res: { qty: any;  })=>{
+      return res.qty < 5
     })
-    this.dataOutOfStock = new MatTableDataSource(data);
+    this.dataSource2 = new MatTableDataSource(data);
   }
   
   

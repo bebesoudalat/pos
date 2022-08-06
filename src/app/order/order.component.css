@@ -77,12 +77,21 @@ table{
 .card{
     border-radius: 10px;
 }
-.btn-delete{
+/* .btn-delete{
     width: 20px;
     height: 20px;
     background-color: white;
     border: none;
     color: #89ABDE;
+} */
+
+.btn-delete{
+    width: 50px;
+    height: 35px;
+    background-color: #d6e4f9;
+    color: #7096cf;
+    border: none;
+    border-radius: 50px;
 }
 .btn_save{
     width: 130px;
@@ -138,4 +147,30 @@ img{
 ::-webkit-scrollbar-thumb{
     background-color: lightgray;
     border-radius: 100vw;
+}
+
+th{
+    background-color: #d6e4f9;
+    color: #7096cf ;
+}
+.th_1{
+    border-top-left-radius: 15px ;
+}
+.th_2{
+    border-top-right-radius: 15px ;
+}
+
+/* *{
+    font-size: 15px;
+} */
+.btn_orderlist{
+    width: 160px;
+    height: 32px;
+    background-color:rgb(249, 249, 249);
+    border: 1px solid #89ABDE;
+    border-radius: 50px;
+    color: #89ABDE;
+}
+th,td{
+    font-size: 15px;
 }
