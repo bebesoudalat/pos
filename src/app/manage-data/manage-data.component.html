@@ -135,7 +135,7 @@
                    
                             <ng-container matColumnDef="proID">
                               <th class="th_1" mat-header-cell *matHeaderCellDef style="width: 5px; text-align: center;" > ລຳດັບ </th>
-                              <td mat-cell *matCellDef="let element" class="text-center" > {{element.productID}} </td>
+                              <td mat-cell *matCellDef="let element ; let i = index" class="text-center" > {{i+1}} </td>
                             </ng-container>
                           
                            
@@ -252,7 +252,7 @@
                       <!-- Position Column -->
                       <ng-container matColumnDef="cateID">
                         <th class="th_1" mat-header-cell *matHeaderCellDef style="width: 5px; text-align: center;" > ລຳດັບ </th>
-                        <td mat-cell *matCellDef="let element" class="text-center" > {{element.cateID}} </td>
+                        <td mat-cell *matCellDef="let element ; let i = index" class="text-center" > {{i+1}} </td>
                       </ng-container>
                     
                       <!-- Name Column -->
@@ -343,7 +343,7 @@
                       <!-- Position Column -->
                       <ng-container matColumnDef="unitID">
                         <th class="th_1" mat-header-cell *matHeaderCellDef style="width: 5px; text-align: center;" > ລຳດັບ </th>
-                        <td mat-cell *matCellDef="let element" class="text-center" > {{element.unitID}} </td>
+                        <td mat-cell *matCellDef="let element; let i = index" class="text-center" > {{i+1}} </td>
                       </ng-container>
                     
                       <!-- Name Column -->
@@ -480,7 +480,7 @@
                           <!-- Position Column -->
                           <ng-container matColumnDef="supID">
                             <th class="th_1" mat-header-cell *matHeaderCellDef style="width: 5px; text-align: center;" > ລຳດັບ </th>
-                            <td mat-cell *matCellDef="let element" class="text-center" > {{element.supID}} </td>
+                            <td mat-cell *matCellDef="let element; let i = index" class="text-center" > {{i+1}} </td>
                           </ng-container>
                         
                           <!-- Name Column -->
@@ -595,7 +595,7 @@
                             <!-- Position Column -->
                             <ng-container matColumnDef="emID">
                               <th class="th_1" mat-header-cell *matHeaderCellDef style="width: 5px; text-align: center;" > ລຳດັບ </th>
-                              <td mat-cell *matCellDef="let element" class="text-center" > {{element.emID}} </td>
+                              <td mat-cell *matCellDef="let element ; let i = index" class="text-center" > {{i+1}} </td>
                             </ng-container>
                           
                             <!-- Name Column -->

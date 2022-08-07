@@ -131,6 +131,10 @@ export class RestAPIService {
     return this.http.get<any>(this.url+'/showImportDetail?importID='+importID)
   }
 
+  showImport_Qty(orderID:any){
+    return this.http.get<any>(this.url+'/showImportDetail_qty?orderID='+orderID)
+  }
+
   showimportdetail2(){
     return this.http.get<any>(this.url+'/showImportDetail_report')
   }

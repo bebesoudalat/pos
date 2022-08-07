@@ -115,12 +115,23 @@ td{
     font-size: 15px;
 }
 .btn_sale{
-    background-color: #89ABDE;
+    background-color: #7096cf;
     border-radius: 50px;
     color: white;
     border: none;
     height: 35px;
     width: 440px;
+}
+.btn_sale:hover{
+    background-color: #89ABDE;
+    color: white;
+}
+
+.btn_sale:disabled,
+.btn_sale[disabled]{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
 }
 .img2{
     width: 100px;

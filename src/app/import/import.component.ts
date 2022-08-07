@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class ImportComponent implements OnInit {
   displayProduct: string[] = ['proID','image', 'proName', 'qty', 'buy_price', 'action'];
-  displayOrder: string[] = ['orderID','supName', 'proName', 'action'];
+  displayOrder: string[] = ['no','orderID','supName', 'proName', 'action'];
 
   dataSource2:any;
   data2:any;

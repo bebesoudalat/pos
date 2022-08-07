@@ -115,6 +115,7 @@ export class ManageDataComponent implements OnInit {
       this.dataSource5 = new MatTableDataSource(this.data5);
     })
     this.productForm = this.formBuilder.group({
+      'product_code': ['', [Validators.required]],
       'productName': ['', [Validators.required]],
       'cateID': ['', [Validators.required]],
       'unitID': ['', [Validators.required]],

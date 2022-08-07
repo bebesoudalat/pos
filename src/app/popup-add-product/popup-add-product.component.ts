@@ -4,6 +4,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ManageDataComponent } from '../manage-data/manage-data.component';
+import Swal from "sweetalert2";
+
 @Component({
   selector: 'app-popup-add-product',
   templateUrl: './popup-add-product.component.html',
@@ -59,6 +61,7 @@ export class PopupAddProductComponent implements OnInit {
       this.dataSource4 = new MatTableDataSource(this.data4);
     })
     this.productForm = this.formBuilder.group({
+      'product_code': ['', [Validators.required]],
       'productName': ['', [Validators.required]],
       'cateID': ['', [Validators.required]],
       'unitID': ['', [Validators.required]],
@@ -101,6 +104,25 @@ export class PopupAddProductComponent implements OnInit {
       console.log(data)
       this.service.addproduct(data).subscribe (res=>{
         console.log(res)
+        if (res.status == 1) {
+          this.service.product().subscribe(res=>{
+            this.data2=res.data
+            // console.log(this.data2)
+            this.dataSource2 = new MatTableDataSource(this.data2);
+          })
+        } else {
+
+          Swal.fire({
+            text: 'ລະຫັດສິນຄ້ານີ້ມີແລ້ວ',
+            icon: 'error',
+            confirmButtonColor: '#d6e4f9',
+            cancelButtonColor: '#d6e4f9',
+            confirmButtonText: 'ຕົກລົງ'
+          })
+          
+        }
+
+        
       })
     }
 

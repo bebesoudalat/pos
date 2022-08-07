@@ -8,7 +8,7 @@
     color: #89ABDE;
 }
 .addItem{
-    width: 130px;
+    width: 100px;
     height: 32px;
     background-color: #89ABDE;
     border: none;
@@ -124,7 +124,7 @@ img{
 }
 
 .buy_qty{
-    width: 100px;
+    width: 90px;
     height: 30px;
     border: 1px solid gray;
     border-radius: 3px;
@@ -173,4 +173,8 @@ th{
 }
 th,td{
     font-size: 15px;
+}
+
+.input{
+    width: 180px;
 }

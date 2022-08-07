@@ -17,9 +17,9 @@ export class ReportComponent implements OnInit {
   displayProduct: string[] = ['proID','proName', 'cateName','unitName', 'qty', 'sell_price', 'buy_price'];
   displayedSale: string[] = ['emID','productID', 'sale_qty', 'price'];
   displayedOrder: string[] = ['orderID','supName', 'proName', 'action'];
-  displayedImport: string[] = ['importID','orderID','supName','emName','date','action'];
+  displayedImport: string[] = ['proID','image', 'proName', 'import_qty', 'buy_price'];
   displayProduct_report: string[] = ['proID','proName', 'cateName','unitName', 'qty', 'sell_price', 'buy_price'];
-  displaySale_report: string[] = ['emID','productID', 'sale_qty', 'price'];
+  displaySale_report: string[] = ['date','emID','productID', 'sale_qty', 'price'];
   displayOrder_report: string[] = ['proID','image', 'supName', 'proName', 'buy_price'];
   displayImport_report: string[] = ['proID','image', 'proName', 'import_qty', 'buy_price'];
   
@@ -49,12 +49,18 @@ export class ReportComponent implements OnInit {
   dataImport_report:any
   data8:any
 
+  dataImport:any
+  totalprice:any
+
   date : Date = new Date();
   
 
   constructor(private service: RestAPIService, private router : Router) { }
 
   ngOnInit(): void {
+this.day()
+this.year()
+
     this.service.product().subscribe(res=>{
       this.data2=res.data
       this.productReport=res.data
@@ -86,7 +92,6 @@ export class ReportComponent implements OnInit {
       this.data3 = res.data
       this.data6 = res.data
       this.dataSale_report = new MatTableDataSource(this.data6);
-      this.dataSource3 = new MatTableDataSource(this.data3);
     })
 
     this.service.showOrderdetail2().subscribe(res=>{
@@ -100,6 +105,7 @@ export class ReportComponent implements OnInit {
       this.saleDetail = res.data
       this.data8 = res.data
       this.dataImport_report = new MatTableDataSource(this.data8);
+      this.dataImport = new MatTableDataSource(this.data8);
     })
   }
 
@@ -120,6 +126,27 @@ export class ReportComponent implements OnInit {
     this.service.showDate().subscribe(res =>
       console.log())
   }
+
+  select_date(event:any){
+    // console.log(event.target.value)
+    let data = this.data3.filter((res: { date: any; })=>{
+      return moment(res.date).format("yyyy-MM-DD").toString().match(event.target.value.toString())
+    })
+    this.dataSale_report = new MatTableDataSource(data);
+    console.log(this.dataSale_report._data._value)
+  }
+
+  totalPrice(price:any){
+    let sum = 0;
+
+    for (let index = 0; index < price.length; index++) {
+
+      sum += price[index].sell_price*price[index].sale_qty;
+    }
+    return this.totalprice = sum
+  }
+
+
 
 
   exportExcel() {
@@ -202,6 +229,118 @@ this.data3.forEach((e:any) => {
 
   }
 
+ day(){
+  for (let index = 1; index <= 31; index++) {
+    this.dayy.push({"day":index})
+    
+  }
+ }
 
+ year(){
+  for (let index = 2019; index <= 2040; index++) {
+    this.yearr.push({"year":index})
+    
+  }
+ }
+
+ 
+ filter(){
+
+  let data = this.data3.filter((res:{date:any}) =>{
+    return moment(res.date).format("DD").toString().match(this.date_filter.toString()) && moment(res.date).format("MM").toString().match(this.month_filter.toString()) && moment(res.date).format("yyyy").toString().match(this.year_filter.toString())
+  })
+  this.dataSale_report = new MatTableDataSource(data)
+  console.log(data)
+  
+ }
+
+ filter_order(){
+
+  let data = this.data7.filter((res:{buy_date:any}) =>{
+    return moment(res.buy_date).format("DD").toString().match(this.date_filter.toString()) && moment(res.buy_date).format("MM").toString().match(this.month_filter.toString()) && moment(res.buy_date).format("yyyy").toString().match(this.year_filter.toString())
+  })
+  this.dataOrder_report = new MatTableDataSource(data)
+  console.log(data)
+ }
+
+ filter_import(){
+
+  let data = this.data8.filter((res:{import_date:any}) =>{
+    return moment(res.import_date).format("DD").toString().match(this.date_filter.toString()) && moment(res.import_date).format("MM").toString().match(this.month_filter.toString()) && moment(res.import_date).format("yyyy").toString().match(this.year_filter.toString())
+  })
+  this.dataImport = new MatTableDataSource(data)
+  console.log(data)
+ }
+
+ date_filter :any=''
+ month_filter :any=''
+ year_filter:any=''
+
+ yearr:any=[]
+ dayy:any=[]
+
+  month:any = [
+    {
+      "name": "ມັງກອນ",
+      "short": "Jan",
+      "number": 1,
+      "days": 31
+    },{
+      "name": "ກຸມພາ",
+      "short": "Feb",
+      "number": 2,
+      "days": 28
+    }, {
+      "name": "ມີນາ",
+      "short": "Mar",
+      "number": 3,
+      "days": 31
+    }, {
+      "name": "ເມສາ",
+      "short": "Apr",
+      "number": 4,
+      "days": 30
+    }, {
+      "name": "ພຶດສະພາ",
+      "short": "May",
+      "number": 5,
+      "days": 31
+    }, {
+      "name": "ມິຖຸນາ",
+      "short": "Jun",
+      "number": 6,
+      "days": 30
+    }, {
+      "name": "ກໍລະກົດ",
+      "short": "Jul",
+      "number": 7,
+      "days": 31
+    }, {
+      "name": "ສິງຫາ",
+      "short": "Aug",
+      "number": 8,
+      "days": 31
+    },{
+      "name": "ກັນຍາ",
+      "short": "Sep",
+      "number": 9,
+      "days": 30
+    },{
+      "name": "ຕຸລາ",
+      "short": "Oct",
+      "number": 10,
+      "days": 31
+    }, {
+      "name": "ພະຈິກ",
+      "short": "Nov",
+      "number": 11,
+      "days": 30
+    }, {
+      "name": "ທັນວາ",
+      "short": "Dec",
+      "number": 12,
+      "days": 31
+    }
+  ]
 
 }

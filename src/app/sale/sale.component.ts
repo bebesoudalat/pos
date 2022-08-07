@@ -14,7 +14,7 @@ import { NgxPrintModule } from 'ngx-print';
   styleUrls: ['./sale.component.css']
 })
 export class SaleComponent implements OnInit {
-  displayProduct:string[] = ['image','proName','qty','sell_price'];
+  displayProduct:string[] = ['image','productCode','proName','qty','sell_price'];
 
   dataSource1:any;
   dataSource2:any;
@@ -118,6 +118,7 @@ export class SaleComponent implements OnInit {
 cal(sellprice:any,qty:any){
 return sellprice*qty
 }
+
 
 increase(i:any,item:any){
   

@@ -114,3 +114,6 @@ input{
 .date{
     float: right;
 }
+select{
+    width: 150px;
+}

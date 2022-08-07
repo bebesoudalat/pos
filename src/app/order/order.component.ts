@@ -14,7 +14,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./order.component.css']
 })
 export class OrderComponent implements OnInit {
-  displayProduct: string[] = ['proID','image', 'proName', 'qty', 'buy_price','sell_price','buy_qty', 'action'];
+  displayProduct: string[] = ['proID','image','productCode', 'proName', 'qty', 'buy_price','sell_price','buy_qty', 'action'];
   displayOrder: string[] = ['proID','image', 'proName', 'qty', 'action'];
   displayOrderList : string[]=['supName', 'productName', 'buy_qty','price', 'action'];
 
@@ -62,12 +62,13 @@ export class OrderComponent implements OnInit {
       // console.log(this.data5)
     })
 
-    this.service.showOrderList().subscribe(res=>{
-      this.data1=res.data
-      // console.log(this.data1)
-      this.dataOrderlist = new MatTableDataSource(this.data1);
-      console.log(this.data1)
-    })
+
+    // this.service.showOrderList().subscribe(res=>{
+    //   this.data1=res.data
+    //   // console.log(this.data1)
+    //   this.dataOrderlist = new MatTableDataSource(this.data1);
+    //   console.log(this.data1)
+    // })
 
     // this.service.OutOfStock().subscribe(res=>{
     //   this.data5=res.data
@@ -221,6 +222,14 @@ deleteItem(i:any){
   onSelectcategory(category:any){
     let data = this.data2.filter((res: { cateID: any; })=>{
       return res.cateID.toString().match(category.toString())
+    })
+    this.dataSource2 = new MatTableDataSource(data);
+  }
+
+  onSelectSupplier(supplier:any){
+    console.log(supplier.target.value)
+    let data = this.data2.filter((res: { supID: any; })=>{
+      return res.supID.toString().match(supplier.target.value.toString())
     })
     this.dataSource2 = new MatTableDataSource(data);
   }

@@ -37,6 +37,7 @@ export class PopupEditProductComponent implements OnInit {
   ngOnInit(): void {
     this.productForm = this.formBuilder.group({
       'productID': [this.data_sent.productID, [Validators.required]],
+      'product_code': [this.data_sent.product_code, [Validators.required]],
       'productName': [this.data_sent.productName, [Validators.required]],
       'cateID': [this.data_sent.cateID, [Validators.required]],
       'unitID': [this.data_sent.unitID, [Validators.required]],
@@ -115,11 +116,22 @@ export class PopupEditProductComponent implements OnInit {
   })
   this.service.editproduct(data).subscribe(res=>{
     console.log(res)
+    this.service.product().subscribe(res=>{
+      this.data2=res.data
+      // console.log(this.data2)
+      this.dataSource2 = new MatTableDataSource(this.data2);
+    })
   })
+
 
   } else {
     this.service.editproduct(this.productForm.value).subscribe(res=>{
       console.log(res)
+      this.service.product().subscribe(res=>{
+        this.data2=res.data
+        // console.log(this.data2)
+        this.dataSource2 = new MatTableDataSource(this.data2);
+      })
     })
   }
   

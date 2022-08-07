@@ -12,6 +12,7 @@ import Swal from "sweetalert2";
 export class ImportDetailComponent implements OnInit {
   displayProduct: string[] = ['proID','image', 'proName', 'qty', 'sell_price', 'buy_price'];
   displayOrder: string[] = ['proID','image', 'proName','import_qty', 'buy_price'];
+  displayImport: string[] = ['proID','image', 'proName', 'import_qty', 'buy_price'];
 
   dataSource2:any;
   data2:any;
@@ -23,6 +24,15 @@ export class ImportDetailComponent implements OnInit {
 
   dataAll:any
 
+  saleDetail:any
+  data8:any
+  dataImport:any
+
+  importdetail:any
+  importdetail_qty:any
+  data9:any
+
+ test=this.activatedRoute.snapshot.params['orderID']
   constructor(private service: RestAPIService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -36,6 +46,26 @@ export class ImportDetailComponent implements OnInit {
       this.data2 = res.data
       this.dataSource1 = new MatTableDataSource(this.data2);
     })
+
+    this.service.showimportdetail2().subscribe(res=>{
+      console.log(res.data)
+      this.saleDetail = res.data
+      this.data8 = res.data
+      this.dataImport = new MatTableDataSource(this.data8);
+    })
+
+    this.show_qty()
+
+    
+  }
+
+  show_qty(){
+    this.service.showImport_Qty(this.test).subscribe(res=>{
+      console.log(res.data)
+      this.importdetail = res.data
+      this.data9 = res.data
+      this.importdetail_qty = new MatTableDataSource(this.data9);
+    })
   }
 
   importDetail(){
@@ -48,8 +78,10 @@ export class ImportDetailComponent implements OnInit {
       let emID=JSON.parse(localStorage.getItem("user") || "[]").data[0].emID
       this.service.import(this.dataAll,emID).subscribe(res => {
       console.log(this.dataAll)
+      this.show_qty()
     })
     this.dataAll[0].status = 1
+
     // } else {
     //   Swal.fire({
     //     icon: 'error',
