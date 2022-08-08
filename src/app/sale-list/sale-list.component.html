@@ -1,0 +1,72 @@
+<div class="container text-center mt-4">
+    <div class="h4">ລາຍການຂາຍທັງໝົດ</div>
+
+    <div class="row mt-3">
+        <div class="col-8">
+          <!-- <div class="text-start ms-2 ps-3 mt-3">
+            <mat-icon matListIcon>save_alt</mat-icon>
+            <div
+              class="h5"
+              style="position: absolute; margin-left: 30px; margin-top: -27px"
+            >
+            ນຳສິນຄ້າເຂົ້າ
+            </div>
+          </div> -->
+        </div>
+
+        <div class="col-sm-4 mt-3 text-end">
+          <!-- <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg> -->
+          <img src="../../assets/img/search-interface-symbol.png" alt="">
+          <input class="search" type="text" placeholder="ຄົ້ນຫາ">
+        </div>
+      </div>
+
+     
+
+      <div class="col mt-4">
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+            <!-- Position Column -->
+
+            <ng-container matColumnDef="no">
+              <mat-header-cell  class="th_1" style="width:100px; text-align: center;" *matHeaderCellDef> ລຳດັບ </mat-header-cell>
+              <mat-cell *matCellDef="let element; let i = index"> {{i+1}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="date">
+              <mat-header-cell  *matHeaderCellDef style="width:100px"> ວັນທີ </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.payDate | date:'dd/MM/yyyy'}} </mat-cell>
+            </ng-container>
+          
+            <!-- Name Column -->
+            <ng-container matColumnDef="emName">
+              <mat-header-cell *matHeaderCellDef> ພະນັກງານ </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.emName}} </mat-cell>
+            </ng-container>
+          
+            <!-- Weight Column -->
+            <ng-container matColumnDef="total_price">
+              <mat-header-cell *matHeaderCellDef> ລາຄາລວມທັງໝົດ </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.total_price | number}} ກີບ </mat-cell>
+            </ng-container>
+          
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="action">
+              <mat-header-cell class="th_2 text-end" *matHeaderCellDef> ລາຍລະອຽດ </mat-header-cell>
+              <mat-cell *matCellDef="let element"><button class="btn-detail" (click)="show_saleDetail(element.saleID)">ລາຍລະອຽດ</button></mat-cell>
+            </ng-container>
+          
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        
+        
+        </table>
+          
+          <mat-paginator [length]="data.length"
+                              [pageSize]="10"
+                               showFirstLastButtons
+                               aria-label="Select page of periodic elements">
+          </mat-paginator>
+      </div>
+
+</div>
+

@@ -34,7 +34,7 @@ img{
     height: 50px;
     margin: 0 50px;
 }
-a{
+.button{
     text-decoration: none;
     background-color: #89ABDE;
     padding:5px 30px;
@@ -54,6 +54,8 @@ a>mat-nav-list{
 .icon{
     font-size: 30px;
     margin-right: 10px;
+    color: #89ABDE;
+    margin-top: -5px;
 }
 .a{
     color: #89ABDE;
@@ -79,6 +81,26 @@ mat-header-cell{
     color: #89ABDE;
     background-color: white;
     border-radius: 50px;
+}
+.next{
+    font-size: 50px;
+    color: #7096cf;
+    cursor: pointer;
+}
+.bg-next{
+    width: 50px;
+    height: 50px;
+    background-color: #d6e4f9;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+.bg-next:hover{
+    background-color: #7096cf;
+}
+
+.next:hover{
+    color: white;
 }
 
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog , MatDialogConfig } from '@angular/material/dialog';
 import { AddOrderNewproductComponent } from '../add-order-newproduct/add-order-newproduct.component';
 import { RestAPIService } from '../shared/rest-api.service';
@@ -7,6 +7,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PopupAddProductComponent } from '../popup-add-product/popup-add-product.component';
 import Swal from "sweetalert2";
 import { Router } from '@angular/router';
+import { Subject, switchMap } from 'rxjs';
+import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-order',
@@ -39,9 +41,14 @@ export class OrderComponent implements OnInit {
   orderItemform:any = FormGroup;
 
   numberww:any=0
+  @ViewChild(MatPaginator,{static:true}) paginator!:MatPaginator
+
+  onSearchProduct = new Subject<any>();
 
   constructor( private dialogRef: MatDialog, public service: RestAPIService, public formBuilder: FormBuilder, private router : Router) {
-    
+    this.onSearchProduct.pipe(switchMap((searchProduct)=>
+    this.service.search_Product(searchProduct))).subscribe((value)=> 
+    console.log('test',value));
   }
 
   ngOnInit(): void {
@@ -53,9 +60,10 @@ export class OrderComponent implements OnInit {
 
     this.service.product().subscribe(res=>{
       this.data2=res.data
-
+      console.log(res.data)
       this.dataSource2 = new MatTableDataSource(this.data2);
-      console.log(this.data2)
+      this.dataSource2.paginator = this.paginator
+      
       // this.data5=res.data
       // console.log(this.data1)
       // this.dataOutOfStock = new MatTableDataSource(this.data5);
@@ -129,6 +137,7 @@ export class OrderComponent implements OnInit {
                 productName:data.productName,
                 supID:data.supID,
                 supName:data.supName,
+                unitName:data.unitName,
                 Qty:data.Qty,
                 buy_qty:qty_buy,
                 buy_price:buy_price,
@@ -163,46 +172,44 @@ deleteItem(i:any){
 }
 
   addOrder(){
-    
-    this.service.addOrder(this.listData).subscribe(res=>{
-    //  console.log(this.listData)
-    const swalWithBootstrapButtons = Swal.mixin({
-      customClass: {
-        confirmButton: 'btn btn-secondary',
-        cancelButton: 'btn btn-success'
-      },
-      buttonsStyling: false
-    })
-    
-    swalWithBootstrapButtons.fire({
-      text: "ທ່ານໄດ້ເພີ່ມລາຍການຈັດຊື້ສຳເລັດ",
-      icon: 'success',
-      showCancelButton: true,
-      confirmButtonText: 'ເບິ່ງລາຍການທີ່ຈັດຊື້',
-      cancelButtonText: 'ຕົກລົງ',
-      reverseButtons: true
-    }).then((result) => {
-      if (result.isConfirmed) {
-        // swalWithBootstrapButtons.fire(
-        //   'Deleted!',
-        //   'Your file has been deleted.',
-        //   'success'
-        // )
-        this.router.navigate(['editOrder'])
-        
-      } else if (
-        /* Read more about handling dismissals below */
-        result.dismiss === Swal.DismissReason.cancel
-      ) {
-        
-        this.listData=[]
-      }
-    })
+      const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+          confirmButton: 'btn btn-secondary',
+          cancelButton: 'btn btn-success'
+        },
+        buttonsStyling: false
+      })
+      
+      swalWithBootstrapButtons.fire({
+        text: "ທ່ານຕ້ອງການຈັດຊື້ລາຍການທັງໝົດນີ້ບໍ ?",
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonText: 'ຕົກລົງ',
+        cancelButtonText: 'ຍົກເລີກ',
+        reverseButtons: true
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // swalWithBootstrapButtons.fire(
+          //   'Deleted!',
+          //   'Your file has been deleted.',
+          //   'success'
+          // )
+          this.service.addOrder(this.listData).subscribe(res=>{
+          
+          })
+          this.listData=[]
+          
+        } else if (
+          /* Read more about handling dismissals below */
+          result.dismiss === Swal.DismissReason.cancel
+        ) {
+          
+          this.listData
+        }
+      })
 
-      this.listData=[]
-
-    })
-  }
+    }
+  
 
   openDialog(){
     const dialogConfig = new MatDialogConfig;
@@ -236,8 +243,8 @@ deleteItem(i:any){
 
 
   onSelect(qty:any){
-    let data = this.data2.filter((res: { qty: any;  })=>{
-      return res.qty < 5
+    let data = this.data2.filter((res: { Qty: any;  })=>{
+      return res.Qty <= 3
     })
     this.dataSource2 = new MatTableDataSource(data);
   }
@@ -255,6 +262,17 @@ test(id:any){
   
   get p(){
     return this.orderForm.controls;
+}
+
+search_Product(searchProduct:any){
+  console.log()
+  this.onSearchProduct.next(searchProduct);
+  this.service.search_Product(searchProduct).subscribe(res=>{
+    // console.log(res)
+    this.data2=res.data
+      console.log(res.data)
+      this.dataSource2 = new MatTableDataSource(this.data2);
+  })
 }
 
 

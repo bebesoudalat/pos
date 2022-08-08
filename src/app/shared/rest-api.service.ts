@@ -65,6 +65,10 @@ export class RestAPIService {
     return this.http.put<any>(this.url+'/supplier_update',data)
   }
 
+  editEmployee(data:any){
+    return this.http.put<any>(this.url+'/employee_edit',data)
+  }
+
   deleteCategory(cateID:any){
     return this.http.delete<any>(this.url+'/delete_category/'+cateID)
   }

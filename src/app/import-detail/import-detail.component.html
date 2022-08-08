@@ -13,7 +13,7 @@
                 <p>ຜູ້ສະໜອງ <span class="ps-3"> {{dataAll[0].supName}} </span></p>
             </div>
     
-            <div class="col text-end ">
+            <div class="col text-end me-4 ">
                 <p>ວັນທີ <span class="ps-3"> {{dataAll[0].buy_date | date:'dd/MM/yyyy'}}</span></p>
                 <p>ສະຖານະ <span class="ps-3">{{status(dataAll[0].status)}}</span></p>
             </div>
@@ -21,7 +21,7 @@
 
             <div class="row">
                 <div class="col text-end ">
-                    <button type="button" (click)="importDetail()" *ngIf="dataAll[0].status == 0" class="btn">ສິນຄ້າຄົບຖ້ວນ</button>
+                    <button type="button" (click)="importDetail()" *ngIf="dataAll[0].status == 0" class="btn">ນຳສິນຄ້າເຂົ້າ</button>
                 </div>
             </div>
         </div>

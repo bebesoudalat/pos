@@ -37,12 +37,11 @@ export class PopupEditProductComponent implements OnInit {
   ngOnInit(): void {
     this.productForm = this.formBuilder.group({
       'productID': [this.data_sent.productID, [Validators.required]],
-      'product_code': [this.data_sent.product_code, [Validators.required]],
       'productName': [this.data_sent.productName, [Validators.required]],
       'cateID': [this.data_sent.cateID, [Validators.required]],
       'unitID': [this.data_sent.unitID, [Validators.required]],
       'supID':[this.data_sent.supID,[Validators.required]],
-      'qty': [this.data_sent.qty, [Validators.required]],
+      'Qty': [this.data_sent.Qty, [Validators.required]],
       'buy_price': [this.data_sent.buy_price, [Validators.required]],
       'sell_price': [this.data_sent.sell_price, [Validators.required]],
       'image': ['']
@@ -99,16 +98,7 @@ export class PopupEditProductComponent implements OnInit {
     this.edit = false
     this.add = true
     console.log(this.productForm.value['image'])
-    // this.service.product().subscribe(res=>{
-    //   this.data2=res.data
-    //   console.log(this.data2)
-    //   this.dataSource2 = new MatTableDataSource(this.data2);
-    // })
-  //   const data= new FormData();
-  // Object.entries(this.productForm.value).forEach(([key,value]:any[])=>{
-  //   data.set(key,value)
-  // })
-  // console.log(data)
+    
   if (this.productForm.value['image']) {
     const data= new FormData();
   Object.entries(this.productForm.value).forEach(([key,value]:any[])=>{
@@ -121,6 +111,18 @@ export class PopupEditProductComponent implements OnInit {
       // console.log(this.data2)
       this.dataSource2 = new MatTableDataSource(this.data2);
     })
+    this.productForm = this.formBuilder.group({
+      'productID': ['', [Validators.required]],
+      'productName': ['', [Validators.required]],
+      'cateID': ['', [Validators.required]],
+      'unitID': ['', [Validators.required]],
+      'supID': ['1', [Validators.required]],
+      'Qty': ['', [Validators.required]],
+      'buy_price': ['', [Validators.required]],
+      'sell_price': ['', [Validators.required]],
+      'image': ['', [Validators.required]]
+  })
+
   })
 
 
@@ -132,6 +134,16 @@ export class PopupEditProductComponent implements OnInit {
         // console.log(this.data2)
         this.dataSource2 = new MatTableDataSource(this.data2);
       })
+      this.productForm = this.formBuilder.group({
+        'productID': ['', [Validators.required]],
+        'productName': ['', [Validators.required]],
+        'cateID': ['', [Validators.required]],
+        'unitID': ['', [Validators.required]],
+        'supID': ['1', [Validators.required]],
+        'Qty': ['', [Validators.required]],
+        'buy_price': ['', [Validators.required]],
+        'sell_price': ['', [Validators.required]]
+    })
     })
   }
   

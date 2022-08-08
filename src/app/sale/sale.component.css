@@ -108,7 +108,7 @@ table{
 th{
     background-color: #d6e4f9;
     color: #7096cf ;
-    font-size: 15px;
+    font-size: 13px;
 }
 td{
     padding: 5px;
@@ -180,7 +180,7 @@ td{
 }
 .search::placeholder{
     text-indent: 0;
-    font-size: 14px;
+    font-size: 13px;
 }
 .img{
     width: 18px;

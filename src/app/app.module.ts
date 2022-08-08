@@ -52,6 +52,8 @@ import { ImportDetailComponent } from './import-detail/import-detail.component';
 import { ContentComponent } from './content/content/content.component';
 import { ContentModule } from './content/content/content.module';
 import { SaleDetailComponent } from './sale-detail/sale-detail.component';
+import { SaleListComponent } from './sale-list/sale-list.component';
+
 
 
 
@@ -63,6 +65,8 @@ import { SaleDetailComponent } from './sale-detail/sale-detail.component';
 @NgModule({
   declarations: [
     AppComponent,
+    
+  
 
 
   

@@ -34,7 +34,7 @@ export class HomeComponent implements OnInit {
 
     this.service.showSaleData().subscribe(res=>{
       this.data=res.data 
-      // console.log(this.data)
+      console.log(this.data.length)
       this.dataSource = new MatTableDataSource(this.data);
       this.dataSource.paginator=this.paginator
     })

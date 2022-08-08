@@ -22,6 +22,7 @@ import { RegisterComponent } from './register/register.component';
 import { ReportComponent } from './report/report.component';
 import { RootNavComponent } from './root-nav/root-nav.component';
 import { SaleDetailComponent } from './sale-detail/sale-detail.component';
+import { SaleListComponent } from './sale-list/sale-list.component';
 import { SaleComponent } from './sale/sale.component';
 import { ShowImportDetailComponent } from './show-import-detail/show-import-detail.component';
 import { UnitComponent } from './unit/unit.component';
@@ -111,6 +112,11 @@ const routes: Routes = [{
     path:'print-report',
     component: PrintReportComponent
   },
+  {
+    path:'sale-list',
+    component: SaleListComponent
+  
+  }
 
 ]
   },

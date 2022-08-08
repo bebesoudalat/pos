@@ -137,6 +137,11 @@
                               <th class="th_1" mat-header-cell *matHeaderCellDef style="width: 5px; text-align: center;" > ລຳດັບ </th>
                               <td mat-cell *matCellDef="let element ; let i = index" class="text-center" > {{i+1}} </td>
                             </ng-container>
+
+                            <ng-container matColumnDef="product_code">
+                              <th  mat-header-cell *matHeaderCellDef style="width: 100px; text-align: center;" > ລະຫັດສິນຄ້າ </th>
+                              <td mat-cell *matCellDef="let element ; let i = index" class="text-center" > {{element.product_code}} </td>
+                            </ng-container>
                           
                            
                             <ng-container matColumnDef="image" >
@@ -151,7 +156,7 @@
         
                             <ng-container matColumnDef="qty" >
                               <th mat-header-cell *matHeaderCellDef style="width: 20px ; text-align: center;" > ຈຳນວນ </th>
-                              <td mat-cell *matCellDef="let element" class="text-center" > {{element.Qty}}  </td>
+                              <td mat-cell *matCellDef="let element" class="text-center" > {{element.Qty}} {{element.unitName}}  </td>
                             </ng-container>
         
                             <ng-container matColumnDef="sell_price" >
@@ -620,7 +625,7 @@
                             
                             <ng-container matColumnDef="action">
                                 <th class="th_2" mat-header-cell *matHeaderCellDef style="width: 150px ; text-align: center;"> ຈັດການ </th>
-                                <td mat-cell *matCellDef="let element" class="text-center" > <button type="button" class="btn-delete" (click)="delEmployee(element.emID)" ><mat-icon>delete</mat-icon></button>   </td>
+                                <td mat-cell *matCellDef="let element" class="text-center" > <button (click)="edit_employee_dialog(element)" class="btn-delete"><mat-icon>create</mat-icon></button> <button type="button" class="btn-delete" (click)="delEmployee(element.emID)" ><mat-icon>delete</mat-icon></button>   </td>
                               </ng-container>
                           
                             <!-- Weight Column -->

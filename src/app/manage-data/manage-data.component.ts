@@ -15,6 +15,7 @@ import { PopupEditSupplierComponent } from '../popup-edit-supplier/popup-edit-su
 import { MatPaginator } from '@angular/material/paginator';
 import { ConfirmSalePopupComponent } from '../confirm-sale-popup/confirm-sale-popup.component';
 import { PopupAddEmployeeComponent } from '../popup-add-employee/popup-add-employee.component';
+import { PopupEditEmployeeComponent } from '../popup-edit-employee/popup-edit-employee.component';
 
 
 
@@ -27,7 +28,7 @@ import { PopupAddEmployeeComponent } from '../popup-add-employee/popup-add-emplo
 export class ManageDataComponent implements OnInit {
   @ViewChild(MatPaginator,{static:true}) paginator!:MatPaginator
   displayedColumns: string[] = ['cateID', 'cateName','action'];
-  displayProduct: string[] = ['proID','image', 'proName', 'qty', 'sell_price', 'buy_price', 'action'];
+  displayProduct: string[] = ['proID','product_code','image', 'proName', 'qty', 'sell_price', 'buy_price', 'action'];
   displayUnit: string[] = ['unitID', 'unitName','action'];
   displaySupplier: string[] = ['supID','supName','village','district','province','tel','action'];
   displayEmployee:string[] = ['emID','emName','surname','tel','action']
@@ -48,6 +49,7 @@ export class ManageDataComponent implements OnInit {
   supplierForm:any = FormGroup;
   unitForm: any = FormGroup;
   categoryForm:any = FormGroup;
+  employeeForm:any = FormGroup;
   submitted= false;
 
   
@@ -144,6 +146,18 @@ this.categoryForm = this.formBuilder.group({
   'cateName': ['', [Validators.required]]
 })
 
+this.employeeForm = this.formBuilder.group({
+  'emName': ['', [Validators.required]],
+  'surname': ['', [Validators.required]],
+  'gender': ['', [Validators.required]],
+  'date_of_birth': ['', [Validators.required]],
+  'address': ['', [Validators.required]],
+  'tel': ['', [Validators.required]],
+  'ID_card': ['', [Validators.required]],
+  'user': ['', [Validators.required]],
+  'password': ['', [Validators.required]]
+})
+
 
   
   // this.unitForm = this.formBuilder.group({
@@ -205,9 +219,10 @@ edit_product_dialog(data:any){
     this.prev_image=data.image
     this.productForm = this.formBuilder.group({
       'productID': [data.productID, [Validators.required]],
-      'proName': [data.productName, [Validators.required]],
-      'cateName': [data.cateID, [Validators.required]],
-      'unitName': [data.unitID, [Validators.required]],
+      'productName': [data.productName, [Validators.required]],
+      'cateID': [data.cateID, [Validators.required]],
+      'unitID': [data.unitID, [Validators.required]],
+      'supID': [data.supID, [Validators.required]],
       'Qty': [data.Qty, [Validators.required]],
       'buyPrice': [data.buy_price, [Validators.required]],
       'sellPrice': [data.sell_price, [Validators.required]],
@@ -216,12 +231,13 @@ edit_product_dialog(data:any){
     dialog.afterClosed().subscribe(res=>{
       this.service.product().subscribe(res=>{
         this.data2=res.data
-        // console.log(this.data2)
+        console.log(this.data2)
         this.dataSource2 = new MatTableDataSource(this.data2);
       })
     }
-      )
+  )
 }
+
 
 
 addCategory_dialog(){
@@ -256,6 +272,7 @@ editCategory_dialog(data:any){
   })
 }
 
+
 addUnit_dialog(){
   const dialogConfig = new MatDialogConfig;
   dialogConfig.disableClose = true;
@@ -287,6 +304,28 @@ editUnit_dialog(data:any){
     })
   })
  
+}
+
+edit_employee_dialog(data:any){
+  
+  let dialog = this.dialogRef.open(PopupEditEmployeeComponent,{data});
+  this.employeeForm = this.formBuilder.group({
+    'emName': ['', [Validators.required]],
+    'surname': ['', [Validators.required]],
+    'gender': ['', [Validators.required]],
+    'date_of_birth': ['', [Validators.required]],
+    'address': ['', [Validators.required]],
+    'tel': ['', [Validators.required]],
+    'ID_card': ['', [Validators.required]],
+    'user': ['', [Validators.required]],
+    'password': ['', [Validators.required]]
+  })
+  dialog.afterClosed().subscribe(res=>{
+    this.service.employee().subscribe(res=>{
+      this.data5=res.data
+      this.dataSource5 = new MatTableDataSource(this.data5);
+    })
+  })
 }
 
 addSupplier_dialog(){

@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { RestAPIService } from '../shared/rest-api.service';
 import { MatTableDataSource } from '@angular/material/table';
 import Swal from "sweetalert2";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-import-detail',
@@ -33,7 +34,7 @@ export class ImportDetailComponent implements OnInit {
   data9:any
 
  test=this.activatedRoute.snapshot.params['orderID']
-  constructor(private service: RestAPIService, private activatedRoute: ActivatedRoute) { }
+  constructor(private service: RestAPIService, private activatedRoute: ActivatedRoute, private router : Router) { }
 
   ngOnInit(): void {
     this.service.showOrderdetail(this.activatedRoute.snapshot.params['orderID']).subscribe(res=>{
@@ -69,18 +70,50 @@ export class ImportDetailComponent implements OnInit {
   }
 
   importDetail(){
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-secondary',
+        cancelButton: 'btn btn-success'
+      },
+      buttonsStyling: false
+    })
+    
+    swalWithBootstrapButtons.fire({
+      text: "ສິນຄ້າຄົບຖ້ວນແລ້ວບໍ່ ?",
+      icon: 'success',
+      showCancelButton: true,
+      confirmButtonText: 'ຕົກລົງ',
+      cancelButtonText: 'ຍົກເລີກ',
+      reverseButtons: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // swalWithBootstrapButtons.fire(
+        //   'Deleted!',
+        //   'Your file has been deleted.',
+        //   'success'
+        // )
+        let emID=JSON.parse(localStorage.getItem("user") || "[]").data[0].emID
+      this.service.import(this.dataAll,emID).subscribe(res => {
+      console.log(this.dataAll)
+      this.show_qty()
+    })
+    this.dataAll[0].status = 1
+        
+      } else if (
+        /* Read more about handling dismissals below */
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+        
+        this.dataAll[0].status = 0
+      }
+    })
     
     // if (this.dataAll[0].status = 1) {
     //   Swal.fire({
     //     icon: 'success',
     //   text: 'ທ່ານໄດ້ນຳສິນຄ້າເຂົ້າສຳເລັດ',
     //   })
-      let emID=JSON.parse(localStorage.getItem("user") || "[]").data[0].emID
-      this.service.import(this.dataAll,emID).subscribe(res => {
-      console.log(this.dataAll)
-      this.show_qty()
-    })
-    this.dataAll[0].status = 1
+      
 
     // } else {
     //   Swal.fire({

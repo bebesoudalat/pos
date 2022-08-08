@@ -8,15 +8,15 @@
             <img src="../../assets/img/all.png" alt="" />
           </div>
           <div fxLayout="column" fxFlex="0 0 60%">
-            <p>ລາຍການຂາຍທັງໝົດ</p>
-            <p>0 ລາຍການ</p>
+            <p>ລາຍການຂາຍທັງໝົດ </p>
+            <p> {{this.data.length}} ລາຍການ</p>
           </div>
         </div>
       </div>
 
       <!-- ຍອດຂາຍຕໍ່ມື້ -->
       <div fxLayout="column" fxFlex="0 0 47%">
-        <div fxLayoutAlign="center center">
+        <!-- <div fxLayoutAlign="center center">
           <div class="circle">
             <img src="../../assets/img/money.png" alt="" />
           </div>
@@ -24,13 +24,20 @@
             <p>ຍອດຂາຍຕໍ່ມື້</p>
             <p>0 ກີບ</p>
           </div>
+        </div> -->
+        <div>
+          <div class="bg-next mt-4 me-4"  style="float: right ;">
+            <a [routerLink]="['/sale-list']">
+            <mat-icon class="next">keyboard_arrow_right</mat-icon>
+          </a>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
 <div class="card2">
-  <a [routerLink]="['/sale']"><mat-icon>add_circle_outline</mat-icon>ຂາຍສິນຄ້າ</a>
+  <a class="button" [routerLink]="['/sale']"><mat-icon>add_circle_outline</mat-icon>ຂາຍສິນຄ້າ</a>
 </div>
 
 <div class="card2" fxLayout="row wrap">

@@ -3,7 +3,7 @@ input,select{
     height: 35px;
     outline: none;
 }
-table{
+.mat-table{
     width: 100%;
     box-shadow: none;
 }
@@ -91,4 +91,16 @@ td{
 }
 .th_2{
     border-top-right-radius: 15px ;
+}
+mat-header-cell{
+    background-color: #d6e4f9;
+    color: #7096cf ;
+}
+.btn-detail{
+    width: 100px;
+    height: 35px;
+    border: 1px solid #89ABDE;
+    color: #89ABDE;
+    background-color: white;
+    border-radius: 50px;
 }

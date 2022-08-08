@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewChild } from '@angular/core';
 import { RestAPIService } from '../shared/rest-api.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
+import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-import',
@@ -15,6 +16,7 @@ export class ImportComponent implements OnInit {
   dataSource2:any;
   data2:any;
   orderID:any;
+  @ViewChild(MatPaginator,{static:true}) paginator!:MatPaginator
 
   constructor(public service : RestAPIService, private router:Router) { }
 
@@ -23,6 +25,7 @@ export class ImportComponent implements OnInit {
       this.data2=res.data
       console.log(this.data2)
       this.dataSource2 = new MatTableDataSource(this.data2);
+      this.dataSource2.paginator = this.paginator
     })
   }
 

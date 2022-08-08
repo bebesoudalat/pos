@@ -15,6 +15,10 @@
     border-radius: 50px;
     color: white;
 }
+.addItem:hover{
+    background-color: #d6e4f9;
+    color: #7096cf;
+}
 input,select{
     border-radius:50px ;
     height: 35px;
@@ -93,6 +97,21 @@ table{
     border: none;
     border-radius: 50px;
 }
+
+.btn-delete:hover{
+
+    background-color: #89ABDE;
+    color: white;
+
+}
+.btn_addProduct:hover{
+    background-color: #89ABDE;
+    color: white;
+}
+.btn_orderlist:hover{
+    background-color: #89ABDE;
+    color: white;
+}
 .btn_save{
     width: 130px;
     height: 35px;
@@ -128,6 +147,8 @@ img{
     height: 30px;
     border: 1px solid gray;
     border-radius: 3px;
+    margin: 0;
+    padding: 0;
 }
 .btn_save{
     width: 100px;
@@ -152,6 +173,7 @@ img{
 th{
     background-color: #d6e4f9;
     color: #7096cf ;
+
 }
 .th_1{
     border-top-left-radius: 15px ;
@@ -172,7 +194,7 @@ th{
     color: #89ABDE;
 }
 th,td{
-    font-size: 15px;
+    font-size: 13px;
 }
 
 .input{

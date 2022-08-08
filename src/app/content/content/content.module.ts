@@ -62,6 +62,8 @@ import { OrderListDetailComponent } from 'src/app/order-list-detail/order-list-d
 import { EditOrderComponent } from 'src/app/edit-order/edit-order.component';
 import { PopupAddEmployeeComponent } from 'src/app/popup-add-employee/popup-add-employee.component';
 import { PrintReportComponent } from 'src/app/print-report/print-report.component';
+import { PopupEditEmployeeComponent } from 'src/app/popup-edit-employee/popup-edit-employee.component';
+import { SaleListComponent } from 'src/app/sale-list/sale-list.component';
 
 
 
@@ -104,7 +106,9 @@ import { PrintReportComponent } from 'src/app/print-report/print-report.componen
     OrderListDetailComponent,
     EditOrderComponent,
     PopupAddEmployeeComponent,
-    PrintReportComponent
+    PrintReportComponent,
+    PopupEditEmployeeComponent,
+    SaleListComponent
 
 
 

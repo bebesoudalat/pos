@@ -1,0 +1,46 @@
+
+.clear-data{
+    background-color: white;
+    width: 115px;
+    height: 35px;
+    border-radius: 10px;
+    color: #3e3e3e;
+    border: 1px solid gray;
+}
+.btn_close{
+    background-color: white;
+    border: none;
+}
+
+input,select{
+    border-radius: 50px;
+}
+.container{
+    width: 500px;
+}
+.btn{
+    width: 165px;
+    height: 35px;
+    background-color: #89ABDE;
+    border: none;
+    border-radius: 50px;
+    outline: none;
+    color: white;
+    margin: 0;
+}
+.btn_clear{
+    width: 165px;
+    height: 35px;
+    background-color: white;
+    border: 1px solid #89ABDE;
+    border-radius: 50px;
+    outline: none;
+    color: #89ABDE;
+    margin: 0;
+}
+mat-icon,.h5{
+    color: #89ABDE;
+}
+
+
+
