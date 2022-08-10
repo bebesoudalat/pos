@@ -53,6 +53,8 @@ export class ReportComponent implements OnInit {
   totalprice:any
 
   date : Date = new Date();
+  
+  user_info=JSON.parse(localStorage.getItem("user") || "[]")
 
   @ViewChild(MatPaginator,{static:true}) paginator!:MatPaginator
   
@@ -60,6 +62,10 @@ export class ReportComponent implements OnInit {
   constructor(private service: RestAPIService, private router : Router) { }
 
   ngOnInit(): void {
+    if (this.user_info.data[0].user !="bebe") {
+      this.router.navigate([''])
+    }
+
 this.dayy
 this.dayy2
 this.yearr2

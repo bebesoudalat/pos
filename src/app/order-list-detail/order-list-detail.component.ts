@@ -11,8 +11,8 @@ import Swal from "sweetalert2";
 })
 export class OrderListDetailComponent implements OnInit {
   isplayProduct: string[] = ['proID','image', 'proName', 'qty', 'sell_price', 'buy_price'];
-  displayOrder: string[] = ['no','image', 'proName', 'buy_price'];
-  displayOrder_report: string[] = ['no','image', 'proName', 'buy_price'];
+  displayOrder: string[] = ['no', 'product_code','image', 'proName', 'buy_price'];
+  displayOrder_report: string[] = ['no','product_code','image', 'proName', 'buy_price'];
 
   dataSource2:any;
   data2:any;

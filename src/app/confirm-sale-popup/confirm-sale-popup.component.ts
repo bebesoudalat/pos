@@ -21,6 +21,10 @@ export class ConfirmSalePopupComponent implements OnInit {
  employeeName:any
  user_info=JSON.parse(localStorage.getItem("user") || "[]")
 
+ totalPrice:any
+
+ errorText = true
+
 
   constructor(public dialogRef: MatDialogRef<SaleComponent>, @Inject(MAT_DIALOG_DATA) public data:any, private service : RestAPIService) {
     this.receive=data
@@ -84,7 +88,24 @@ export class ConfirmSalePopupComponent implements OnInit {
       })
     }
     input(event:any){
-      console.log(event.target.value)
-      this.change(event.target.value)
+      
+      if (this.TotalPrice >  event.target.value) {
+        this.errorText = true
+        console.log(event.target.value)
+        this.change(event.target.value)
+      } else {
+        this.errorText = false
+        console.log(event.target.value)
+        this.change(event.target.value)
+      }
+    }
+
+    validate(event:any){
+     
+      if (this.TotalPrice >  event.target.value) {
+        this.errorText = true
+      } else {
+        this.errorText = false
+      }
     }
 }

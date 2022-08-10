@@ -169,5 +169,10 @@ table {
   .cate-table{
       width: 92%;
   }
+
+  .btn_modal:hover{
+    background-color: #89ABDE;
+    color: white;
+  }
   
   

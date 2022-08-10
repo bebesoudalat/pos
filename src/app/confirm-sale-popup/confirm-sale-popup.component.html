@@ -13,7 +13,7 @@
 
     <p>ລາຍການສິນຄ້າ</p>
 
-    <div class="product-list">
+    <div class="product-list" style="height: 350px ; max-height: 340px; overflow-x: hidden ;" >
         <div class="row" *ngFor="let item of receive">
             <div class="col-9">
                 <p>{{item.productName}}</p>
@@ -33,7 +33,7 @@
             ລາຄາລວມທັງໝົດ
         </div>
         <div class="col-3">
-            <div class="h6 mt-1 ms-4 ps-2"> {{calTotal(this.receive) | number}} ກີບ </div>
+            <div class="h6 mt-1 ms-4 ps-2"> {{ this.TotalPrice | number}} ກີບ </div>
         </div>
     </div>
 
@@ -42,7 +42,7 @@
             ຈຳນວນເງິນທີ່ຮັບມາ
         </div>
         <div class="col-9">
-            <input type="number"  (change)="input($event)" >
+            <input type="number"  (keyup)="input($event)" >
         </div>
     </div>
 
@@ -60,7 +60,7 @@
            
         </div>
         <div class="col-9">
-            <button mat-button [mat-dialog-close]="data.animal" printSectionId="print" ngxPrint [useExistingCss]="true" (click)="addSale()"  class="btn" type="button">ບັນທຶກການຂາຍ</button>
+            <button [disabled]="this.errorText"  mat-button [mat-dialog-close]="data.animal" printSectionId="print" ngxPrint [useExistingCss]="true" (click)="addSale()"  class="btn" type="button">ບັນທຶກການຂາຍ</button>
         </div>
         <div id="print" hidden>
             <div class="logo">
@@ -83,7 +83,7 @@
                     </thead>
                     <tbody  *ngFor="let item of receive">
                         <tr>
-                            <td style="width: 300px ; text-align: left;">{{item.productName}}</td>
+                            <td style="width: 300px ;">{{item.productName}}</td>
                             <td style="width: 300px ;">{{item.Qty}}</td>
                             <td style="width: 300px ;">{{item.sell_price | number}} ກີບ</td>
                         </tr>

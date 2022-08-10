@@ -8,8 +8,10 @@
             <img src="../../assets/img/all.png" alt="" />
           </div>
           <div fxLayout="column" fxFlex="0 0 60%">
-            <p>ລາຍການຂາຍທັງໝົດ </p>
-            <p> {{this.data.length}} ລາຍການ</p>
+           <div class="mt-1">
+            <div class="h4">ລາຍການຂາຍທັງໝົດ </div>
+            <div class="h4"> {{this.data.length}} ລາຍການ</div>
+           </div>
           </div>
         </div>
       </div>
@@ -37,7 +39,9 @@
   </div>
 </div>
 <div class="card2">
-  <a class="button" [routerLink]="['/sale']"><mat-icon>add_circle_outline</mat-icon>ຂາຍສິນຄ້າ</a>
+  <div>
+    <a class="button" [routerLink]="['/sale']"><mat-icon class="add">add_circle_outline</mat-icon>ຂາຍສິນຄ້າ</a>
+  </div>
 </div>
 
 <div class="card2" fxLayout="row wrap">

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , ViewChild} from '@angular/core';
 import { RestAPIService } from '../shared/rest-api.service';
 import { MatTableDataSource } from '@angular/material/table';
 import Swal from 'sweetalert2';
@@ -7,6 +7,7 @@ import { Subject, switchMap } from 'rxjs';
 import { ConfirmSalePopupComponent } from '../confirm-sale-popup/confirm-sale-popup.component';
 import { Router } from '@angular/router';
 import { NgxPrintModule } from 'ngx-print';
+import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-sale',
@@ -28,6 +29,7 @@ export class SaleComponent implements OnInit {
   keyword:any =[]
 
   categoryList:any = []
+  @ViewChild(MatPaginator,{static:true}) paginator!:MatPaginator
 
   date : Date = new Date();
 
@@ -44,6 +46,7 @@ export class SaleComponent implements OnInit {
       this.data2=res.data;
       console.log(this.data2)
       this.dataSource2 = new MatTableDataSource(this.data2);
+      this.dataSource2.paginator = this.paginator
 
     })
     this.service.category().subscribe(res=>{

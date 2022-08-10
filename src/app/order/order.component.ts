@@ -40,6 +40,8 @@ export class OrderComponent implements OnInit {
 
   orderItemform:any = FormGroup;
 
+  user_info=JSON.parse(localStorage.getItem("user") || "[]")
+
   numberww:any=0
   @ViewChild(MatPaginator,{static:true}) paginator!:MatPaginator
 
@@ -52,6 +54,10 @@ export class OrderComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (this.user_info.data[0].user !="bebe") {
+      this.router.navigate([''])
+    }
+
     this.service.supplier().subscribe(res=>{
       this.data4=res.data
       // console.log(this.data4)
@@ -134,6 +140,7 @@ export class OrderComponent implements OnInit {
     if(!productExists){
       this.listData.push({
                 productID:data.productID,
+                product_code:data.product_code,
                 productName:data.productName,
                 supID:data.supID,
                 supName:data.supName,

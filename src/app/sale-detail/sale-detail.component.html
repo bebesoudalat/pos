@@ -1,5 +1,6 @@
 <div class="container">
-    <div class="h4 text-center mt-3">ລາຍລະອຽດການຂາຍ</div>
+    <div class=" text-center h4 ms-5 ps-3 mt-3">ລາຍລະອຽດການຂາຍ <span><div class="col h5 text-end me-3">ວັນທີ : {{saleDetail[0].date | date: 'dd/MM/yyyy'}} </div></span></div>
+    
    
     <div class="row mt-4 ms-5">
 
@@ -20,7 +21,7 @@
 
             <ng-container matColumnDef="sale_qty" >
               <th mat-header-cell *matHeaderCellDef style="width: 200px ; text-align: center;" > ຈຳນວນ </th>
-              <td mat-cell *matCellDef="let element" class="text-center" > {{element.sale_qty}} </td>
+              <td mat-cell *matCellDef="let element" class="text-center" > {{element.sale_qty}} {{element.unitName}} </td>
             </ng-container>
 
             
@@ -47,7 +48,7 @@
             
           </table>
           
-          <div class="text-end mt-5 h4">ລາຄາລວມ <span class="h4"> {{saleDetail[0].total_price | number}} ກີບ </span></div> 
+          <div class="text-end mt-3 me-5 h5 ">ລາຄາລວມ <span class="h5"> {{saleDetail[0].total_price | number}} ກີບ </span></div> 
        
         </div>
   </div>

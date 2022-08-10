@@ -104,3 +104,7 @@ mat-header-cell{
     background-color: white;
     border-radius: 50px;
 }
+.btn-detail:hover{
+    background-color:#89ABDE ;
+    color: white;
+}

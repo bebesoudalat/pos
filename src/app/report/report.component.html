@@ -17,7 +17,7 @@
             </div>
   
             <div class="row mt-3">
-              <div class="col">
+              <div class="col text-start">
                 <!-- <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg> -->
                 <button (click)="showAllProduct()" class="btn-detail">ສິນຄ້າທັງໝົດ</button>
                 <button (click)="onSelect(3)" class="btn-detail ms-2">ສິນຄ້າທີ່ໃກ້ໝົດ</button>
@@ -28,7 +28,7 @@
                 <div style="position: relative;">
                   <mat-icon style="position: absolute; margin-left: 15px; margin-top: 5px;">print</mat-icon>
                   <button type="button ms-2" ngxPrint printSectionId="print" [useExistingCss]="true" class="print btn btn-outline-secondary ps-5">ພິມໃບບິນ</button>
-                  <button type="button" (click)="exportExcel()" class="print btn btn-outline-secondary">Excel</button>
+                  <!-- <button type="button" (click)="exportExcel()" class="print btn btn-outline-secondary">Excel</button> -->
             </div>
         </div>
             </div>
@@ -73,7 +73,7 @@
 
               <ng-container matColumnDef="qty" >
                 <th mat-header-cell *matHeaderCellDef style="width: 20px ; text-align: center;" > ຈຳນວນ </th>
-                <td mat-cell *matCellDef="let element" class="text-center" > {{element.Qty}}  </td>
+                <td mat-cell *matCellDef="let element" class="text-center" > {{element.Qty}} {{element.unitName}} </td>
               </ng-container>
 
               <ng-container matColumnDef="sell_price" >
@@ -115,7 +115,7 @@
             </div>
   
             <div class="row mt-3">
-              <div class="col-sm-4 d-flex">
+              <div class="col-sm-4 d-flex ms-2">
                 <!-- <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg> -->
                 <select name="" id=""  class="input form-control form-select"  [(ngModel)]="date_filter" (change)="filter()">
                   <option selected value="">ເລືອກວັນທີ</option>
@@ -138,7 +138,7 @@
                 <div style="position: relative;">
                   <mat-icon style="position: absolute; margin-left: 15px; margin-top: 5px;">print</mat-icon>
                   <button type="button ms-2" ngxPrint printSectionId="print-sale" [useExistingCss]="true" class="print btn btn-outline-secondary ps-5">ພິມໃບບິນ</button>
-                  <button type="button" (click)="exportSale()" class="print btn btn-outline-secondary">Excel</button>
+                  <!-- <button type="button" (click)="exportSale()" class="print btn btn-outline-secondary">Excel</button> -->
             </div>
         </div>
             </div>
@@ -188,7 +188,7 @@
                 
                 
               </table>
-              <p class="text-end">ລວມ : {{totalPrice(this.dataSale_report._data._value) | number}} ກີບ</p>
+              <div class="text-end h5 mt-3 me-5">ລວມ : {{totalPrice(this.dataSale_report._data._value) | number}} ກີບ</div>
 
               <mat-paginator [length]="data6.length"
             [pageSize]="10"
@@ -215,22 +215,22 @@
             </div>
   
             <div class="row mt-3">
-              <div class="col-sm-4 d-flex">
+              <div class="col-sm-4 d-flex ms-2">
                 <!-- <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg> -->
                 <select name="" id=""  class="input form-control form-select"  [(ngModel)]="date_filter" (change)="filter_order()">
                   <option selected value="">ເລືອກວັນທີ</option>
-                  <option *ngFor="let item of dayy2" value="{{ item.day }}">{{ item.day }}</option>
+                  <option *ngFor="let item of dayy" value="{{ item.day }}">{{ item.day }}</option>
                 </select>
                 
                 <select name="" id=""  class="input form-control form-select" [(ngModel)]="month_filter" (change)="filter_order()" >
                   <option selected value="">ເລືອກເດືອນ</option>
-                  <option *ngFor="let item of month2" value="{{ item.number }}" >{{ item.name }}</option>
+                  <option *ngFor="let item of month" value="{{ item.number }}" >{{ item.name }}</option>
                 </select>
                 
 
                 <select name="" id=""  class="input form-control form-select" [(ngModel)]="year_filter" (change)="filter_order()">
                   <option selected value="">ເລືອກປີ</option>
-                  <option *ngFor="let item of yearr2" value="{{ item.year }}"  >{{ item.year }}</option>
+                  <option *ngFor="let item of yearr" value="{{ item.year }}"  >{{ item.year }}</option>
                 </select>
               </div>
 
@@ -238,7 +238,7 @@
                 <div style="position: relative;">
                   <mat-icon style="position: absolute; margin-left: 15px; margin-top: 5px;">print</mat-icon>
                   <button type="button ms-2" ngxPrint printSectionId="print-order" [useExistingCss]="true"class="print btn btn-outline-secondary ps-5">ພິມໃບບິນ</button>
-                  <button type="button" (click)="exportExcel()" class="print btn btn-outline-secondary">Excel</button>
+                  <!-- <button type="button" (click)="exportExcel()" class="print btn btn-outline-secondary">Excel</button> -->
             </div>
         </div>
             </div>
@@ -282,7 +282,7 @@
               <tr mat-row *matRowDef="let row; columns: displayOrder_report;"></tr>
               
             </table>
-            <p class="text-end">ລວມ : {{totalPrice_order(this.dataOrder_report._data._value) | number}} ກີບ</p>
+            <div class="text-end h5 mt-3 me-5">ລວມ : {{totalPrice_order(this.dataOrder_report._data._value) | number}} ກີບ</div>
           
             <mat-paginator [length]="data7.length"
             [pageSize]="10"
@@ -331,7 +331,7 @@
                 <div style="position: relative;">
                   <mat-icon style="position: absolute; margin-left: 15px; margin-top: 5px;">print</mat-icon>
                   <button type="button ms-2" ngxPrint printSectionId="print-import" [useExistingCss]="true" class="print btn btn-outline-secondary ps-5">ພິມໃບບິນ</button>
-                  <button type="button" (click)="exportExcel()" class="print btn btn-outline-secondary">Excel</button>
+                  <!-- <button type="button" (click)="exportExcel()" class="print btn btn-outline-secondary">Excel</button> -->
             </div>
         </div>
             </div>
@@ -382,7 +382,7 @@
               <tr mat-row *matRowDef="let row; columns: displayedImport;"></tr>
               
             </table>
-            <p class="text-end">ລວມ : {{totalPrice_import(this.dataImport._data._value) | number}} ກີບ</p>
+            <div class="text-end h5 mt-3 me-5">ລວມ : {{totalPrice_import(this.dataImport._data._value) | number}} ກີບ</div>
            
             <mat-paginator [length]="data8.length"
             [pageSize]="10"

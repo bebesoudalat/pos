@@ -402,6 +402,7 @@
               <tr >
                 <th class="th_1">ລຳດັບ</th>
                 <th>ຜູ້ສະໜອງ</th>
+                <th>ລະຫັດສິນຄ້າ</th>
                 <th>ຊື່ສິນຄ້າ</th>
                 <th>ຈຳນວນ</th>
                 <th>ລາຄາຊື້</th>
@@ -413,6 +414,7 @@
               <tr *ngFor="let item of listData;let i = index; let n = index">
                 <td> {{n+1}} </td>
                 <td> {{item.supName}} </td>
+                <td> {{item.product_code}} </td>
                 <td> {{item.productName}} </td>
                 <td > 
                   <div> 

@@ -86,6 +86,10 @@ export class RestAPIService {
   search_Product(keyword:any){
     return this.http.get<any>(this.url+'/product_search?keyword='+keyword)
   }
+
+  search_order(keyword:any){
+    return this.http.get<any>(this.url+'/order_search?keyword='+keyword)
+  }
   
   sale(data:any,emID:any,total_price:any){
     let hell={'data':data,'emID':emID,'total_price':total_price}

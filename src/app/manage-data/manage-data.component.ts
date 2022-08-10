@@ -20,6 +20,7 @@ import { PopupEditEmployeeComponent } from '../popup-edit-employee/popup-edit-em
 
 
 
+
 @Component({
   selector: 'app-manage-data',
   templateUrl: './manage-data.component.html',
@@ -86,8 +87,17 @@ export class ManageDataComponent implements OnInit {
   add_sup:boolean = true
   edit_sup:boolean = false
 
-  constructor(private service:RestAPIService, public formBuilder: FormBuilder, private dialogRef: MatDialog,private cd: ChangeDetectorRef) { 
+  user_info=JSON.parse(localStorage.getItem("user") || "[]")
   
+  constructor(private service:RestAPIService, public formBuilder: FormBuilder, private dialogRef: MatDialog,private cd: ChangeDetectorRef) { 
+    
+    if (this.user_info.data[0].user !="bebe") {
+      this.displayedColumns= ['cateID', 'cateName'];
+      this.displayProduct = ['proID','product_code','image', 'proName', 'qty', 'sell_price', 'buy_price'];
+      this.displayUnit = ['unitID', 'unitName'];
+      this.displaySupplier = ['supID','supName','village','district','province','tel'];
+      this.displayEmployee = ['emID','emName','surname','tel']
+        }
   }
 
   ngOnInit(): void {

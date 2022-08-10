@@ -33,9 +33,8 @@ export class PopupAddProductComponent implements OnInit {
   prev_image : any = document.getElementById('img-edit')
   img:boolean = false
   submitted = false
-
   
-
+  errorText = false
 
   constructor(private service:RestAPIService, public formBuilder: FormBuilder, private cd: ChangeDetectorRef, public dialogRef: MatDialogRef<ManageDataComponent>) { }
 
@@ -97,37 +96,50 @@ export class PopupAddProductComponent implements OnInit {
     }}
 
     addProduct(){
-      const data= new FormData();
-      Object.entries(this.productForm.value).forEach(([key,value]:any[])=>{
-        data.set(key,value)
-      })
-      console.log(data)
-      this.service.addproduct(data).subscribe (res=>{
-        console.log(res)
-        if (res.status == 1) {
-          this.service.product().subscribe(res=>{
-            this.data2=res.data
-            // console.log(this.data2)
-            this.dataSource2 = new MatTableDataSource(this.data2);
-          })
-        } else {
-
-          Swal.fire({
-            text: 'ລະຫັດສິນຄ້ານີ້ມີແລ້ວ',
-            icon: 'error',
-            confirmButtonColor: '#d6e4f9',
-            cancelButtonColor: '#d6e4f9',
-            confirmButtonText: 'ຕົກລົງ'
-          })
+      if (this.productForm.value.sell_price < this.productForm.value.buy_price) {
+        this.errorText = true
+      } else {
+        const data= new FormData();
+        Object.entries(this.productForm.value).forEach(([key,value]:any[])=>{
+          data.set(key,value)
+        })
+        console.log(data)
+        this.service.addproduct(data).subscribe (res=>{
+          console.log(res)
+          if (res.status == 1) {
+            this.service.product().subscribe(res=>{
+              this.data2=res.data
+              // console.log(this.data2)
+              this.dataSource2 = new MatTableDataSource(this.data2);
+            })
+          } else {
+  
+            Swal.fire({
+              text: 'ລະຫັດສິນຄ້ານີ້ມີແລ້ວ',
+              icon: 'error',
+              confirmButtonColor: '#d6e4f9',
+              cancelButtonColor: '#d6e4f9',
+              confirmButtonText: 'ຕົກລົງ'
+            })
+            
+          }
+  
           
-        }
-
-        
-      })
+        })
+      }
     }
 
     onClose(){
       this.dialogRef.close();
+    }
+
+    validate(){
+      console.log(this.productForm.value)
+      if (this.productForm.value.sell_price < this.productForm.value.buy_price) {
+        this.errorText = true
+      } else {
+        this.errorText = false
+      }
     }
 
 }

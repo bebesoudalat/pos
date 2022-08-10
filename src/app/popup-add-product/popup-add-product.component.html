@@ -82,15 +82,7 @@
         </div>
       </div>
   
-      <div class="row mt-3">
-        <div class="col-3 mt-2">
-          <label for=""  class="mt-2">ລາຄາຊື້</label>
-        </div>
-        <div class="col-9">
-          <input  class="add-product-input form-control" formControlName="buy_price" type="text" placeholder="ລາຄາຊື້">
-          
-        </div>
-      </div>
+      
   
       <div class="row mt-3">
         <div class="col-3 mt-2">
@@ -110,11 +102,21 @@
       
       <div class="row mt-3">
         <div class="col-3 mt-2">
+          <label for=""  class="mt-2">ລາຄາຊື້</label>
+        </div>
+        <div class="col-9">
+          <input (keyup)="validate()" class="add-product-input form-control" formControlName="buy_price" type="number" placeholder="ລາຄາຊື້">
+          
+        </div>
+      </div>
+
+      <div class="row mt-3">
+        <div class="col-3 mt-2">
           <label for="" class="mt-2">ລາຄາຂາຍ</label>
         </div>
         <div class="col-9">
-          <input  class="add-product-input form-control" formControlName="sell_price" type="text" placeholder="ລາຄາຂາຍ">
-          
+          <input (keyup)="validate()" class="add-product-input form-control" formControlName="sell_price" type="number" placeholder="ລາຄາຂາຍ">
+          <p *ngIf="this.errorText" class="text-danger">ລາຄາຂາຍບໍ່ຖືກຕ້ອງ</p>
         </div>
       </div>
   
@@ -127,7 +129,7 @@
         </div>
         
           <div class="col">
-            <button  mat-button [mat-dialog-close]="data2" type="button"  (click)="addProduct()" class="btn">ບັນທຶກ</button>
+            <button [disabled]="productForm.invalid || errorText"  mat-button [mat-dialog-close]="data2" type="button"  (click)="addProduct()" class="btn">ບັນທຶກ</button>
           </div>
     
           <div class="col">
