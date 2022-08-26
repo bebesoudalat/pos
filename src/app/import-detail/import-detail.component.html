@@ -51,14 +51,24 @@
 
               <ng-container matColumnDef="import_qty" >
                 <th mat-header-cell *matHeaderCellDef style="width: 200px ; text-align: center;" > ຈຳນວນທີ່ນຳເຂົ້າ </th>
-                <td mat-cell *matCellDef="let element,let i = index" class="text-center" > <input type="text" type="text" id="{{element.productID}}" (keyup)="setValue($event,element,i)" [value]="element.buy_qty"> ຜືນ </td>
+                <td mat-cell *matCellDef="let element,let i = index" class="text-center" > <input type="text" type="text" id="{{element.productID}}" (change)="setValue($event,element.buy_qty,i)" value="{{element.buy_qty}}"> ຜືນ </td>
+              </ng-container>
+
+              <ng-container matColumnDef="buy_price" >
+                <th mat-header-cell *matHeaderCellDef style="width: 200px ; text-align: center;" > ລາຄາຊື້ </th>
+                <td mat-cell *matCellDef="let element,let i = index" class="text-center" > <input type="text" type="text" id="{{element.productID}}" (keyup)="setValue_buyPrice($event,element.price,i)" [value]="element.price"> ກີບ </td>
+              </ng-container>
+
+              <ng-container matColumnDef="sell_price" >
+                <th class="th_2" mat-header-cell *matHeaderCellDef style="width: 200px ; text-align: center;" > ລາຄາຂາຍ </th>
+                <td mat-cell *matCellDef="let element,let i = index" class="text-center" > <input type="text" type="text" id="{{element.productID}}" (keyup)="setValue_sellPrice($event,element.sell_price,i)" [value]="element.sell_price"> ກີບ </td>
               </ng-container>
   
 
-              <ng-container matColumnDef="buy_price">
+              <!-- <ng-container matColumnDef="buy_price">
                 <th class="th_2" mat-header-cell *matHeaderCellDef style="width: 150px ; text-align: center;"> ລາຄາ </th>
                 <td mat-cell *matCellDef="let element" class="text-center" > {{element.price | number}} ກີບ </td>
-              </ng-container>
+              </ng-container> -->
 
             
               <tr mat-header-row *matHeaderRowDef="displayOrder"></tr>

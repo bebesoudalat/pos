@@ -16,7 +16,7 @@ import { MatPaginator } from '@angular/material/paginator';
   styleUrls: ['./order.component.css']
 })
 export class OrderComponent implements OnInit {
-  displayProduct: string[] = ['proID','image','productCode', 'proName', 'qty', 'buy_price','sell_price','buy_qty', 'action'];
+  displayProduct: string[] = ['proID','image','productCode', 'proName', 'qty','buy_qty', 'action'];
   displayOrder: string[] = ['proID','image', 'proName', 'qty', 'action'];
   displayOrderList : string[]=['supName', 'productName', 'buy_qty','price', 'action'];
 
@@ -126,10 +126,10 @@ export class OrderComponent implements OnInit {
   addItem2(data:any){
     let productExists = false
     let qty_buy=(<HTMLInputElement>document.getElementById('2'+data.productID)).value
-    let buy_price=(<HTMLInputElement>document.getElementById('1'+data.productID)).value
-    let sell_price =(<HTMLInputElement>document.getElementById('3'+data.productID)).value
+    // let buy_price=(<HTMLInputElement>document.getElementById('1'+data.productID)).value
+    // let sell_price =(<HTMLInputElement>document.getElementById('3'+data.productID)).value
 
-    console.log(qty_buy,buy_price)
+    console.log(qty_buy)
     for (let i in this.listData) {
           if (this.listData[i].productID === data.productID) {
             this.listData[i].Qty++
@@ -147,8 +147,8 @@ export class OrderComponent implements OnInit {
                 unitName:data.unitName,
                 Qty:data.Qty,
                 buy_qty:qty_buy,
-                buy_price:buy_price,
-                sell_price:sell_price,
+                buy_price: data.buy_price,
+                sell_price : data.sell_price
               })
     }
     console.log(this.listData)

@@ -230,7 +230,7 @@
               <td mat-cell *matCellDef="let element" class="text-center" > {{element.Qty}} {{element.unitName}}</td>
             </ng-container>
 
-            <ng-container matColumnDef="buy_price" >
+            <!-- <ng-container matColumnDef="buy_price" >
               <th mat-header-cell *matHeaderCellDef style="width: 130px ; text-align: center;" > ລາຄາຊື້ </th>
               <td mat-cell *matCellDef="let element" class="text-center" ><input class="buy_qty" type="number" id="1{{element.productID}}" [value]="element.buy_price"  > ກີບ </td>
             </ng-container>
@@ -238,7 +238,7 @@
             <ng-container matColumnDef="sell_price" >
               <th mat-header-cell *matHeaderCellDef style="width: 130px ; text-align: center;" > ລາຄາຂາຍ </th>
               <td mat-cell *matCellDef="let element" class="text-center" ><input class="buy_qty" type="number" id="3{{element.productID}}" [value]="element.sell_price" > ກີບ </td>
-            </ng-container>
+            </ng-container> -->
 
             <ng-container matColumnDef="buy_qty" >
               <th mat-header-cell *matHeaderCellDef style="width: 100px ; text-align: center;" > ຈຳນວນທີ່ຕ້ອງການສັ່ງ</th>
@@ -405,8 +405,8 @@
                 <th>ລະຫັດສິນຄ້າ</th>
                 <th>ຊື່ສິນຄ້າ</th>
                 <th>ຈຳນວນ</th>
-                <th>ລາຄາຊື້</th>
-                <th>ລາຄາຂາຍ</th>
+                <!-- <th>ລາຄາຊື້</th>
+                <th>ລາຄາຂາຍ</th> -->
                 <th class="th_2">ລົບ</th>
               </tr>
             </thead>
@@ -425,8 +425,8 @@
                     </div>
                   </div>
               </td>
-                <td> {{item.buy_price | number}} ກີບ </td>
-                <td> {{item.sell_price  | number}} ກີບ </td>
+                <!-- <td> {{item.buy_price | number}} ກີບ </td>
+                <td> {{item.sell_price  | number}} ກີບ </td> -->
                 <td> <button (click)="deleteItem(i)" class="btn-delete btn-dark">ລົບ</button> </td>
               </tr>
             </tbody>

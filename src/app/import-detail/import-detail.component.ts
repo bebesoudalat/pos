@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class ImportDetailComponent implements OnInit {
   displayProduct: string[] = ['proID','image', 'proName', 'qty', 'sell_price', 'buy_price'];
-  displayOrder: string[] = ['proID','product_code','image', 'proName','import_qty', 'buy_price'];
+  displayOrder: string[] = ['proID','product_code','image', 'proName','import_qty', 'buy_price', 'sell_price'];
   displayImport: string[] = ['proID','product_code','image', 'proName', 'import_qty', 'buy_price'];
 
   dataSource2:any;
@@ -124,7 +124,9 @@ export class ImportDetailComponent implements OnInit {
   }
 
 
-
+// importDetail(){
+//   console.log(this.dataAll)
+// }
   status(stt:any){
     let status = stt
   switch (stt) {
@@ -146,12 +148,38 @@ export class ImportDetailComponent implements OnInit {
   
 
   setValue(event:any,element:any,index:any){
-    //  console.log(element)
-
+     console.log(event.target.id)
+     console.log(event.target.value)
+     console.log(element)
+if (parseInt(event.target.value) >= 0 && parseInt(event.target.value) <= element  ) {
+  this.dataAll[index].import_qty= parseInt(event.target.value)
+  console.log(this.dataAll)
+} else {
+  alert('error')
+}
+     
     // console.log(this.dataAll)
     
     // console.log(event.target.value,element,index)
-    this.dataAll[index].import_qty= parseInt(event.target.value)
-    console.log(this.dataAll)
+
   }
+
+  setValue_buyPrice(event:any,element:any,index:any){
+    console.log(event.target.id)
+
+   // console.log(this.dataAll)
+   
+   // console.log(event.target.value,element,index)
+   this.dataAll[index].price = parseInt(event.target.value)
+   console.log(this.dataAll)
+ }
+ setValue_sellPrice(event:any,element:any,index:any){
+  console.log(event.target.id)
+
+ // console.log(this.dataAll)
+ 
+ // console.log(event.target.value,element,index)
+ this.dataAll[index].sell_price = parseInt(event.target.value)
+ console.log(this.dataAll)
+}
 }

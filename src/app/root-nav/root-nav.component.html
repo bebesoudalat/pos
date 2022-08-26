@@ -6,10 +6,10 @@
     <mat-toolbar><div class="h2 text-center mt-5" style="color: #89ABDE ;">Taengthong <br> <div class="h3">Clothing</div></div> </mat-toolbar>
     <mat-nav-list class="mt-5">
       <a mat-list-item [routerLink]="['']"><mat-icon matListIcon>home</mat-icon> ໜ້າຫຼັກ</a>
-      <a mat-list-item [routerLink]="['sale']" ><mat-icon matListIcon>add_circle_outline</mat-icon>ຂາຍສິນຄ້າ</a>
       <a mat-list-item [routerLink]="['manage-data']"><mat-icon matListIcon> border_all</mat-icon>ຈັດການຂໍ້ມູນ</a>
       <a mat-list-item [routerLink]="['order']" *ngIf="this.user_info.data[0].user =='bebe'"><mat-icon matListIcon>add_shopping_cart</mat-icon> ຈັດຊື້ສິນຄ້າ</a>
       <a mat-list-item [routerLink]="['import']"><mat-icon matListIcon>save_alt</mat-icon>ນຳສິນຄ້າເຂົ້າ</a>
+      <a mat-list-item [routerLink]="['sale']" ><mat-icon matListIcon>add_circle_outline</mat-icon>ຂາຍສິນຄ້າ</a>
       <!-- <a mat-list-item [routerLink]="['product']"><mat-icon matListIcon> store_mall_directory</mat-icon>ຜູ້ສະໜອງ</a> -->
       <a mat-list-item [routerLink]="['report']" *ngIf="this.user_info.data[0].user =='bebe'"><mat-icon matListIcon> insert_chart_outlined</mat-icon>ລາຍງານ</a>
     </mat-nav-list>

@@ -86,10 +86,10 @@ img{
 th{
     background-color: #d6e4f9;
     color: #7096cf ;
-    font-size: 15px;
+    font-size: 12px;
 }
 td{
-    font-size: 15px;
+    font-size: 12px;
 }
 .th_1{
     border-top-left-radius: 15px ;
@@ -108,10 +108,11 @@ input{
     text-align: center;
 }
 .signature{
-    margin-top: 30px;
+    
     float: right;
 }
 .date{
+    margin-top: 30px;
     float: right;
 }
 select{

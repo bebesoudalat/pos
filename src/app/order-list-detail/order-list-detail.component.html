@@ -36,15 +36,15 @@
               
   
               <ng-container matColumnDef="proName" >
-                <th mat-header-cell *matHeaderCellDef style="width: 200px ; text-align: center;" > ຈຳນວນ </th>
+                <th class="th_2" mat-header-cell *matHeaderCellDef style="width: 200px ; text-align: center;" > ຈຳນວນ </th>
                 <td mat-cell *matCellDef="let element" class="text-center" > {{element.buy_qty}} {{element.unitName}} </td>
               </ng-container>
   
 
-              <ng-container matColumnDef="buy_price">
+              <!-- <ng-container matColumnDef="buy_price">
                 <th class="th_2" mat-header-cell *matHeaderCellDef style="width: 150px ; text-align: center;"> ລາຄາ </th>
                 <td mat-cell *matCellDef="let element" class="text-center" > {{element.price | number}} ກີບ </td>
-              </ng-container>
+              </ng-container> -->
             
               <tr mat-header-row *matHeaderRowDef="displayOrder"></tr>
               <tr mat-row *matRowDef="let row; columns: displayOrder;"></tr>
@@ -63,7 +63,7 @@
     <div>ສັນຕິພາບ ເອກະລາດ ປະຊາທິປະໄຕ ເອກະພາບ ວັດທະນາຖາວອນ</div>
   </div>
 
-  <div class="h4 text-center mt-3">ໃບຈັດຊື້</div>
+  <div class="h3 text-center mt-3">ໃບຈັດຊື້</div>
   <div class="row" >
     <div class="col info" >
         <div class="h51">ຮ້ານຂາຍເສື້ອຜ້າ ນາງແຕງທອງ</div>
@@ -75,43 +75,47 @@
       <div>ວັນທີຈັດຊື້ : {{date | date:'dd/MM/yyyy'}}</div>
 </div>
 </div>
-  <div class="col mt-4">
-    <table mat-table [dataSource]="data_report" class="mat-elevation-z8">
-     
-      <ng-container matColumnDef="no">
-        <th class="th_1" mat-header-cell *matHeaderCellDef style="width: 100px; text-align: center;" > ລຳດັບ </th>
-        <td mat-cell *matCellDef="let element; let i = index" class="text-center" > {{i+1}} </td>
-      </ng-container>
+<div class="col mt-4">
+  <table mat-table [dataSource]="dataSource1" class="mat-elevation-z8">
 
-      <ng-container matColumnDef="product_code">
-        <th mat-header-cell *matHeaderCellDef style="width: 100px ; text-align: center;" > ລະຫັດສິນຄ້າ </th>
-        <td mat-cell *matCellDef="let element" class="text-center" > {{element.product_code}} </td>
-      </ng-container>
-     
-      <ng-container matColumnDef="image" >
-        <th mat-header-cell *matHeaderCellDef style="width: 100px ; text-align: center;" > ຊື່ສິນຄ້າ </th>
-        <td mat-cell *matCellDef="let element" class="text-center" > {{element.productName}} </td>
-      </ng-container>
+    <ng-container matColumnDef="no">
+      <th class="th_1" mat-header-cell *matHeaderCellDef style="width: 100px; text-align: center;" > ລຳດັບ </th>
+      <td mat-cell *matCellDef="let element; let i = index" class="text-center" > {{i+1}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="product_code">
+      <th mat-header-cell *matHeaderCellDef style="width: 100px ; text-align: center;" > ລະຫັດສິນຄ້າ </th>
+      <td mat-cell *matCellDef="let element" class="text-center" > {{element.product_code}} </td>
+    </ng-container>
+   
+    <ng-container matColumnDef="image" >
+      <th mat-header-cell *matHeaderCellDef style="width: 100px ; text-align: center;" > ຊື່ສິນຄ້າ </th>
+      <td mat-cell *matCellDef="let element" class="text-center" > {{element.productName}} </td>
+    </ng-container>
 
-      
-
-      <ng-container matColumnDef="proName" >
-        <th mat-header-cell *matHeaderCellDef style="width: 200px ; text-align: center;" > ຈຳນວນ </th>
-        <td mat-cell *matCellDef="let element" class="text-center" > {{element.buy_qty}} {{element.unitName}} </td>
-      </ng-container>
-
-
-      <ng-container matColumnDef="buy_price">
-        <th class="th_2" mat-header-cell *matHeaderCellDef style="width: 150px ; text-align: center;"> ລາຄາ </th>
-        <td mat-cell *matCellDef="let element" class="text-center" > {{element.price | number}} ກີບ </td>
-      </ng-container>
     
-      <tr mat-header-row *matHeaderRowDef="displayOrder_report"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayOrder_report;"></tr>
-      
-    </table>
-  </div>
- <div class="text-end mt-4">ລາຍເຊັນເຈົ້າຂອງຮ້ານ</div>
+
+    <ng-container matColumnDef="proName" >
+      <th class="th_2" mat-header-cell *matHeaderCellDef style="width: 200px ; text-align: center;" > ຈຳນວນ </th>
+      <td mat-cell *matCellDef="let element" class="text-center" > {{element.buy_qty}} {{element.unitName}} </td>
+    </ng-container>
+
+
+    <!-- <ng-container matColumnDef="buy_price">
+      <th class="th_2" mat-header-cell *matHeaderCellDef style="width: 150px ; text-align: center;"> ລາຄາ </th>
+      <td mat-cell *matCellDef="let element" class="text-center" > {{element.price | number}} ກີບ </td>
+    </ng-container> -->
+  
+    <tr mat-header-row *matHeaderRowDef="displayOrder"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayOrder;"></tr>
+    
+  </table>
+  
+  <!-- <div>ລາຄາລວມ</div> -->
+
+</div>
+<div class="text-end mt-4">{{date | date:'dd/MM/yyyy'}}</div>
+ <div class="text-end">ລາຍເຊັນເຈົ້າຂອງຮ້ານ</div>
  
 </div>
 

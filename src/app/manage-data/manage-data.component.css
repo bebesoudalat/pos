@@ -76,12 +76,15 @@ mat-icon{
 img{
     width: 80px;
     height: 80px;
-    margin: 0px 8px;
+    margin: 10px 10px;
     border-radius: 5px;
 }
 th{
     background-color: #d6e4f9;
     color: #7096cf ;
+    font-size: 13px;
+}
+td{
     font-size: 13px;
 }
 .th_1{
